@@ -1,0 +1,153 @@
+LeanPub uses a mixture of Daring Fireball and kramdown... and pygments for syntax highlighting.
+
+https://daringfireball.net/projects/markdown/syntax
+https://kramdown.gettalong.org/syntax.html
+http://pygments.org/languages
+
+Code:
+    1. Indent each line 4 spaces.
+    2. 8 tildes above and below the code block.
+    3. <<(code/ch1-01.cs)
+        with titles:  <<[My Title is Here](code/ch1-01.cs)
+    4. backticks.  `Console.WriteLine("FOOBAR");`
+
+    Override default syntax: {lang="csharp"}
+    Sans syntax highlighting: {lang="txt"}
+    Line numbers: {linenos=on} {linenos=off}
+        or {line-numbers=on,starting-line-number=32}
+    Part of a file: {crop-start-line=15,crop-end-line=30}
+
+    Another way to do a title: {title="Example 1 - My Title", lang=csharp}
+
+    Line Wrap (characters):     11pt    12pt
+        letter  (8.5x11)        90      81    
+        a4paper (8.27x11.69) 	87 	78
+        a5paper (5.8x8.3) 	    53 	47
+        digest (5.5x8.25) 	    48 	43
+        paperback (5.1x7.8)	    41 	37
+        ustrade (6x9)	        55 	50
+
+Headings:
+    # My Heading 1 
+    ###### My Heading 6
+
+Blockquote:
+    > Paragraph... at beginning of each line or only on first
+
+Lists:
+    * First Item
+    1. First Item
+    Multiple lines can be indented by 4 spaces
+    Nest with 2 spaces... 4 will be a continuation of previous line
+
+Horizontal rules:
+    * * *
+
+Emphasis:
+    *em*
+    _em_
+    **strong**
+    __strong__
+    ___bold-italic___ or *** X ***
+    ____underline____
+
+Tabs:
+    Stay away from \t
+
+Links:
+    [My Book](https://mybook.com/)
+    <https://mybook.com>
+
+    To other chapters:
+        As I discussed [here](#chapter-01)
+        # Chapter 1 {#chapter-01}
+        ...if not on heading, {#...} must be on separate line ABOVE text
+
+Images:
+    ![My Caption](images/myimage.png)
+
+Page breaks:
+    {PageBreak} with empty line before and after
+
+Line breaks:
+    Two spaces at end of line and press <ENTER>
+
+Tables:
+    | 1 c. apples   | 1 tsp. cinnamon |
+
+Table with header:
+    | This          | That              |
+    |---------------|-------------------|
+    | 1 c. apples   | 1 tsp. cinnamon   |
+
+Table width:
+    {width="wide|narrow|default|50%"}
+
+Table with multiple lines:
+    | This          | That              |
+    |---------------|-------------------|
+    | 1 c. apples   | 1 tsp. cinnamon   |
+    |  or not       |  or more          |
+    |---------------|-------------------|
+
+Escape sequences:
+    \# the pound will show
+
+Comments:
+    %% my comments
+
+Motto or epigraph:
+    C> *It was the best of times, it was the worst of times*
+    C>
+    C> -- Charles Dickens
+
+Centering text:
+    C> Centered Text
+
+Aside/sidebar:
+    A> This is an aside.
+
+Warning:
+    W> ## This is a warning
+    W> More info.
+
+Tips:
+    T> Tip text
+
+Errors:
+    E> Error Text
+
+Infobox:
+    I> Information
+
+Question:
+    Q> My question?
+
+Discussion:
+    D> Discussion text.
+
+Generic box:
+    G> The box contents.
+
+Fonts:
+    Merriweather (Serif)
+    Cousine (Mono)
+    Lora (Serif)
+    Droid Serif (Serif)
+    Luculent (Mono)
+    Clear Sans (Sans)
+    Lato (Sans)
+    PT Mono (Mono)
+    PT Serif (Serif)
+    PT Sans (Sans)
+    Anonymous Pro (Mono)
+    Crimson Text (Serif)
+    Droid Sans (Sans)
+    Linux Libertine (Serif)
+    Open Sans (Sans)
+    Source Sans Pro (Sans)
+    Source Code Pro (Mono)
+    Deja Vu Sans (Sans)
+    Deja Vu Mono (Mono)
+    Deja Vu Serif (Serif)
+    APL 385 (Mono)
