@@ -1,4 +1,5 @@
 FrontMatter.md
 MainMatter.md
 Chapter01.md
+Chapter02.md
 BackMatter.md
