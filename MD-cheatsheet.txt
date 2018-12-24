@@ -31,6 +31,10 @@ Headings:
     # My Heading 1 
     ###### My Heading 6
 
+Parenthesis:
+    You must backslash escape (), as...
+    \(my parenthetical\)
+
 Blockquote:
     > Paragraph... at beginning of each line or only on first
 
@@ -44,10 +48,10 @@ Horizontal rules:
     * * *
 
 Emphasis:
-    *em*
-    _em_
-    **strong**
-    __strong__
+    *em* (italics)
+    _em_ (italics)
+    **strong** (bold)
+    __strong__ (bold)
     ___bold-italic___ or *** X ***
     ____underline____
 
@@ -128,26 +132,4 @@ Discussion:
 
 Generic box:
     G> The box contents.
-
-Fonts:
-    Merriweather (Serif)
-    Cousine (Mono)
-    Lora (Serif)
-    Droid Serif (Serif)
-    Luculent (Mono)
-    Clear Sans (Sans)
-    Lato (Sans)
-    PT Mono (Mono)
-    PT Serif (Serif)
-    PT Sans (Sans)
-    Anonymous Pro (Mono)
-    Crimson Text (Serif)
-    Droid Sans (Sans)
-    Linux Libertine (Serif)
-    Open Sans (Sans)
-    Source Sans Pro (Sans)
-    Source Code Pro (Mono)
-    Deja Vu Sans (Sans)
-    Deja Vu Mono (Mono)
-    Deja Vu Serif (Serif)
-    APL 385 (Mono)
+    
