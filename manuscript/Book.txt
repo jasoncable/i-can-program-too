@@ -2,4 +2,6 @@ FrontMatter.md
 MainMatter.md
 Chapter01.md
 Chapter02.md
-BackMatter.md
+{backmatter}
+LegalMatter.md
+AboutTheAuthor.md
