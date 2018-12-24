@@ -1,4 +1,4 @@
-# Chapter 2 - First Things First
+# First Things First
 
 C# \(pronounced "see sharp"\) is a modern programming lanuage that was developed by Microsoft.  It was released to the public in 2002 in response to the rapid adoption of the Java programming language in the business environment.  It is a general purpose language that is supported by a vibrant community.  C# is used from everything from system adminitration to web applications to game development.  It is also a portable language that is able to be run on Windows, Linux, and macOS.
 

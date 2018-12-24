@@ -1,4 +1,4 @@
-# Chapter 1 - Milestones
+# Milestones
 
 The history of computing starts a little over 80 years ago.  Mathematicians and theorists were speculating about the possibility to using electrical devices to solve problems in the mid 1930s.  By the end of that decade, computers were starting to be built.  These machines cost millions of dollars to construct (in today's money) and took up the space of several large rooms.  These machines could not do much more than solve basic mathematical problems.
 
