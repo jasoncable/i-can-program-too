@@ -202,10 +202,13 @@ When performing numerical operations in C#, your answer cannot be greater or les
 A> ### Comments
 A> In C#, as with most other languages, we have ways of adding notes, or comments, to our programs.  This text is simply ignored by the compiler.  Comments come in two flavors in C#.  They have their origins in the C and C++ languages.  Single line \(also called inline\) comments begin with two forward slashes, `//`.  The double slashes and everything that comes after them on a line are ignored by the compiler.  Multi-line comments start with a `/*` and end with a `*/`.
 A>
-A>    int x = 5; // this is a comment and it is ignored by the compiler
-A>    int x = 5;
-A>    /* x = 6;
-A>    x = 8;  */
+A>    `int x = 5; // this is a comment and it is ignored by the compiler`
+A>
+A>    `int x = 5;`
+A>
+A>    `/* x = 6;`
+A>
+A>    `x = 8;  */`
 A>
 A> Above, the single line comment allows us to write a note in the code.  Multi-line comments also allow us to do that.  In this instance, we are telling the compiler to ignore some code that we don't want to run anymore.  There are times when you want to keep old code around to refer to later.
 
