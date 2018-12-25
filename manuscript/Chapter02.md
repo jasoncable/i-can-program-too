@@ -31,7 +31,7 @@ C# by itself can be used to create programs.  Unfortunately, it would be very di
 
 ## Starting Out
 
-To best learn C# and .NET we will be using Visual Studio (Windows) or Visual Studio for Mac.  Both are available for no cost to individuals for use in educational settings.  Both have similar features, but are two different programs.  Visual Studio for Mac, previously known as Xamarin Studio and before that monodevelop was created by the mono project to be a competitive, free IDE to be used on multiple platforms.  We will be focusing on .NET Core and will be programming using C# version 7.3.  You can use the latest version of .NET Core and of either IDE.
+To best learn C# and .NET we will be using Visual Studio (Windows) or Visual Studio for Mac.  Both are available for no cost to individuals for use in educational settings.  Both have similar features, but are two different programs.  Visual Studio for Mac, previously known as Xamarin Studio and before that monodevelop was created by the mono project to be a competitive, free IDE to be used on multiple platforms.  We will be focusing on .NET Core and will be programming using C# version 7.3.  You can use the latest version of .NET Core and of either IDE, although you may have to specifically set the language version on the project settings.
 
 <<[Your First Program](cs/ch02-01.cs)
 
@@ -71,6 +71,26 @@ There are several types of variables.  Let's first look at the most basic type, 
 | decimal | System.Decimal | at least -7.9 * 10^-28^ to 7.9 * 10^28^, at least 28-digit precision |
 | char | System.Char | One Unicode character |
 | string | System.String | null, empty, or a sequence of characters |
+
+### Numeric Literals
+
+Numbers in C# are specified as literals.  This means that they are human-readable.  As we have seen, you can specify numbers as `123`, `1.23`, etc.  At times you may need to add a letter after the literal to help the compiler understand exactly what type of number it is.
+
+| Type | Post-fix | Example |
+|------|----------|---------|
+| decimal | m or M | 12345.87m |
+| double | d or D | 12345.87d |
+| float | f or F | 12345.87f |
+| long | l or L | -12345l |
+| uint | u or U | 12345u |
+| ulong | UL, Ul, uL, ul, LU, Lu, lU, or lu | 12345ul |
+
+You can also add thousands separators in C#.  To represent `1,234,567`, you would normally write it as `1234567`.  You may add underscores for readability: `1_234_567`;
+
+Other types of numbers may also be expressed in C# code.  This book focuses on base-10 numbers, but C# allows literals specified in hexadecimal \(hex\) or binary.  The following numbers represent the base-10 number `123`.  Hex numbers begin with `0x` whereas binary numbers begin with `0b`.
+
+    0x7b
+    0b1111011
 
 ### Why So Many Types?
 
@@ -123,13 +143,15 @@ Next, we see the variable assignment:
 
 This sets our variable, `x`, to the value `0`.
 
-The entire line of code is called a statement.  Statements end in a semicolon \(;\).
+The entire line of code is called a statement.  All statements end in a semicolon \(;\).
 
-You can declare a variable without setting its default value.
+You can declare a variable without setting its default value \(`bool` false, numerics `0`, `string`s and `object`s `null`\).
 
     int x;
 
-This means that you are telling the compiler that you are going to use the variable `x` but are not going to set the value yet.  A statement can span multiple lines.
+This means that you are telling the compiler that you are going to use the variable `x` but are not going to set the value yet.  
+
+A statement can span multiple lines.  The C# compilers ignore whitespace \(spaces, new lines, tabs\).
 
     int x =
     5
@@ -137,25 +159,100 @@ This means that you are telling the compiler that you are going to use the varia
 
 For more complex statements, this can increase the readability of the code.  Statements can also perform more than one operation at a time, as we will see in a bit.
 
+A variable declaration always starts with the variable type or alternatively the `var` keyword when using type inference.  The type is followed by the variable name.  When assigning a value to a variable, we use the `=` sign.  In a statement, variable names always go to the left of the equals sign.
+
+    x = 4;
+
+not
+
+    4 = x;
+
+#### Special Cases
+
+You can declare multiple variables of the same type at one type.  The following declares three variables.  Their value is the default value for `int`, `0`;
+
+    int a, b, c;
+
+You can set the value of multiple variables at the same time.  The following sets all variables to 5.  It does this from right to left.  It is evaluated as `c = 5`, then `b = c`, then `a = b`.
+
+    a = b = c = 5;
+
+## Math Operators
+
+C# provides operators for adding, subtracting, multiplication, and division.  Other mathematical operations such as calculating exponents and rounding are available as static methods on the `System.Math` object.  Parentheses are used to group operations together and as in general math, they can influence the order of operations.
+
+| + | addition |
+| - | subtraction |
+| * | multiplication |
+| / | division |
+| % | mod or modulo - gives the remainder of a division operation |
+
+Some examples of operations.
+
+    4 + 5
+    4 + 5 * 3
+    \(4 + 5\) * 3
+
+In the first example, the result is `9`.  The second example `19` because, due to the standard mathematical order of operations, multiplication and division are performed first, before addition and subtraction.  The third example shows us that parentheses are evaluated first.  `4` and `5` are first added, then multiplied by `3`, giving us `36`.
+
+In ordinary arithmetic, dividing by zero results in something that can't be defined.  In C# this will gives us error.
+
+When performing numerical operations in C#, your answer cannot be greater or less than the valid range of values of the data types being used.  For `int`s, your result cannot be less than `-2,147,483,648` and cannot be greater than `2,147,483,647`.
+
+A> ### Comments
+A> In C#, as with most other languages, we have ways of adding notes, or comments, to our programs.  This text is simply ignored by the compiler.  Comments come in two flavors in C#.  They have their origins in the C and C++ languages.  Single line \(also called inline\) comments begin with two forward slashes, `//`.  The double slashes and everything that comes after them on a line are ignored by the compiler.  Multi-line comments start with a `/*` and end with a `*/`.
+A>
+A>    int x = 5; // this is a comment and it is ignored by the compiler
+A>    int x = 5;
+A>    /* x = 6;
+A>    x = 8;  */
+A>
+A> Above, the single line comment allows us to write a note in the code.  Multi-line comments also allow us to do that.  In this instance, we are telling the compiler to ignore some code that we don't want to run anymore.  There are times when you want to keep old code around to refer to later.
+
+### Adding in Variables
+
+In the following example, we will see inline comments that explain how we put the operations we just learned about into practice.  This includes the use of multiple variables to create some basic calculations.  You can set the value of a variable any number of times.  You can also do things like adding a number to your variable and setting the result back to that original variable.
+
+    int x = 1; // create an int and assign it the value 1
+    int y = 2; // create an int and assign it the value 2
+    y = x + 5; // set y equal to the value in x plus 5
+    // y is now 6
+    y = y + 1; // set y equal to the value of y \(6\) plus 1
+    // y is now 7
+    int z = x + y; // add x and y and assign them to the new variable z, an int
+    // z is 8
+    int a = z * 5; // multiple z by 5 and assign it to a
+    // a is 40
+    int b = z * 4 - 32 / 8;  // remember you order of operations from math!
+    // b is 28
+    int c = b * \(2 - 3\) * \(16 / 8\);
+    // c is -56
+
+In math, there is the concept of the remainder.  You probably saw it first when you learned long division.  In C#, we use the mod or modulo operator, `%`.  For whole numbers that divide evenly into each other, the remainder will be `0` in the example of `4` being divided by `2`, the answer is `2`.  It's remainder is `0`.  If you divide `4` by `3`, you have a remainder of `1`.
+
+    int x = 4 / 2; // the answer is 2
+    int y = 4 % 3; // the answer is 1
+
+Above, we use the modulo operator to say the following: `4` is evenly divided by `3` one time with `1` being left over.
+
+What happens when you divide two integers by each other?  Is the result a data type that has decimal places?  The answer is no.  C# will perform the division and give you a whole number result that is not rounded.  We call this truncation.  It simply means that any number that would be after the decimal point would be cut off.  For this, we need to us data types that support decimals \(`float`, `double`, `decimal`, etc.\).
+
+    int x = 4 / 3; // the answer is 1
+    decimal y = 4 / 3; // the answer is 1
+
+You were probably surprised by that last answer.  The C# compiler is treating the literal numbers `4` and `3` like they are of of the whole number types.  To solve this problem, we need to use one of the special numeric literal post-fix specifiers that we learned about earlier.
+
+    decimal y = 4m / 3m; // the answer is 1.3333333333333333333333333333
+
+The computer is unable to tell us that the value `3` is a repeating number.  Exactly how many times will it show?  More often than not you will be rounding the result before presenting it to a user in any application.  You could write a program do manually perform long division, but this is not terribly helpful.  It is best to assume that the computer will give you an arbitrary number of repeating decimals, rounding the last decimal.
+
+    decimal y = 2m / 3m; // the answer is 0.6666666666666666666666666667
+
+### Assignment and Pre and Post Operators
+
+There are shortcuts to 
 
 
 
-everything is an object
 
-stack vs heap
-
-whitespace
-
-blocks
-
-statements
-
-floats
-
-type casting
-
-
-## Order of Operations
-
-## Nullable Types
 

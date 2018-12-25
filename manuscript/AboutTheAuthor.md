@@ -9,6 +9,9 @@ Jason has a Bachelor of Arts degree in Psychology from Ashford University.
 ## Contact the Author
 
 <jason@jasoncable.com>
+
 <https://www.linkedin.com/in/jasoncable>
+
 <https://twitter.com/gaypgh>
+
 <https://facebook.com/jasoncable>

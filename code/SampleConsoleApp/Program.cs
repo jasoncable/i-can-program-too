@@ -6,7 +6,8 @@ namespace SampleConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Chapter02.AddingInVariables.DoMath();
+            Console.ReadLine();
         }
     }
 }

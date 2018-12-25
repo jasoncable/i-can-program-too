@@ -5,6 +5,7 @@ namespace SampleConsoleApp.Chapter02
     {
         public HelloWorld()
         {
+            Console.WriteLine("Hello World!");
         }
     }
 }
