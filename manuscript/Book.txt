@@ -6,4 +6,5 @@ Chapter03.md
 Chapter04.md
 {backmatter}
 LegalMatter.md
+Colophon.md
 AboutTheAuthor.md

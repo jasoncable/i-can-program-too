@@ -6,7 +6,7 @@ C# is a compiled language.  It must be run through a special program called a co
 
 Languages such as C#, VB.NET, and F# \(among others\) compile to CIL.  This system was created for several reasons.  The first is to enable different languages to be able to call each others code.  Interoperability is also provided by providing the same basic data types to each of these languages.  The CLR is also responsible for memory management and provides access to operating systems resources in a way that allows your C# code to run on multiple operating systems without the need to be changed.
 
-I am somewhat simplifying this, but generally, you first write code in your desired language using a text editor of some sort.  Next you compile the program.  The compiler creates a file that is CIL.  To execute the program, you need to invoke a program that starts up the CLR, which in turn executes the CIL.
+This is a somewhat simplified of saying this, but generally, you first write code in your desired language using a text editor of some sort.  Next you compile the program.  The compiler creates a file that is CIL.  To execute the program, you need to invoke a program that starts up the CLR, which in turn executes the CIL.
 
 ## Runtimes
 
@@ -204,8 +204,6 @@ A> In C#, as with most other languages, we have ways of adding notes, or comment
 A>
 A>    `int x = 5; // this is a comment and it is ignored by the compiler`
 A>
-A>    `int x = 5;`
-A>
 A>    `/* x = 6;`
 A>
 A>    `x = 8;  */`
@@ -253,9 +251,37 @@ The computer is unable to tell us that the value `3` is a repeating number.  Exa
 
 ### Assignment and Pre and Post Operators
 
-There are shortcuts to 
+There are shortcuts to common numerical operations.  These are the combined assignment and mathematical operators.
 
+    int i = 1;
+    i += 1;
 
+This creates an int and assigns the value `1` to it.  The second line says, set `i` equal to `i + 1`.  It is the equivalent of `i = i + 1`.  There are other operators such as this.  They also work with variables.  
 
+    int i = 1; // create a variable i and assign it the value 1
+    int j = 2; // create a variable j and assign it the value 2
+    i += j; // set i equal to i + j
 
+| += | addition |
+| -= | subtraction |
+| *= | multiplication | 
+| /= | division |
+| %= | modulo |
 
+C# also gives us the post- and pre- increment and decrement operators.  `i++` and `++i` increment the variable `i` by `1`.  When used in an expression, the post-increment operators such as `i++` first returns its value, then increases the number by `1`.  The pre-increment operators such as `++i` first increments the value and returns the new value.
+
+    int i = 1;
+    int j = i++; // j is 1
+
+This creates the variable `i` and assigns the value `1` to it.  We then create an int, `j`.  Since we are using the post-increment operator, the value of `i` is returned first, then it is incremented.  The value of `j` is `1` in this example.
+
+    int i = 1;
+    int j = ++i; // j is 2
+
+This example sets the value of `j` to `2`.  With the pre-increment/decrement operators, the variable they are applied to is first increased or decreased, then its value is returned.
+
+## Conclusion
+
+We have discovered that there are several different implementations of the C# compiler and accompanying framework.  These constitute the .NET ecosystem.  .NET is a cross-platform, widely used programming environment that allows us to create all types of applications from those that run on the desktop, server, cloud, and web.
+
+We also discovered simple variables and have begin to explore C#'s type system.  Mathematical operators round out the chapter with careful attention to the wide variety of features in the language.  In the next chapter we will continue with scalars in the form of strings and introduce the concept of arrays.

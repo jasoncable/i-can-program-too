@@ -1,1 +1,1 @@
-# Strings and Arrays
+# Strings, Arrays, and Logic
