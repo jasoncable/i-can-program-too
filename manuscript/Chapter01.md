@@ -12,10 +12,10 @@ The next major breakthrough was to create a general purpose computer that could 
 
 A> ### An Example of Modern Machine Code
 A>
-A> `1000101101001100001001000000010010001011110000011001100100110011
-1100001001001011110000101000001111100000000000010011001111000010
-0010101111000010100011010100010001001001000000010111010000000111
-1000110100000100100011011111110111111111111111000011`
+A> `1000101101001100001001000000010010001011110000011001100100110011`
+A> `1100001001001011110000101000001111100000000000010011001111000010`
+A> `0010101111000010100011010100010001001001000000010111010000000111`
+A> `1000110100000100100011011111110111111111111111000011`
 
 ## The Next Generation
 
@@ -90,10 +90,18 @@ All of the operating systems listed that are primarily written in C support runn
 
 ### Why Isn't This a Book about C?
 
-### The C-like Languages
+C has its place in computing.  It is an extremely useful language to learn.  It does not, however have the same uses as C#.  C# for example is excellent at web development and database access.  C# is also very good at creating user interfaces for Windows.  Most Windows UIs are written in C++ or C#.  C# also has wide adoption in business applications and may also be used for cross-platform development on Linux, iOS, and Android.
 
 ### Introducing C#
 
+Many languages and UNIX/Linux tools display C-like qualities.  Many of them use the same syntax as C including control structures, variable assignment, and built-in mathematical operators.  These languages include two early object-oriented languages, Objective-C and C++.  C++ is typically used to create large scale server programs including relational databases and web servers, user interfaces, and just about anything else.  The choice of C versus C++ is largely a personal choice of object-oriented vs. non-object-oriented.  On modern systems, their performance and memory footprints are similar, with C++ having more overhead due to its advanced object-oriented features.  Objective-C is primarily used development for applications on Apple's various platforms.
+
+Other notable C-like languages include Perl, JavaScript, Java, Python, Go, and Rust.  C# was created as Microsoft's response to the popularity of Sun Microsystem's Java.  It was also created to be a modern "object-oriented first" language to replace Microsoft's aging, yet popular Visual Basic 6.
+
+For our purposes there are three types of languages.  There are those that compile to machine code.  Those that are partially compiled and run in engines called virtual machines.  The third type are the interpreted languages.  These languages are not compiled until they are run.  Advantages to virtual machine type languages include portability of compiled programs, security concerns, and automatic memory management.
+
 ### About Open Source
+
+
 
 ## Conclusion

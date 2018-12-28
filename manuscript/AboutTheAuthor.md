@@ -6,7 +6,7 @@ Jason is a strong believer in open source software and the elimination of softwa
 
 Jason has a Bachelor of Arts degree in Psychology from Ashford University.
 
-## Contact the Author
+### Contact the Author
 
 <jason@jasoncable.com>
 

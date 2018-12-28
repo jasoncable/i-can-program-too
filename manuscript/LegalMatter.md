@@ -8,6 +8,8 @@ In any case, I have made my best attempt at figuring out the current ownership o
 
 ### Trademark Notices
 
+Android is a trademark of Google LLC.
+
 GitHub is a registered trademark of GitHub, LLC.
 
 IBM, z/OS, z/VM, z/VSE, z/TPF, and Linux on Z are trademarks of International Business Machines Corporation \("IBM"\), registered in many jurisdictions worldwide.

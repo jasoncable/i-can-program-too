@@ -67,7 +67,7 @@ There are several types of variables.  Let's first look at the most basic type, 
 | ulong | System.UInt64 | 0 to 18,446,744,073,709,551,615 |
 | long | System.Int64 | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |
 | float | System.Single | 1.5 * 10^-45^ to 3.4 * 10^38^, 7-digit precision |
-| double | System.Double | 5.0 * 10^-324^ to 1.7 × 10^308^, 15-digit precision |
+| double | System.Double | 5.0 * 10^-324^ to 1.7 * 10^308^, 15-digit precision |
 | decimal | System.Decimal | at least -7.9 * 10^-28^ to 7.9 * 10^28^, at least 28-digit precision |
 | char | System.Char | One Unicode character |
 | string | System.String | null, empty, or a sequence of characters |
@@ -91,6 +91,8 @@ Other types of numbers may also be expressed in C# code.  This book focuses on b
 
     0x7b
     0b1111011
+
+Negative numbers work as you would think.  Just place a negative sign before the number in question.  While `5 - -5` will give the correct results, C# does not require spaces between operators.  Something like `5--5` should be equivalent, but it will give you an error.  Both `5-5` \(no spaces\) and `5-(-5)` are perfectly valid.
 
 ### Why So Many Types?
 
@@ -191,7 +193,7 @@ Some examples of operations.
 
     4 + 5
     4 + 5 * 3
-    \(4 + 5\) * 3
+    (4 + 5) * 3
 
 In the first example, the result is `9`.  The second example `19` because, due to the standard mathematical order of operations, multiplication and division are performed first, before addition and subtraction.  The third example shows us that parentheses are evaluated first.  `4` and `5` are first added, then multiplied by `3`, giving us `36`.
 
@@ -226,7 +228,7 @@ In the following example, we will see inline comments that explain how we put th
     // a is 40
     int b = z * 4 - 32 / 8;  // remember you order of operations from math!
     // b is 28
-    int c = b * \(2 - 3\) * \(16 / 8\);
+    int c = b * (2 - 3) * (16 / 8);
     // c is -56
 
 In math, there is the concept of the remainder.  You probably saw it first when you learned long division.  In C#, we use the mod or modulo operator, `%`.  For whole numbers that divide evenly into each other, the remainder will be `0` in the example of `4` being divided by `2`, the answer is `2`.  It's remainder is `0`.  If you divide `4` by `3`, you have a remainder of `1`.
