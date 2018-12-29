@@ -13,8 +13,11 @@ The next major breakthrough was to create a general purpose computer that could 
 A> ### An Example of Modern Machine Code
 A>
 A> `1000101101001100001001000000010010001011110000011001100100110011`
+A>
 A> `1100001001001011110000101000001111100000000000010011001111000010`
+A>
 A> `0010101111000010100011010100010001001001000000010111010000000111`
+A>
 A> `1000110100000100100011011111110111111111111111000011`
 
 ## The Next Generation
@@ -100,8 +103,6 @@ Other notable C-like languages include Perl, JavaScript, Java, Python, Go, and R
 
 For our purposes there are three types of languages.  There are those that compile to machine code.  Those that are partially compiled and run in engines called virtual machines.  The third type are the interpreted languages.  These languages are not compiled until they are run.  Advantages to virtual machine type languages include portability of compiled programs, security concerns, and automatic memory management.
 
-### About Open Source
-
-
-
 ## Conclusion
+
+In a little over 80 years, we have gone from hard-wired electromechanical devices that could only perform basic mathematical calculations to computers that will soon be able to program themselves.  Compared to a computer of relative performance, the phone in my pocket would have cost $125,000 and would have weighted 150 pounds in the year 2000.  This rate progress is unparalleled in any other field.  It continues to be a fascinating time in the evolution of programming.

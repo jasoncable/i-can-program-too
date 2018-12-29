@@ -11,3 +11,18 @@ int x / decimal y
 exceptions
 
 control structures
+
+ternary operator
+??
+?.
+
+stringcomparer
+
+return, continue, yield return
+
+stringbuilder
+
+is/as
+
+culture with numbers (, vs .) and dates
+

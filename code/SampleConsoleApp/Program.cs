@@ -6,7 +6,8 @@ namespace SampleConsoleApp
     {
         static void Main(string[] args)
         {
-            Chapter02.AddingInVariables.DoMath();
+            //Chapter02.AddingInVariables.DoMath();
+            Chapter03.SortingMirriam.SortIt();
             Console.ReadLine();
         }
     }

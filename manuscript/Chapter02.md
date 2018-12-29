@@ -109,7 +109,7 @@ In general, follow these rules:
 
 ### Default Values
 
-The default value of most numeric types is `0`.  If a value is not assigned to any of these types, it is `0`.  Technically, the `bool` type can be seen as a numeric type representing a bit.  In computing, a bit is the smallest unit of data.  It represents the values `0` or `1`.  `0` being false and `1` being true.  The `bool`'s default value is `false`.
+The default value of most numeric types is `0`, except `char` which is `\0`.  This value is used in C to determine the end of a string.  If a value is not assigned to any of these types, except `char`, it is `0`.  Technically, the `bool` type can be seen as a numeric type representing a bit.  In computing, a bit is the smallest unit of data.  It represents the values `0` or `1`.  `0` being false and `1` being true.  The `bool`'s default value is `false`.
 
 ### Strings and Null
 
@@ -147,9 +147,13 @@ This sets our variable, `x`, to the value `0`.
 
 The entire line of code is called a statement.  All statements end in a semicolon \(;\).
 
-You can declare a variable without setting its default value \(`bool` false, numerics `0`, `string`s and `object`s `null`\).
+You can declare a variable without setting its default value \(`bool` false, `char` `\0`, numerics `0`, `string`s and `object`s `null`\).
 
     int x;
+
+We can explicitly set the default value to prevent us from receiving compiler errors such as "use of unassigned local variable."  This sets `x` to its default, `0`.
+
+    int x = default;
 
 This means that you are telling the compiler that you are going to use the variable `x` but are not going to set the value yet.  
 

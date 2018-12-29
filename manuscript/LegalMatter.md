@@ -8,6 +8,8 @@ In any case, I have made my best attempt at figuring out the current ownership o
 
 ### Trademark Notices
 
+Apple, Mac, iOS, tvOS, watchOS, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries.
+
 Android is a trademark of Google LLC.
 
 GitHub is a registered trademark of GitHub, LLC.
@@ -16,7 +18,7 @@ IBM, z/OS, z/VM, z/VSE, z/TPF, and Linux on Z are trademarks of International Bu
 
 Linux is a registered trademark of Linus Torvalds.
 
-Apple, Mac, iOS, tvOS, watchOS, and macOS are trademarks of Apple Inc., registered in the U.S. and other countries.
+Merriam-Webster's Collegiate is a registered trademark of Merriam-Webster, Incorporated.
 
 Microsoft, Windows, Visual Studio, and Xamarin are registered trademarks of Microsoft Corporation.
 
