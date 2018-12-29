@@ -25,3 +25,7 @@ Microsoft, Windows, Visual Studio, and Xamarin are registered trademarks of Micr
 Oracle, Sun Microsystems, and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.
 
 UNIX is a registered trademark of The Open Group.
+
+### Other
+
+The assembly "Hello, World" programs were taken from <http://helloworldcollection.de/>

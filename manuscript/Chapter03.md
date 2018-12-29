@@ -99,12 +99,12 @@ There are special ways to handle special characters in our strings.  Some charac
 
 | escape sequence | what it outputs |
 |-----------------|-----------------|
-| \\\\            | a backslash     |
-| \\t             | a tab           |
-| \\n             | a line feed     |
-| \\r             | a carriage return |
-| \\x0041 or \\u0041 | a Unicode character `A` |
-| \\"             | a double-quote `"` |      
+| `\\`            | a backslash     |
+| `\t`            | a tab           |
+| `\n`            | a line feed     |
+| `\r`            | a carriage return |
+| `\x0041` or `\u0041` | a Unicode character `A` |
+| `\"`            | a double-quote `"` |      
 
 The strings between double quotes \(string literals\) do not span multiple lines.  The following is NOT allowed in C#:
 
@@ -117,7 +117,7 @@ To add a new line in C#, use:
 
 As you can see, we have used the new-line escape character.  
 
-A> A note about line endings in Windows versus Linux and macOS.  On Windows systems, a line ending is in actually a carriage return followed by a line feed, `\\r\\n`.  In C# this is automatically handled by using the `\\n` character.  If you code C# on Windows then switch over to Linux or macOS, you will see that the lines end in `\\r\\n`.  Linux and macOS generally don't understand this difference.  You may see carriage returns show as the unprintable character `^M` also known as Control+M.
+A> A note about line endings in Windows versus Linux and macOS.  On Windows systems, a line ending is in actually a carriage return followed by a line feed, `\r\n`.  In C# this is automatically handled by using the `\n` character.  If you code C# on Windows then switch over to Linux or macOS, you will see that the lines end in `\r\n`.  Linux and macOS generally don't understand this difference.  You may see carriage returns show as the unprintable character `^M` also known as Control+M.
 
 ### Concatenation
 
@@ -130,3 +130,7 @@ A> A note about line endings in Windows versus Linux and macOS.  On Windows syst
 ### Splitting Strings
 
 ### Joining Strings
+
+### Convert.ToString()
+
+### Nullable Strings

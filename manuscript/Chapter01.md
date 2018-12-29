@@ -42,6 +42,12 @@ To run this antiquated code, it must be run in an emulation mode.  This means th
 
 Assembly's use today is on the decline.  With few exceptions, it is not prevalent programs written for business.  If anything, small pieces of assembly are used in larger programs to take advantage of certain features of the target processor platforms.  Assembly remains in the programming of operating systems and hardware device drivers.
 
+{lang="nasm"}
+<<[Hello, Word in IBM s/370 Assembly](cs/ch01-helloWorld-370.asm)
+
+{lang="asm"}
+<<[Hello, World in Intel's i386 assembly](cs/ch01-helloWorld-i386.asm)
+
 ## Higher Level Languages
 
 A computer cannot understand a programming language as it is written.  It must first be sent through a program called a compiler.  The compiler translates the code to machine language, which allows it to be run by the computer.  These languages were easier to write than assembly.  They were also less error prone and helped to increase development times.  The first compiled \(not assembled\) language was IBM's FORTRAN, which was first developed between 1954-1957.
