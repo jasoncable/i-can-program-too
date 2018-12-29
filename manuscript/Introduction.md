@@ -1,5 +1,8 @@
 # Introduction
 
+> "I'm not a great programmer; I'm just a good programmer with great habits."
+> ―Kent Beck 
+
 This is a book for those who are interested in learning how to program.  It introduces C#, a modern object-oriented, cross-platform language that is used extensively in business and web applications.  It provides a robust library of functionality that increases cross-platform capabilities and prevents programmers from constantly having to implement basic and advanced functionality from networking to I/O operations to security functions.  C# and .NET have a vibrant developer community and are commercially supported by Microsoft.
 
 I have been programming C# since its public release in early 2002.  I have used it for web development, system administration, and database applications.  I have used it in the educational, financial, telecom, warehouse management, and procurement sectors.  C# is not the first language I learned to program, but it has been my most productive.  

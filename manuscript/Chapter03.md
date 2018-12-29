@@ -83,17 +83,19 @@ There are several ways to create a string.  To initialize a string as null:
     string s;
     string s = default;
     string s = null;
+    String s = null;
 
 To create an empty string, use one of the first two ways:
 
     string s = String.Empty;
-    string s = string.Empty;
     string s = "";
     string s = new String("");
 
 To create a string with a value other than `null` or empty:
     string s = "my string";
     string s = new String("my string");
+
+There are several others.  First, `string` can also be expressed by its .NET type of `String`.  They may be used interchangeably.  The same thing goes for `int` and `Int32`, etc.  Also, `String.Empty` and `string.Empty` can be used interchangeably.  Which you you is a up to you.  In this book you will see types used in their lowercase from and special members and methods on the `String` object in the Pascal Case.
 
 There are special ways to handle special characters in our strings.  Some characters require escape sequences.  An escape sequence is a way of specifying certain types of characters.  These all start with a backslash \(\\\).  The following list covers sequences that are commonly used.
 
@@ -121,16 +123,102 @@ A> A note about line endings in Windows versus Linux and macOS.  On Windows syst
 
 ### Concatenation
 
-### Character Literals
+You can use the `+` operator to combine two `string`s.  This is called string concatenation. 
 
-### String Interpolation
+    string s = "a and" + " b";
+    // s created and set to "a and b"
+
+Strings are immutable, therefore the following creates 4 strings in memory.
+
+    string firstName = "John";
+    string lastName = "Doe";
+    string officialName = lastName + ", " + firstName;
+    // officialName is "Doe, John";
+
+You may also use the `+=` operator to add concatenate two strings.
+
+    string name = "Doe";
+    name += ", ";
+    name += "John";
+    // name is "Doe, John"
+ 
+ If you are only using a few string concatenation operations, memory usage won't be _that_ bad.  In the next chapter, we will see how to make concatenation more efficient.
 
 ### @ Character
 
-### Splitting Strings
+#### In Strings
 
-### Joining Strings
+There are times when you do not want C# to interpret escape sequences.  On Windows systems, the directory separator character is a backslash.  Specifying a file in C# could look like this:
 
-### Convert.ToString()
+    "C:\\Users\\jcable\\Desktop\\my_file.txt"
 
-### Nullable Strings
+To simplify this, C# provides a way of telling the compiler to not interpret escape characters.
+
+    @"C:\Users\jcable\Desktop\my_file.txt"
+
+This makes the code more readable.  They only special escape sequence that works in these verbatim string literals is `""` to show a double quote.
+
+    string s = @"Here he is, ""Super"" Mouse";
+    // s is: Here he is, "Super" Mouse
+
+#### In Variables
+
+C# has a number of words that cannot be used as variable names.  We call these the reserved keywords.  Here are a few of them: `class`, `string`, `int`, `public`, `private`, `checked`, `for`, `foreach`, etc.
+
+To use one of these as a variable name, prefix it with an `@` sign.  You must use the `@` sign every time you use the variable.
+
+    int @class = 3;
+
+Never, ever, ever do this!!!  It is a terribly bad practice and can only lead to confusion and poor code.  There is one exception, however.  This is fast-forwarding us about 66 chapters, but it is important to note the one exception to the rule...  In web development using .NET's ASP.NET Core MVC's Razor syntax, people often use anonymous types for including HTML attributes.  This often includes the @class and and @checked.
+
+### Character Literals
+
+One character may also be specified in C# code.  Instead of the `string`'s double quoted identifiers, `char` uses single quotes.
+
+    char c = `,`;
+    // define a char, c, with a value of a comma
+
+Characters for the most part have the same escape sequences as `string`s with the exception of switching double quote for single quote.
+
+| escape sequence | what it outputs |
+|-----------------|-----------------|
+| `\\`            | a backslash     |
+| `\t`            | a tab           |
+| `\n`            | a line feed     |
+| `\r`            | a carriage return |
+| `\x0041` or `\u0041` | a Unicode character `A` |
+| `\'`            | a single quote `'` |  
+
+## Nullable Value Types
+
+Remember that value types \(`int`, `char`, `bool`, etc.\) all have default initial values that do not default to null?  Well, you can make these types _nullable_.  This means that they may sometimes be assigned a null value. To do this, we create a nullable version of the type with the `?` operator.
+
+    int? i = null;
+
+By using the `?`, we create a nullable integer.  There are several ways to create a nullable value.
+
+    // i is null
+    int? i;  
+    int? i = null;
+    int? i = default;
+    int? i = default(int?);
+
+    int? i = 1;
+
+### Adding Nullable Numbers
+
+The standard mathematical operations may be performed on nullable value types.  The rule to remember is that adding anything to a null will result in a null.
+
+<<[Adding Nullables](cs/ch03-01.cs)
+
+### Reference Types
+
+
+
+
+
+
+
+### Nullable type checks
+
+### type checks

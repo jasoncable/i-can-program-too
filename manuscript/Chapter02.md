@@ -154,6 +154,7 @@ You can declare a variable without setting its default value \(`bool` false, `ch
 We can explicitly set the default value to prevent us from receiving compiler errors such as "use of unassigned local variable."  This sets `x` to its default, `0`.
 
     int x = default;
+    int x = default(int);
 
 This means that you are telling the compiler that you are going to use the variable `x` but are not going to set the value yet.  
 
