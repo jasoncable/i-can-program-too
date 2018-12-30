@@ -36,3 +36,5 @@
 ### attributes
 
 ### nameof()
+
+### Scoping of variables

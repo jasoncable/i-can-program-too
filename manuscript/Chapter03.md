@@ -79,6 +79,7 @@ Most .NET methods for sorting strings offer ways to customize the sort.  We will
 ### Creating a String
 
 > TMTOWTDI or "There is more than one way to do it."
+>
 > -Unknown Perl programmer
 
 There are several ways to create a string.  To initialize a string as null:
@@ -216,7 +217,9 @@ The standard mathematical operations may be performed on nullable value types.  
 
 ### Reference Types
 
-One of the classic sources of many bugs in C# is the old "object reference is not set to an instance of an object" error message from the NullReferenceException.  Until C# version 8, there was no good way of preventing this error.  It occurs when you try to use an object that is null.  We finally have a solution: the nullable reference type.
+A> #### The Number One C# Programming Error
+A>
+A> One of the classic sources of many bugs in C# is the old "object reference is not set to an instance of an object" error message from the NullReferenceException.  Until C# version 8, there was no good way of preventing this error.  It occurs when you try to use an object that is null.  We finally have a solution: the nullable reference type.
 
 %% JLC: How do you enable?
 
@@ -259,7 +262,7 @@ A> ### A preview of generics.
 A>
 A> In C# we have a special concept called generics.  They were introduced in C# 2.0 in 2005.  They provide came with updated data structures for C# to make everyday programming easier than manual array manipulation.  The basic arrays we are talking about here are still used everyday, although usually for lower-level operations.  Network operations such as web servers operate in the form of passing `byte[]`s back and forth.  Nearly all I/O operations use arrays.  In fact, C#'s generic `List<T>` and `Dictionary<TKey,TValue>` are implemented on top of basic .NET arrays.  More on these later.  It is important to know that a basic knowledge of arrays is required to understand more advanced concepts, even if we don't directly use them every day.
 
-To get data out of an array we can pull it out by index.  Slots in an array are all numbered, beginning at `0`.  In the following example, the the indexes are as follows.
+To get data out of an array we can pull it out by index.  Slots in an array are all numbered, beginning at `0`.  In the following example, the the indexes are as follows.  Each index refers to what we call an element of the array.
 
     string[] sa = { "a", "b", "c", "d" };
     // "a" is 0
@@ -267,22 +270,98 @@ To get data out of an array we can pull it out by index.  Slots in an array are 
     // "c" is 2
     // "d" is 3
 
+`sa[0]` will give us the value of the first element of the array.  In this case we end up with `"a"`.
 
+We can use this bare or assign it to a variable.
 
+    string a = sa[0];
 
+The new variable `a` points to the _value_ stored in the first array element.  It does _not_ point to the array's element itself.  It points to the data held within the element of the array.  This is important for a couple of reasons.  First, if we assign a different value to the variable `s`, `sa[0]` is _not_ updated.
 
-+=
+    string a = sa[0];
+    // both a and sa[0] contain the value "a"
+    a = "ab";
+    // a is now "ab"; sa[0] is still "a"
+
+We will learn in a little bit that changing data on an object that is contained within an array element may be changed via the reference to the object.  In our case, re-assigning the value of the variable does not change the value in the array.  The assignment rule applies to both value types and reference types.
+
+To update the values in an array element, you simply use the index for assignment.
+
+    string[] sa = { "a", "b", "c", "d" };
+    // to change element 0, the first element
+    sa[0] = "new a value";
+
+The special combined math/assignment operators also work on array references.
+
+    int[] intArray = { 0, 1, 2 };
+    intArray[0] += 5;
+    // the first array element is now 5
+
+A> #### The Number Two C# Programming Error
+A>
+A> The second most common programming error in C# is not checking the bounds of the array \(its length\) before trying to retrieve its value.  Below we will discuss how to do this.  Please remember, always check the length of an array before trying to pull a value from it!
+
+### Multidimensional Arrays
+
+An array may have multiple dimensions.  We have only been looking at single-dimensional arrays.  If you wanted to represent the data in a spreadsheet in array form you could use a two-dimensional array.  It is created as such:
+
+    int[,] intArray = { { 1, 2 }, { 3, 4 } };
+    // or
+    int[,] intArray = new int[100,10];
+    // this creates a two dimensional array that has
+    // 100 columns and 10 rows \(in our example\)
+
+To create an array that holds data like the following, do something like this:
+
+    int[,] intArray = new int[5,4];
+    intArray[0,0] = 0;
+    intArray[1,0] = 1;
+    ...
+    intArray[3,3] = 5;
+    ...
+
+| 0 | 1 | 2 | 3 |
+| 1 | 2 | 3 | 4 |
+| 2 | 3 | 4 | 5 |
+| 3 | 4 | 5 | 6 |
+| 4 | 5 | 6 | 7 |
+
+In this example, I am treating the first dimension as rows and the second dimension as columns.  You could easily treat it the opposite way, such as considering the first dimension to be an `x` value and the second to be a `y` value.
+
+Retrieving values is as easy as:
+
+    int x = intArray[2,3];
+
+You may also use the array initializer syntax as follows:
+
+    int[,] array2D = new int[,] 
+        { 
+            { 1, 2 }, 
+            { 3, 4 }, 
+            { 5, 6 }, 
+            { 7, 8 } }
+        };
+
+A three-dimensional array follows the same rules.  Going beyond three dimensions really should be avoided.  You will probably find other data structures that are easier to use.
+
+### Jagged Arrays
+
 ### .hasValue vs == null
 
 ### type checks
+
 ### array length checks
 
 ### Control structures
+* if then else if else
+* do while while do
+* foreach
+* switch
+* goto
 
-> "The go to statement should be abolished from all "higher level" programming languages."
+> "The __go to__ statement should be abolished from all "higher level" programming languages."
+>
 > -Edsger Dijkstra \(1968\)
-
-### Scoping of variables
 
 ### references on array objects
 
