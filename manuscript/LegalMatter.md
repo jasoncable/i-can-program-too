@@ -22,6 +22,8 @@ Merriam-Webster's Collegiate is a registered trademark of Merriam-Webster, Incor
 
 Microsoft, Windows, Visual Studio, and Xamarin are registered trademarks of Microsoft Corporation.
 
+NVIDIA and Tesla are registered trademarks of NVIDIA Corporation.
+
 Oracle, Sun Microsystems, and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.
 
 UNIX is a registered trademark of The Open Group.

@@ -27,9 +27,7 @@ Objects that are larger than 85,000 bytes are placed on the large object heap.  
 
 Garbage collection is rarely a problem.  It should not be called directly, though it may be.  Your code should always respect the garbage collection process.  You don't generally need to know the internal working of the garbage collector, but knowing that it exists and some of the basics will come in handy when performing advanced debugging techniques.
 
-## Back to Strings
-
-### Sorting and Encoding
+## Sorting and Encoding Strings
 
 Since computer hardware only knows about numbers, the text that we type is converted into its numeric equivalent to be understood by the computer's processor.  We call this character encoding.  There are several character encodings.  Have you ever noticed that when things are sorted by a computer that numbers come first, followed by capital letters, then by lowercase letters?  Have you ever noticed that printed dictionaries have different sorting compared to something that was computer sorted?  Have you seen numbers sorted in this order: `1`, `11`, `2`, `3`?  This is all due to character encodings and sorting algorithms called collations.  
 
@@ -76,7 +74,7 @@ All of this is important for several reasons, especially when sorting `string`s.
 
 Most .NET methods for sorting strings offer ways to customize the sort.  We will cover these in subsequent chapters.  We will also cover the issues with displaying numbers and dates.
 
-### Creating a String
+## Creating a String
 
 > TMTOWTDI or "There is more than one way to do it."
 >
@@ -148,9 +146,9 @@ You may also use the `+=` operator to add concatenate two strings.
  
  If you are only using a few string concatenation operations, memory usage won't be _that_ bad.  In the next chapter, we will see how to make concatenation more efficient.
 
-### @ Character
+## @ Character
 
-#### In Strings
+### In Strings
 
 There are times when you do not want C# to interpret escape sequences.  On Windows systems, the directory separator character is a backslash.  Specifying a file in C# could look like this:
 
@@ -165,7 +163,7 @@ This makes the code more readable.  They only special escape sequence that works
     string s = @"Here he is, ""Super"" Mouse";
     // s is: Here he is, "Super" Mouse
 
-#### In Variables
+### In Variables
 
 C# has a number of words that cannot be used as variable names.  We call these the reserved keywords.  Here are a few of them: `class`, `string`, `int`, `public`, `private`, `checked`, `for`, `foreach`, etc.
 
@@ -175,7 +173,7 @@ To use one of these as a variable name, prefix it with an `@` sign.  You must us
 
 Never, ever, ever do this!!!  It is a terribly bad practice and can only lead to confusion and poor code.  There is one exception, however.  This is fast-forwarding us about 66 chapters, but it is important to note the one exception to the rule...  In web development using .NET's ASP.NET Core MVC's Razor syntax, people often use anonymous types for including HTML attributes.  This often includes the @class and and @checked.
 
-### Character Literals
+## Character Literals
 
 One character may also be specified in C# code.  Instead of the `string`'s double quoted identifiers, `char` uses single quotes.
 
@@ -193,7 +191,9 @@ Characters for the most part have the same escape sequences as `string`s with th
 | `\x0041` or `\u0041` | a Unicode character `A` |
 | `\'`            | a single quote `'` |  
 
-## Nullable Value Types
+## Nullable Types
+
+### Value Types
 
 Remember that value types \(`int`, `char`, `bool`, etc.\) all have default initial values that do not default to null?  Well, you can make these types _nullable_.  This means that they may sometimes be assigned a null value. To do this, we create a nullable version of the type with the `?` operator.
 
@@ -301,7 +301,7 @@ A> #### The Number Two C# Programming Error
 A>
 A> The second most common programming error in C# is not checking the bounds of the array \(its length\) before trying to retrieve its value.  Below we will discuss how to do this.  Please remember, always check the length of an array before trying to pull a value from it!
 
-### Multidimensional Arrays
+## Multidimensional Arrays
 
 An array may have multiple dimensions.  We have only been looking at single-dimensional arrays.  If you wanted to represent the data in a spreadsheet in array form you could use a two-dimensional array.  It is created as such:
 
@@ -344,7 +344,33 @@ You may also use the array initializer syntax as follows:
 
 A three-dimensional array follows the same rules.  Going beyond three dimensions really should be avoided.  You will probably find other data structures that are easier to use.
 
-### Jagged Arrays
+## Jagged Arrays
+
+C# also supports jagged arrays, also called an array of arrays.  These are named because the dimensions are not of a fixed length.  You can see it thusly: a jagged array defines a base array where each element contains an array.
+
+To create a jagged array, you must specify the size of the base array, but not the arrays it contains.  The following code creates an a jagged integer array.
+
+    int[][] intArray = new int[3][];
+
+To finish creating our array, we need to add arrays that will hold the data.  Our base array only holds references to the other arrays.
+
+    intArray[0] = new int[5];
+    intArray[1] = new int[7];
+    intArray[2] = new int[2];
+
+We can also use the array initialization syntax.  In this case, you do not have to specify the size of the array, as it is inferred by the number of items between the braces `{}`.
+
+    intArray[0] = new int[] {1,2,3,4,5};
+
+To set data in a jagged array, in this case the third element of the first array.  As this is an array of arrays, we specify the data locations a little bit differently than in a multidimensional array.  Instead of `intArray[0,0]`, we use the following.
+
+    intArray[0][2] = 55;
+
+One last thing of note, the base array of a jagged array may contain multidimensional arrays.
+
+    int[][,] jmArray = new int[3][,];
+    jmArray[0] = new int[3,4];
+    jmArray[0][0,0] = 42;
 
 ### .hasValue vs == null
 
@@ -358,6 +384,7 @@ A three-dimensional array follows the same rules.  Going beyond three dimensions
 * foreach
 * switch
 * goto
+* for
 
 > "The __go to__ statement should be abolished from all "higher level" programming languages."
 >

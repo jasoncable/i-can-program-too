@@ -1,5 +1,9 @@
 # Milestones
 
+> It is possible to invent a single machine which can be used to compute any computable sequence.
+> 
+> -Alan Turing \(1936\)
+
 The history of computing starts a little over 80 years ago.  Mathematicians and theorists were speculating about the possibility to using electrical devices to solve problems in the mid 1930s.  By the end of that decade, computers were starting to be built.  These machines cost millions of dollars to construct (in today's money) and took up the space of several large rooms.  These machines could not do much more than solve basic mathematical problems.
 
 The early computers were mostly used to perform mathematical calculations for governments by calculating bomb trajectories and decrypting enemy communications.  In the 1950s, computers slowly moved into the mainstream with their adoption by businesses for storing and processing data.  The 1960s brought about the rise of the operating system and the use of high-level computer languages.  Multi-user systems also started to become prevalent.  The 1970s laid the foundation for networking computers together and allowing many users to work on the same computer systems.  The 1980s brought computers into the home, while the 1990s brought us together with the Internet.  Let's see what major advancements brought us here today.
@@ -9,16 +13,6 @@ The early computers were mostly used to perform mathematical calculations for go
 The first computers were single purpose machines.  They were each used for one purpose at a time.  For example, these computers could only calculate simple mathematical problems.  In order to change the type of calculation each performed, one would have to physically rewire the machine to enable it to perform another function.  These machines could perform tens of operations per second.  Today's smartphones are able to perform billions of operations per second.
 
 The next major breakthrough was to create a general purpose computer that could be used to solve more than one problem.  The idea was to create a machine that could be programmed by means other than physically changing the circuitry.  The first computer programs were written in machine language, that is, the language that a computer can understand.  This is represented by ones and zeroes.  Each computer had its own flavor of machine language and method of creating the input.
-
-A> ### An Example of Modern Machine Code
-A>
-A> `1000101101001100001001000000010010001011110000011001100100110011`
-A>
-A> `1100001001001011110000101000001111100000000000010011001111000010`
-A>
-A> `0010101111000010100011010100010001001001000000010111010000000111`
-A>
-A> `1000110100000100100011011111110111111111111111000011`
 
 ## The Next Generation
 
@@ -76,6 +70,17 @@ Operating systems also include file systems.  A file system is a method of arran
 Finally, operating systems optionally provide a graphical user interface \(GUI\).  GUIs allow users to interact with a system in a visual way.  Common examples of GUIs include Microsoft's Windows interface and macOS's Quartz interface.  Without a GUI, systems are only accessible by a text-based terminal.
 
 The late 1960s brought about operating systems that could run more than one program at a time.  To that point, is was impossible due to slow hardware and limited amounts of memory.  Most modern operating systems run dozens of programs at a time in order to provide basic services.
+
+A> ### What is a server?
+A>
+A> The term server will be used throughout this book.  Simply put, a server is a bigger, faster version of a personal computer.  They typically have the following:
+A>
+A> * Faster, more advanced processors \(such as Intel Xeon processors\)
+A> * More processors and cores \(anywhere from 1 to 10 million\)
+A> * More memory \(several gigabytes up to pentabytes\)
+A> * Faster and larger permanent storage \(disk, SSD, NVMe\)
+A> * Specialized chips \(such as NVIDIA's Tesla V100 Tensor Core\)
+A> * Faster networking capabilities \(such as 40 gigabits per second\)
 
 ## C Follows B and So Goes the World
 
