@@ -9,4 +9,7 @@
     <Folder Include="Chapter02\" />
     <Folder Include="Chapter03\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.5.3" />
+  </ItemGroup>
 </Project>

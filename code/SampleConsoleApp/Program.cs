@@ -8,7 +8,9 @@ namespace SampleConsoleApp
         {
             //Chapter02.AddingInVariables.DoMath();
             //Chapter03.SortingMirriam.SortIt();
-            Chapter03.AddingNullableNumbers.AddIt();
+            //Chapter03.AddingNullableNumbers.AddIt();
+            Chapter03.ArrayReferences arrayReferences = new Chapter03.ArrayReferences();
+            arrayReferences.RunIt();
             Console.ReadLine();
         }
     }

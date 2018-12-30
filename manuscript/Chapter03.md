@@ -78,6 +78,9 @@ Most .NET methods for sorting strings offer ways to customize the sort.  We will
 
 ### Creating a String
 
+> TMTOWTDI or "There is more than one way to do it."
+> -Unknown Perl programmer
+
 There are several ways to create a string.  To initialize a string as null:
 
     string s;
@@ -213,12 +216,74 @@ The standard mathematical operations may be performed on nullable value types.  
 
 ### Reference Types
 
+One of the classic sources of many bugs in C# is the old "object reference is not set to an instance of an object" error message from the NullReferenceException.  Until C# version 8, there was no good way of preventing this error.  It occurs when you try to use an object that is null.  We finally have a solution: the nullable reference type.
+
+%% JLC: How do you enable?
+
+To use the feature, it must be enabled.  It changes the way the compiler works.  When enabled, 
+
+    string s = null; // not allowed
+    string? s = null; // allowed
+
+The compiler looks to see if you are trying to use a `string`, in this case, that may be null.
+
+%% JLC: add some examples
+
+## Array Basics
+
+An array is a list of things.  You can think of a shopping list as an array of groceries.  Earlier in this chapter we talked about sorting strings.  The first step you take is to place the strings to sort into an array.
+
+    string[] sa = new string[] { "life", "life-and-death", "life belt", 
+    "lifeblood", "life-support", "life support", "LIFO" };
+
+This is a _single-dimensional_ array.  It is a flat structure that is a simple list of things.  An array can be of any value or reference type.  This means that you can have arrays of numbers \(`int`, etc.\), characters \(`char`\), `byte`s, `string`s or just about anything else.
+
+When you create an array, you specify the type of data it holds along with its size.  An array's size cannot be changed once created.  The size of an array is also called its _bounds_.  Also, the values are initialized to the default value of the data type unless you specify values in the variable assignment.
+
+Brackets `[]` are used to tell us that something is an array.  They are also used to retrieve data from an array, which we will see in a bit.
+
+There are, of course, several ways to create a single-dimensional array.
+
+    // create an array of strings that can hold 5 values
+    string[] sa = new string[5];
+
+    // ...with values...
+    string[] sa = new string[] { "a", "b", "c" };
+    string[] sa = { "a", "b", "c" };
+
+    // ...or...
+    string[] sa;
+    sa = new string[] { "a", "b", "c" };
+
+A> ### A preview of generics.
+A>
+A> In C# we have a special concept called generics.  They were introduced in C# 2.0 in 2005.  They provide came with updated data structures for C# to make everyday programming easier than manual array manipulation.  The basic arrays we are talking about here are still used everyday, although usually for lower-level operations.  Network operations such as web servers operate in the form of passing `byte[]`s back and forth.  Nearly all I/O operations use arrays.  In fact, C#'s generic `List<T>` and `Dictionary<TKey,TValue>` are implemented on top of basic .NET arrays.  More on these later.  It is important to know that a basic knowledge of arrays is required to understand more advanced concepts, even if we don't directly use them every day.
+
+To get data out of an array we can pull it out by index.  Slots in an array are all numbered, beginning at `0`.  In the following example, the the indexes are as follows.
+
+    string[] sa = { "a", "b", "c", "d" };
+    // "a" is 0
+    // "b" is 1
+    // "c" is 2
+    // "d" is 3
 
 
 
 
 
-
-### Nullable type checks
++=
+### .hasValue vs == null
 
 ### type checks
+### array length checks
+
+### Control structures
+
+> "The go to statement should be abolished from all "higher level" programming languages."
+> -Edsger Dijkstra \(1968\)
+
+### Scoping of variables
+
+### references on array objects
+
+NO GOTOs
