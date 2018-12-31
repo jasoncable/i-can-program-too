@@ -1,6 +1,6 @@
 # Introduction
 
-> "I'm not a great programmer; I'm just a good programmer with great habits."
+> _"I'm not a great programmer; I'm just a good programmer with great habits."_
 > ―Kent Beck 
 
 This is a book for those who are interested in learning how to program.  It introduces C#, a modern object-oriented, cross-platform language that is used extensively in business and web applications.  It provides a robust library of functionality that increases cross-platform capabilities and prevents programmers from constantly having to implement basic and advanced functionality from networking to I/O operations to security functions.  C# and .NET have a vibrant developer community and are commercially supported by Microsoft.

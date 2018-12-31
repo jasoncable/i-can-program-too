@@ -1,6 +1,6 @@
 # My Personal Coding Style
 
-> TIMTOWTDIBSCINABTE \(Tim Toady Bicarbonate\) - There’s more than one way to do it, but sometimes consistency is not a bad thing either.
+> _TIMTOWTDIBSCINABTE \(Tim Toady Bicarbonate\) - There's more than one way to do it, but sometimes consistency is not a bad thing either._
 >
 > -the perl5 community
 
@@ -123,7 +123,7 @@ The original guidance from Microsoft during the .NET Framework 1.0 days was to o
 
 ### Life Lesson
 
-Don't assume that everyone is looking at your code in the same IDE that you use.  They can vary wildly, even between two versions of the same IDE.  Microsoft Visual Studio 2008 to 2010 was a huge upgrade that included a rewrite from C++ to WPF.
+Don't assume that everyone is looking at your code in the same IDE that you use.  They can vary wildly, even between two versions of the same IDE.  Microsoft Visual Studio 2008 to 2010 was a huge upgrade that included a rewrite from Win32 C++ to WPF.
 
 If you publish your code on a place like GitHub, people may be reading it on the web with vastly different syntax highlighting from Visual Studio to make a difference.
 

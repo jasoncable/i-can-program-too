@@ -1,6 +1,6 @@
 # Milestones
 
-> It is possible to invent a single machine which can be used to compute any computable sequence.
+> _"It is possible to invent a single machine which can be used to compute any computable sequence."_
 > 
 > -Alan Turing \(1936\)
 
@@ -108,7 +108,7 @@ C has its place in computing.  It is an extremely useful language to learn.  It 
 
 ### Introducing C#
 
-> "C# is intended to be a simple, modern, general-purpose, object-oriented programming language."
+> _"C# is intended to be a simple, modern, general-purpose, object-oriented programming language."_
 >
 > -Standard ECMA-334: C# Language Specification
 

@@ -1,6 +1,6 @@
 # Objects
 
-> "I invented the term 'Object-Oriented', and I can tell you I did not have C++ in mind."
+> _"I invented the term 'Object-Oriented', and I can tell you I did not have C++ in mind."_
 >
 > -Alan Kay
 
@@ -24,7 +24,7 @@
 
 ### extension methods
 
-> "An interface defines a contract."
+> _"An interface defines a contract."_
 >
 > -Standard ECMA-334: C# Language Specification, 1st Edition
 

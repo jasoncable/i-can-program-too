@@ -74,7 +74,7 @@ Most .NET methods for sorting strings offer ways to customize the sort.  We will
 
 ## Creating a String
 
-> TMTOWTDI \(Tim Toady\) or "There is more than one way to do it."
+> _TMTOWTDI \(Tim Toady\) or "There is more than one way to do it."_
 >
 > -the perl5 moto
 

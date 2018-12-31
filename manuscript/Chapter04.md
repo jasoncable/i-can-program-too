@@ -1,5 +1,7 @@
 # Array Basics
 
+## Definition
+
 An array is a list of things.  You can think of a shopping list as an array of groceries.  Earlier in this chapter we talked about sorting strings.  The first step you take is to place the strings to sort into an array.
 
     string[] sa = new string[] { "life", "life-and-death", "life belt", 
@@ -10,6 +12,8 @@ This is a _single-dimensional_ array.  It is a flat structure that is a simple l
 When you create an array, you specify the type of data it holds along with its size.  An array's size cannot be changed once created.  The size of an array is also called its _bounds_.  Also, the values are initialized to the default value of the data type unless you specify values in the variable assignment.
 
 Brackets `[]` are used to tell us that something is an array.  They are also used to retrieve data from an array, which we will see in a bit.
+
+## Single-dimensional Arrays
 
 There are, of course, several ways to create a single-dimensional array.
 
