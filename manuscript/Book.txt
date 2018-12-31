@@ -4,6 +4,8 @@ Chapter01.md
 Chapter02.md
 Chapter03.md
 Chapter04.md
+Chapter05.md
+Chapter06.md
 {backmatter}
 LegalMatter.md
 Colophon.md
