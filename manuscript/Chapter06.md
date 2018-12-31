@@ -1,6 +1,7 @@
 # Objects
 
 > "I invented the term 'Object-Oriented', and I can tell you I did not have C++ in mind."
+>
 > -Alan Kay
 
 
@@ -45,7 +46,7 @@
 
 ## Access Modifiers and Accessibility Types
 
-### вот драконы _or_ यहाँ ड्रेगनहरू छन् _or_ הנה דרקונים
+### Here be dragons!
 
 This is the most controversial part of the book.  It regards access modifiers.  In general practice, you will use `public` and `private` about 99% of the time.  I am only including the full list here because they comes up in job interviews.  The idea behind access modifiers make sense, but in practice, they are nothing but annoying.  The reason to have access modifiers:
 
