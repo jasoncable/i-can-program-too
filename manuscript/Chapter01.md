@@ -77,7 +77,7 @@ A> The term server will be used throughout this book.  Simply put, a server is a
 A>
 A> * Faster, more advanced processors \(such as Intel Xeon processors\)
 A> * More processors and cores \(anywhere from 1 to 10 million\)
-A> * More memory \(several gigabytes up to pentabytes\)
+A> * More memory \(several gigabytes up to petabytes\)
 A> * Faster and larger permanent storage \(disk, SSD, NVMe\)
 A> * Specialized chips \(such as NVIDIA's Tesla V100 Tensor Core\)
 A> * Faster networking capabilities \(such as 40 gigabits per second\)

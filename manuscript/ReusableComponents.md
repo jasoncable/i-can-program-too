@@ -6,11 +6,11 @@
 
 There are many packages that were developed by Microsoft and the Mono team \(now part of Microsoft\) that should be noted here.
 
-### LINQ
+### LINQ \(.NET Framework, .NET Core, Cross-platform\)
 
 Language integrated query \(LINQ\) is implemented partially in the C# language and partially in the .NET framework libraries.  It provides the ability to write queries against collections and databases.  There are two primary interfaces for writing LINQ queries.  The first allows for the writing of queries directly into the source files without the use of framework libraries and methods.  The second provides a fluent interface to perform most of the same operations.  The underlying technology of the implementation uses a concept called _expression trees_.
 
-### System.Xml
+### System.Xml \(.NET Framework, .NET Core, Cross-platform\)
 
 Microsoft's .NET Framework development has always been extremely stringent in the area of consistently implementing APIs in a consistent manner.  Nulls and exceptions, for example, tend to be handled in a consistent manner throughout the entire framework.  Their goal was to create a comprehensive set of APIs that are used in the same manner.  The first API to break that standard was that of the technologies contained within `System.Xml`.  They were largely based on existing XML handling methods contained in the MSXML library.
 
@@ -32,7 +32,7 @@ EF6 supports two primary paths of database development.  The first involves crea
 
 EF6 has been modified to work under both the .NET Framework and .NET Core.  The various providers are not guaranteed to run on both platforms.  As of this writing, no new features are planned for EF6, but there is a good chance that this will change, especially with the effort expended on porting EF6 to .NET Core.
 
-### Entity Framework Core
+### Entity Framework Core \(.NET Core, Cross-platform\)
 
 Entity Framework Core \(EF Core\) is a re-write of Entity Framework 6.x.  It was meant to totally replace EF6 with a substantially similar API.  EF Core is primarily developed by the same team at Microsoft that developed EF6.  For .NET Core, the decision to scrap EF6 was made to streamline the development process, remove technical debt, increase performance, and ease provider development.  
 

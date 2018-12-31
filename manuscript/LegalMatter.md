@@ -18,6 +18,8 @@ IBM, z/OS, z/VM, z/VSE, z/TPF, and Linux on Z are trademarks of International Bu
 
 Linux is a registered trademark of Linus Torvalds.
 
+Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+
 Merriam-Webster's Collegiate is a registered trademark of Merriam-Webster, Incorporated.
 
 Microsoft, Windows, Visual Studio, and Xamarin are registered trademarks of Microsoft Corporation.
