@@ -7,6 +7,8 @@ Chapter04.md
 Chapter05.md
 Chapter06.md
 {backmatter}
+MyPersonalStyle.md
+ReusableComponents.md
 LegalMatter.md
 Colophon.md
 AboutTheAuthor.md

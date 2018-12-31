@@ -29,6 +29,19 @@ C# by itself can be used to create programs.  Unfortunately, it would be very di
 * **Unity** - A framework created for game development.
 * **.NET Core \(CoreFX\)** - A new set of libraries meant to eventually replace the .NET Framework.  Like mono and Unity, it is freely available to be used by anyone, anywhere for free.
 
+## .NET Standard
+
+.NET Standard is a specification that lists a set of common APIs that are implemented in various versions of the wide variety of frameworks.  .NET Standard is not a framework in and of itself, but is something that the various frameworks implement.  For example, a sharable unit of .NET code, distributed in an assembly, also called a DLL, that targets .NET Standard version 2.0 can run unchanged on the following frameworks' specific minimum versions.
+
+* .NET Core 2.0
+* .NET Framework 4.6.1
+* Mono 5.4
+* Xamarin.iOS 10.14
+* Xamarin.Mac 3.8
+* Xamarin.Android 8.0
+* UWP 10.0.16299
+* Unity 2018.1
+
 ## Starting Out
 
 To best learn C# and .NET we will be using Visual Studio (Windows) or Visual Studio for Mac.  Both are available for no cost to individuals for use in educational settings.  Both have similar features, but are two different programs.  Visual Studio for Mac, previously known as Xamarin Studio and before that monodevelop was created by the mono project to be a competitive, free IDE to be used on multiple platforms.  We will be focusing on .NET Core and will be programming using C# version 7.3.  You can use the latest version of .NET Core and of either IDE, although you may have to specifically set the language version on the project settings.

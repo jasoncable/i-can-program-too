@@ -108,6 +108,10 @@ C has its place in computing.  It is an extremely useful language to learn.  It 
 
 ### Introducing C#
 
+> "C# is intended to be a simple, modern, general-purpose, object-oriented programming language."
+>
+> -Standard ECMA-334: C# Language Specification
+
 Many languages and UNIX/Linux tools display C-like qualities.  Many of them use the same syntax as C including control structures, variable assignment, and built-in mathematical operators.  These languages include two early object-oriented languages, Objective-C and C++.  C++ is typically used to create large scale server programs including relational databases and web servers, user interfaces, and just about anything else.  The choice of C versus C++ is largely a personal choice of object-oriented vs. non-object-oriented.  On modern systems, their performance and memory footprints are similar, with C++ having more overhead due to its advanced object-oriented features.  Objective-C is primarily used development for applications on Apple's various platforms.
 
 Other notable C-like languages include Perl, JavaScript, Java, Python, Go, and Rust.  C# was created as Microsoft's response to the popularity of Sun Microsystem's Java.  It was also created to be a modern "object-oriented first" language to replace Microsoft's aging, yet popular Visual Basic 6.

@@ -75,7 +75,7 @@ An array may have multiple dimensions.  We have only been looking at single-dime
     // or
     int[,] intArray = new int[100,10];
     // this creates a two dimensional array that has
-    // 100 columns and 10 rows \(in our example\)
+    // 100 columns and 10 rows (in our example)
 
 To create an array that holds data like the following, do something like this:
 
@@ -137,3 +137,7 @@ One last thing of note, the base array of a jagged array may contain multidimens
     int[][,] jmArray = new int[3][,];
     jmArray[0] = new int[3,4];
     jmArray[0][0,0] = 42;
+
+### Summary
+
+Arrays in C# form the basis of more advanced data structures.  Today we often use easier to use objects to handle our data needs.  Arrays were much more important in C# 1.0, but are still incredibly useful today.

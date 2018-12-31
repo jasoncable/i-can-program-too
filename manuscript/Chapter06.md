@@ -4,7 +4,7 @@
 >
 > -Alan Kay
 
-
+### member vs. class vs. field
 
 ### Splitting Strings
 
@@ -24,6 +24,9 @@
 
 ### extension methods
 
+> "An interface defines a contract."
+>
+> -Standard ECMA-334: C# Language Specification, 1st Edition
 
 
 ### static

@@ -74,9 +74,9 @@ Most .NET methods for sorting strings offer ways to customize the sort.  We will
 
 ## Creating a String
 
-> TMTOWTDI or "There is more than one way to do it."
+> TMTOWTDI \(Tim Toady\) or "There is more than one way to do it."
 >
-> -Unknown Perl programmer
+> -the perl5 moto
 
 There are several ways to create a string.  To initialize a string as null:
 
@@ -229,3 +229,7 @@ To use the feature, it must be enabled.  It changes the way the compiler works. 
 The compiler looks to see if you are trying to use a `string`, in this case, that may be null.
 
 %% JLC: add some examples
+
+### Conclusion
+
+Strings form the basis of spoken language communications.  Having a better understanding of C# strings helps to write better programs.

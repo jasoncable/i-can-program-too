@@ -11,6 +11,8 @@ This book does not start out with the reader copying text into a text editor.  I
 
 This book does make some generalizations and does not cover every aspect of the C# language such as bitwise operations \(except in enum flags\) or unsafe code.  It provides the reader with the amount of information I feel is relevant to creating a good programmer.  There are many great resources available for learning about the history of computing, design patterns, refactoring, object-oriented programming, Entity Framework, and ASP.NET MVC.  This book prepares you to understand those books.
 
+This book focuses on .NET Core 3.0 and C# 8.0.  It requires those respective SDKs.  For those using Visual Studio or Visual Studio for Mac, version 2019 is required to make use of the newest features of both .NET Core and C# 8.  Most of the features in C# 8 will be available in the .NET Framework, except for those features that require changes to the runtime.  Most of the APIs and language features in this book are available on the other .NET platforms.
+
 I hope this book is helpful to all those who read it.  I taught myself to program and hope to help you do the same.
 
 C> Jason L. Cable
