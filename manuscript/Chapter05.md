@@ -132,15 +132,48 @@ One way of stating this in pseudo code is:
     if i is greater than 1 and i is 2
     then Say("I is 2") 
 
-One final note, code block is not required to contain any statements.
+One final note, a code block is not required to contain any statements.
 
-## operator overloading
+## Short-circuit Operators
+
+What if you need to check two or more things in one `if` statement?  C# provides two short-circuit operators.  These operators are evaluated from left to right.  When a false value is returned, the remaining expressions are not evaluated.
+
+| operator | description |
+|----------|-------------|
+| || | logical or operator |
+| && | logical and operator |
+
+    if( a == b && b == c && d == e )
+    {
+        DoSomething();
+    }
+
+In order for `DoSomething()` to be executed, all three expressions must evaluate to true.  It executes in the following order.
+
+1. If `a` equals `b`, then continue on to the next evaluation.  If `a == b` evaluates to `false`, code execution continues to the first statement after the `if` block.
+2. If `b` equals `c`, then continue on to the next evaluation.  If `b == c` evaluates to `false`, code execution continues to the first statement after the `if` block.
+3. If `d` equals `e`, then execute the following code block.  If `d == e` evaluates to `false`, code execution continues to the first statement after the `if` block.
+
+There are two main reasons that we don't evaluate all operators all of the time.  First, it is a performance optimization.  Why perform all of those evaluations if the first results in `false`.  Second, we often need to check a value in the first expression that could result in an error in the next one.  Let's take the following example.  We will cover this in-depth in a minute.
+
+    int?[] myArray = int? [1, 2, 3, null];
+
+    if( myArray != null && myArray.Length > 1 && myArray[0].HasValue )
+    {
+        DoSomething(myArray[0].Value);
+    }
+
+These types of checks are extremely common.  First we check to see if `myArray` has had a value assigned to it.  Second we need to see if there is an array element `0`.  Next, we check the nullable `int` to see if it is null or not.  If `myArray` was `null`, the second expression would fail with a `NullReferenceException`.
+
+### Checking Array Lengths
+
+### Checking Nullable Types for Values
+
+### Nots
 
 ## ternary operator
 
-## The Year Problem
-
-
+## The One Year Problem
 
 
 ### .hasValue vs == null
