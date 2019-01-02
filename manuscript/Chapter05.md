@@ -140,7 +140,7 @@ What if you need to check two or more things in one `if` statement?  C# provides
 
 | operator | description |
 |----------|-------------|
-| || | logical or operator |
+| \|\| | logical or operator |
 | && | logical and operator |
 
     if( a == b && b == c && d == e )
