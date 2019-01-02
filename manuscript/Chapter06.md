@@ -51,9 +51,13 @@
 
 ### type checks
 
-### Pattern Matching
+### Pattern Matching \(including advanced switch statements, incl. return statement\)
+
+### return
 
 ## conditional access operator
+
+### references on array objects
 
 %% ---------------------------
 

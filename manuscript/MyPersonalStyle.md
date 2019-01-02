@@ -100,7 +100,7 @@ When calling a method in a class I prefer to be thorough for readability.
 
 #### Enumerations
 
-    *Type, as in public enum StatusType
+`*Type`, as in `public enum StatusType`
 
 #### Attributes
 
@@ -108,11 +108,11 @@ They must end in the word `Attribute`.  When using, I leave off the `Attribute` 
 
 #### Exceptions
 
-    *Exception, as in OopsIMadeAnException
+`*Exception`, as in `OopsIMadeAnException`
 
 #### Interfaces
 
-    I*, as in IMyCar
+`I*`, as in `IMyCar`
 
 #### Abbreviations
 

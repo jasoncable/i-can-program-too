@@ -1,5 +1,7 @@
 # Logic and Control Structures
 
+In this chapter we will be looking at code elements called flow control structures.  Code is generally executed from top to bottom.  Control structures disrupt the flow of execution in order to perform different operations.  We will also be learning about basic boolean logic.
+
     If my bank account balance less than one dollar
     then I must transfer money from savings.
 
@@ -217,6 +219,10 @@ You do not have to use the `Value` property to compare two value types.  The fol
     int j = 4;
     if( j > 4 ) { }
 
+A> ### Magic Numbers
+A>
+A> While it appears that nullable value types are a bit more work to use due to need to constantly check to see if they are null, they are a vast improvement over what programers used to have to do.  We would use things called magic numbers.  To know if a number was not set, programmers would often set an `int` to things like `0`, `-1`, `Int32.MaxValue`, or `Int32.MinValue`.  These were always bad practices, but they continue to permeate code.  Unfortunately, there was no better way to signify that an number was not set or invalid.  Nullable value types fix that by allowing numbers and such to be able to set to null.
+
 ### Negatives and Positives
 
 There are two common patterns that are seen when chaining multiple evaluation expressions.  The first involves checking to see if everything is true; the other involves checking to see if everything is false.  When checking negative conditions, you separate them with `&&`.  When checking positive conditions, you separate them with `||`.  These are not hard and fast rules, but they are common patterns that you will see.
@@ -250,6 +256,7 @@ Due to short-circuiting, if `x` is not `1`, the remainder of the statement will 
 | operator | name        |
 |----------|-------------|
 | ? : | ternary operator |
+| ?? | null coalescing operator |
 | ?. | conditional member access |
 | a?[x] | conditional array index access |
 | ! | unary not operator |
@@ -351,24 +358,119 @@ The conditional access operator is similar.  In its basic form, it checks to see
 
 If `i` is `null`, set `j` to `null`, else set `j` to `i`'s value.  This, of course, is the same as `j = i`.  We will see in subsequent chapters the power of the conditional access operator.
 
-## Switch
+### Null Coalescing Operator
 
+This operator is often useful when dealing with nulls.  In the following example, it says, `x` if `x` is not null, else `y`.
 
+    int? x = null;
+    int? y = 5;
 
+    int? z = x ?? y;
+    // z is 5
 
-### Control structures
-* do while while do
-* foreach
-* switch
-* goto
-* for
+`z` becomes the value `5` because `x` is null.  This operator does not implicitly make the result not null.
 
-> "The __go to__ statement should be abolished from all "higher level" programming languages."
+    int? x = null;
+    int? y = null;
+    int? z = x ?? y;
+    // z is null because y is null
+
+## Basic Switch Statement Usage
+
+C# gives us another way to check that a piece of data is set to a particular value and to perform operations based on that evaluation.  The switch statement can sometimes provide a more readable representation of conditional logic.
+
+Basic usage of the `switch` statement.
+
+    int i = 5;
+    string s;
+
+    switch( i )
+    {
+        case 1:
+            s = "one";
+            break;
+        case 2:
+            s = "two";
+            break;
+        default:
+            s = "a big number";
+            break;
+    }
+
+ This is functionally equivalent to:
+
+    if( i == 1 )
+        s = "one";
+    else if ( i == 2 )
+        s = "two";
+    else 
+        s = "a big number;
+
+When doing logic that only relies on one variable, the `switch` statement may be a better solution, but that is up to you.
+
+Let's break down that we see.  First is the `switch` keyword followed by the variable that you are checking.  The `switch` statement operates on literal values such as the value types and strings.
+
+    switch( i )
+
+Next we place our conditions in a code block with braces `{}`.
+
+Each check is specified the the `case` keyword followed by a literal value, such as `1` or `"my string"`.  This line is terminated by a colon `:`.
+
+    case 1:
+
+Next, we optionally add statements that can include variable assignment and executing code.
+
+    s = "one";
+
+Our optional statements are followed by the keyword `break`.  This tells the computer that it should stop executing code in the `switch` statement and exit.  There are other ways to do this which we will discuss in subsequent chapters.  If you forget to include a break, you will get a compiler error telling you that your code execution will "fall through".
+
+    break;
+
+Finally, for now, we specify what to do if the code matches none of the conditions.  This is often empty, but may contain statements.
+
+    default:
+        break;
+
+### Combining `case`s
+
+If you wish to call the same statements for more than one `case`, you can combine them by stacking them up.  The following two examples are functionally equivalent.
+
+    int i = 5;
+    string s;
+
+    switch( i )
+    {
+        case 1:
+        case 2:
+            s = "one or two";
+            break;
+        case 2:
+            s = "three";
+            break;
+        default:
+            s = "a big number";
+            break;
+    }
+
+    //-----//
+
+    if( i == 1 || i == 2 )
+        s = "one or two";
+    else if ( i == 3 )
+        s = "three";
+    else 
+        s = "a big number;
+
+## The Dreaded `goto` Statement
+
+> _"The __go to__ statement should be abolished from all "higher level" programming languages."_
 >
 > -Edsger Dijkstra \(1968\)
 
-### references on array objects
+C# allows programmers to name a block of code with something called a _label_.  We can use the `goto` statement to change the flow of the code to jump over code that follows or to jump back and execute code again.  You do this by saying, `goto label_name;`.   There are always better ways of controlling the flow of your code.  Dijkstra, a prominent Dutch computer scientist, was correct more than 50 years ago in stating that this ends in poor programming practices.  This author has only ever used the C# `goto` statement once since 2002 and then its usage was probably incorrect. 
 
-NO GOTOs
+## Iteration and Loops
 
-## The One Year Problem
+* do while while do
+* foreach
+* for

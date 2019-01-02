@@ -26,3 +26,8 @@ is/as
 
 culture with numbers (, vs .) and dates
 
+enumerations
+
+fluent operations
+
+## The One Year Problem
