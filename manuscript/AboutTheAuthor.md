@@ -4,6 +4,8 @@ Jason L. Cable is a full-stack .NET developer residing in Pittsburgh, PA.  He ha
 
 Jason is a strong believer in open source software and the elimination of software patents.  The internet pioneers were unencumbered by the limits of the patent system.  Without their ability to publicly publish their ideas and collaborate with peers, Jason feels that we would not enjoy the benefits of an open internet that we have today.
 
+Outside of his professional life, Jason is a big fan of Star Trek.  He enjoys old movies and many types of music.  He is a supporter of classical music and believes that the elimination of music and art education programs in the public schools is harmful to society.  Jason also enjoys reading and spending time with his cat Spot.
+
 Jason has a Bachelor of Arts degree in Psychology from Ashford University.
 
 ### Contact the Author

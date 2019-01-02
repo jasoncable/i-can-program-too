@@ -30,6 +30,8 @@ Oracle, Sun Microsystems, and Java are registered trademarks of Oracle and/or it
 
 UNIX is a registered trademark of The Open Group.
 
+Star Trek is a registered trademark of CBS Studios, Inc.
+
 ### Other
 
 The assembly "Hello, World" programs were taken from <http://helloworldcollection.de/>

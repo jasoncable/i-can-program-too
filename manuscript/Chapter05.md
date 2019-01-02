@@ -30,11 +30,11 @@ We should leave this kind of logic to philosophers.  The concept of fuzzy logic 
 
 Most of the time we will be checking to see if something is true or false and only true or false.  If you run into a situation where the question you are trying to answer is unclear, you have to break down the problem and define what true/false really mean.  For example, you are programming a personal voice assistant that answers the question, is it cold outside.  Using pseudo code, we can define the word cold.
 
-    if the outside temperature is between 10°F and 42°F
+    if the outside temperature is between 10 degrees F and 42 degrees F
     then it is cold
-    else if it the outside temperature is less than 10°F
+    else if it the outside temperature is less than 10 degrees F
     then it is frigid
-    else if the outside temperature is greater than 42°F
+    else if the outside temperature is greater than 42 degrees F
     then it is warm
     else it is hot
 
