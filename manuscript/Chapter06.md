@@ -47,6 +47,14 @@
 
 ### Operator Overloading
 
+### is and as
+
+### type checks
+
+### Pattern Matching
+
+## conditional access operator
+
 %% ---------------------------
 
 ## Access Modifiers and Accessibility Types

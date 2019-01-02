@@ -165,25 +165,198 @@ There are two main reasons that we don't evaluate all operators all of the time.
 
 These types of checks are extremely common.  First we check to see if `myArray` has had a value assigned to it.  Second we need to see if there is an array element `0`.  Next, we check the nullable `int` to see if it is null or not.  If `myArray` was `null`, the second expression would fail with a `NullReferenceException`.
 
-### Checking Array Lengths
+With the `||` operator, the first expression that is separated by `||` to return `true` satisfies the condition and the rest are not evaluated.
 
-### Checking Nullable Types for Values
+    if( a == b || b == c || c == d ) { }
 
-### Nots
+In this example, if `a` is equal to `b`, it evaluates to `true`, the rest of the statement will not be evaluated.  Evaluation in the example proceeds from left to right until at least one of the statements evaluates to true.  If a `false` is found, evaluation continues onto the next expression, continuing until the first `true` is found.
 
-## ternary operator
+### Array Lengths
 
-## The One Year Problem
+The length of an array is the count of items in the array.  It is not equal to the index of the last element in the array.
+
+    int[] ia = new int[] {1,2,3,4,5};
+
+Remember, the first element in the array has in index of `0` and the last index is `4`.  The length of the array is `5`, since it has 5 elements.
+
+To check the length of the array, we use the following syntax.
+
+    if(ia.Length == 5)
+    {
+        DoSomething(ia[4]);
+    }
+
+This code pulls the 5th value, index `4`, from the array and does something with it. We make sure that index `4` exists before trying to retrieve the value.  If we try to pull an index that does not exist, we get an error about our index being "outside the bounds of the array."
+
+### Nullable Value Types
+
+There are two ways to check to see if a nullable value type has a value.  We can check the `HasValue` property on the object or we can compare it against `null`.  They are both used by frequently used by developers.  No one way is better than the other.  The following two examples are equivalent.
+
+    int? i = 4;
+    if( i != null )
+    {
+        DoSomething(i);
+    }
+
+    //-----//
+
+    int? i = 4;
+    if( i.HasValue )
+    {
+        DoSomething(i);
+    }
+
+Now, to get the value out of a nullable value type, we have to use the following.
+
+    int? i = 4;
+    int j = i.Value;
+
+You do not have to use the `Value` property to compare two value types.  The following is valid. 
+
+    int? i = 1;
+    int j = 4;
+    if( j > 4 ) { }
+
+### Negatives and Positives
+
+There are two common patterns that are seen when chaining multiple evaluation expressions.  The first involves checking to see if everything is true; the other involves checking to see if everything is false.  When checking negative conditions, you separate them with `&&`.  When checking positive conditions, you separate them with `||`.  These are not hard and fast rules, but they are common patterns that you will see.
+
+    if x is not 1 and x is not 2
+    and x is not 3 and y is not 4
+
+    if( x != 1 && x != 2 && x != 3 && y != 4 ) { }
+
+The second case.
+
+    if x is 1 or x is 2 or x is 3
+
+    if( x == 1 || x == 2 || x == 3 ) { }
+
+### Parentheses
+
+Multiple conditional expressions may be combined with parentheses.  These help us to perform multiple checks at a time.  The values within the inner-most parentheses are evaluated first.  It is a very similar evaluation scheme that is used in mathematics, except that the operator short-circuiting operators are still in effect.
+
+    if( x == 1 && ( y == 1 || z == 3 ) ) { }
+
+For this to evaluate to true:
+
+1. `x` must be equal to `1` _and_
+2. `y` must equal 1 _or_ `z` must equal `3`
+
+Due to short-circuiting, if `x` is not `1`, the remainder of the statement will not be evaluated.  Also, if `y` is `1`, the code will not check to see if `z` is `3`.
+
+## Other Operators
+
+| operator | name        |
+|----------|-------------|
+| ? : | ternary operator |
+| ?. | conditional member access |
+| a?[x] | conditional array index access |
+| ! | unary not operator |
+
+### Unary Not Operator
+
+If you have a `bool` variable, you can simply place it within the parentheses in the `if` statement.
+
+    bool isTrue = true;
+    if( isTrue ) { DoSomething(); }
+
+C# includes an operator to check the opposite of `true`, `false`.  We have seen the `!=`, or not equals, operator.  A `!` by itself negates the boolean.  Double negatives result in a `true` value.
+
+    !true == false
+    !false == true
+
+The following five examples are all equivalent, evaluating to `true`.
+
+    bool isTrue = true;
+
+    if( isTrue ) { }
+    if( isTrue == true ) { }
+    if( isTrue != false ) { }
+    if( isTrue != !false ) { }
+    if( !isTrue == false ) { }
+
+### Ternary Operator
+
+The ternary operator provides a shorthand way of checking for truth and executing something based on its evaluation.
+
+    int a = 5;
+    bool aIsFive = a == 5 ? true : false;
+
+In English, if `a` equals `5` then return `true` and set `aIsFive` to true... else, set `aIsFive` to `false`.  You can also execute code.
+
+    int a = 5;
+    int result = a == 5 ? DoSomething(a) : DoSomethingElse(b);
+
+In this case, both pieces of code, `DoSomething` and `DoSomethingElse`, must both return an `int`.
+
+You can also nest ternary operators, but doing so tends to be messy.  Please avoid at all costs.
+
+    int a = 5; int b = 6;
+    int result = a == 5 ? b == 6 ? 4 : 3 : 1;
+    // result is set to 4
+
+This is functionally equivalent to:
+
+    int a = 5; int b = 6;
+    int result;
+
+    if( a == 5 )
+    {
+        if( b == 6 )
+        {
+            result = 4;
+        }
+        else
+        {
+            result = 3;
+        }
+    }
+    else
+    {
+        result = 1;
+    }
+
+### Conditional Access Operators
+
+Finally, there are two more equality-related operators that we will discuss.  Both check to see if something is null before trying to access a value to prevent errors.
+
+The first is the conditional array indexer operator.  This checks to see if an array is null before trying to access an index on the array.  This operator does __not__ check to see if the index exists on the array.  It only checks to see if the array itself is null.
+
+    string[] sa;
+    string s;
+    string s = sa?[0];
+
+This code sets `s` to the value of `sa[0]` but only if `sa` is not `null`.  If `sa` is `null`, `s` will be set to `null`.  Use one of the following patterns instead of the conditional array indexer operator.
+
+    string[] sa;
+    string s = null;
+
+    if( sa != null && sa.Length > 0)
+    {
+        s = sa[0];
+    }
+
+    //-----//
+
+    s = sa == null && sa.Length > 0 ? sa[0] : null;
+
+The conditional access operator is similar.  In its basic form, it checks to see if something is null before retrieving data from the object.  In the case of nullable value types:
+
+    int? i = 1;
+    int? j;
+
+    j = i?.Value;
+    // i equals 1
+
+If `i` is `null`, set `j` to `null`, else set `j` to `i`'s value.  This, of course, is the same as `j = i`.  We will see in subsequent chapters the power of the conditional access operator.
+
+## Switch
 
 
-### .hasValue vs == null
 
-### type checks
-
-### array length checks
 
 ### Control structures
-* if then else if else
 * do while while do
 * foreach
 * switch
@@ -197,3 +370,5 @@ These types of checks are extremely common.  First we check to see if `myArray` 
 ### references on array objects
 
 NO GOTOs
+
+## The One Year Problem
