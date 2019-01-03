@@ -538,10 +538,10 @@ This example brings together many of the concepts we have learned thus far.  Let
 
 1. Create an integer, `i`, and assign it the value `1`.
 2. While...
-   3. the result of `i = i + 1`
-   4. is less than or equal to 1000
-      5. if `i` is even, continue code execution at step #3...
-      6. else execute the arbitrary piece of code, `Say("I is odd");`
+3. --- the result of `i = i + 1`
+4. --- is less than or equal to 1000
+5. ------ if `i` is even, continue code execution at step #3...
+6. ------ else execute the arbitrary piece of code, `Say("I is odd");`
 
 We learned about the auto pre-increment operator.  It adds one to the variable associated with it _then_ returns its value to be evaluated.  In our example, the first time through the loop, the evaluation expression is:
 
