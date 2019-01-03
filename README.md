@@ -7,6 +7,8 @@ I did knew very little when I taught myself to program.  Knowing some of the bas
 
 __Featuring C# 8 and .NET Core 3.0__
 
+__AS OF 1/3/2019, this REQUIRES .NET Core 3.0.0-preview-27122-01 in Visual Studio 2019 Preview 1 on WINDOWS.  Visual Studio for Mac does not currently support C# 8.0 syntax.__
+
 Estimated completion date: June, 2019.
 
 <https://leanpub.com/icanprogramtoo/>
