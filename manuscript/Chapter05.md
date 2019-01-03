@@ -590,7 +590,6 @@ Here are some tips while using `do`/`while`.
 * Evaluation expressions do use the processor to perform their operations.  Running a _tight_ loop, one that is continually evaluated many times in succession can bog down system performance.
 * Long running expressions should be performed on a separate thread \(more on that later\).
 * While it can be used to run operations on a timer, say, execute something every 5 seconds, there are better ways of doing so which we will discuss later.
-* 
 
 ### `for` and `foreach`
 

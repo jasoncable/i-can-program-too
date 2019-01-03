@@ -6,11 +6,11 @@ Bentley, J. \(1999\) _Programming pearls \(2nd ed.\)._ Boston, MA: Addison-Wesle
 
 Booch, G., Maksimchuk, R.A., Engle, M.W., Young, B.J., Conallen, J., & Houston, K.A. \(2007\) _Object-oriented analysis and design with applications (3rd ed.)._ Boston, MA: Addison-Wesley.
 
-Brooks, F.P. Jr. \(\1995\) _The mythical man-month: Essays on software engineering \(2nd ed.\)._ Boston, MA: Addison-Wesley.
+Brooks, F.P. Jr. \(1995\) _The mythical man-month: Essays on software engineering \(2nd ed.\)._ Boston, MA: Addison-Wesley.
 
 Fowler, M. \(2019\) _Refactoring: Improving the the design of existing code \(2nd ed.\)._  Boston, MA: Addison-Wesley.
 
-Friedl, J.E.F. \(2009\) _Mastering regular expressions \(3rd ed.\). Sebastopol, CA: O'Reilly.
+Friedl, J.E.F. \(2009\) _Mastering regular expressions \(3rd ed.\)._ Sebastopol, CA: O'Reilly.
 
 Gamma, E., Helm, R., Johnson, R., & Vlissides, J. \(1994\) _Design patterns: Elements of reusable object-oriented code._ Boston, MA: Addison-Wesley.
 
