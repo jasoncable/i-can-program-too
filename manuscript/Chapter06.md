@@ -4,6 +4,8 @@
 >
 > -Alan Kay
 
+### separation of concerns
+
 ### member vs. class vs. field
 
 ### Splitting Strings

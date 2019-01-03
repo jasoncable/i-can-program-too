@@ -471,7 +471,131 @@ C# allows programmers to name a block of code with something called a _label_.  
 
 ## Iteration and Loops
 
-* do while while do
+Iteration is the processing of reading each item in a data structure, such as an array and acting on that data.  In later chapters, we will see how this applies to other types of data structures.  We call the data structures that contain multiple pieces of data, collections.  An array is one such of collection.  C# has built-in ways of handling this data.
+
+We will also be looking at a different C# feature that allows us to run the same code, in a loop, until a condition is satisfied.
+
+### `do-while`, `while-do`
+
+The two forms of the while statement run a block of code until a condition that is evaluated on each loop is false.
+
+    int currentLoopCount = 0;
+    while( currentLoopCount < 5 )
+    {
+        currentLoopCount++;
+    }
+    // the value of currentLoopCount is 5
+
+In pseudo-code:
+
+    currentLoopCount equals 1.
+    while currentLoopCount is less than 5
+    increment currentLoopCount by 1.
+
+This runs the code in side the block, `currentLoopCount++` until `currentLoopCount` equals 5.
+
+The `do`-`while` construct does just about the same thing.  The difference is that the block of code associated with it runs _before_ the evaluation.
+
+    int currentLoopCount = 0;
+    do
+    {
+        currentLoopCount++;
+    }
+    while (currentLoopCount < 5);
+    // the value of currentLoopCount is 5
+
+In our simple example, the result is the same, but there are time when you might prefer to execute the code block before performing your truth evaluation.
+
+Your evaluation expression can be as complex as any of those used in the examples used with `if`.
+
+## `break` and `continue`
+
+There are five ways to end a loop early.  Two of them will be shown here and the other three later.  You can use the `break` keyword in your code.  This will immediately exit the loop by skipping any remaining code and continue code execution at the first line after the block.  The `continue` keyword can be used to stop execution in your code and continue on to the next evaluation, then conditionally, re-enter the block.
+
+    while( true )
+    {
+        A();
+        B();
+        if( x == y )
+            break;
+        C();
+    }
+    E();
+
+In this example, if `x` is not equal to `y`, the code executes `A()`, `B()`, `C()`, until our evaluation condition changes \(in this case it doesn't\) or until `x` equals `y`.
+
+If `x` equals `y`, we break out of the loop and continue on to the next statement.  In this example, `A()`, `B()`, and `E()` are executed.  `C()` is skipped because of the `break` statement.
+
+    int i = 1;
+    while( ++i <= 1000 )
+    {
+        if( i % 2 == 0 )
+            continue;
+        Say("I is odd");
+    }
+
+This example brings together many of the concepts we have learned thus far.  Let's break it down.
+
+1. Create an integer, `i`, and assign it the value `1`.
+2. While...
+   3. the result of `i = i + 1`
+   4. is less than or equal to 1000
+      5. if `i` is even, continue code execution at step #3...
+      6. else execute the arbitrary piece of code, `Say("I is odd");`
+
+We learned about the auto pre-increment operator.  It adds one to the variable associated with it _then_ returns its value to be evaluated.  In our example, the first time through the loop, the evaluation expression is:
+
+    while( 2 <= 1000 )
+
+Now, `i % 2 == 0` does the following.  First, evaluate the modulo operator against `i` and `2`.  This means, find the remainder of the division operation of `i` divided by `2`.  This result will be `0` if `i` is evenly divisible by `2`.  This is a very common pattern to check to see if a number is even.  To check if the number is odd, just negate the check:
+
+    i % 2 != 0
+
+When the result of our evaluation is `0`, meaning that `i` is even, `continue` on to the next evaluation loop evaluation, skipping the `Say("I is odd");` line.
+
+Two things.  First, if loops are nested, `continue` moves execution to the loop that is closest to our code.  `break` breaks out of the closest loop and returns control to the enclosing loop.  Please note the comments
+
+    while( true ) // #1
+    {
+        while( true ) // #2
+        {
+            SomeCode();
+            if( x == y )
+                continue; // go back to #2 and re-evaluate
+            SomeMoreCode(); // if x == y, this line skipped
+        }
+    }
+
+Break works in a similar way with nested loops.
+
+    while( true ) // #1
+    {
+        while( true ) // #2
+        {
+            SomeCode();
+            if( x == y )
+                break; // exit this loop and continue at #3
+            SomeMoreCode(); // if x == y, this line skipped
+        }
+        SomeOtherCode(); // #3
+    }
+
+Second, there are three more ways to exit a loop.  We already talked about the `goto` statement.  We will cover the  `return` statement when we talk about methods and the `throw` statement when we talk about exceptions.
+
+#### Tips
+
+Here are some tips while using `do`/`while`.
+
+* Only use it for short-lived operations.
+* Evaluation expressions do use the processor to perform their operations.  Running a _tight_ loop, one that is continually evaluated many times in succession can bog down system performance.
+* Long running expressions should be performed on a separate thread \(more on that later\).
+* While it can be used to run operations on a timer, say, execute something every 5 seconds, there are better ways of doing so which we will discuss later.
+* 
+
+### `for` and `foreach`
+
+The `for` statement is used for many things such as running an operation on each item in an array or 
+
 * foreach
 * for
 
