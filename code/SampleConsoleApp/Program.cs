@@ -13,7 +13,8 @@ namespace SampleConsoleApp
             //Chapter03.ArrayReferences arrayReferences = new Chapter03.ArrayReferences();
             //arrayReferences.RunIt();
 
-            Chapter04.DoWhileWhileDo.RunMe();
+            //Chapter04.DoWhileWhileDo.RunMe();
+            Chapter04.ForAndForeach.LoopMe();
 
             Console.ReadLine();
         }
