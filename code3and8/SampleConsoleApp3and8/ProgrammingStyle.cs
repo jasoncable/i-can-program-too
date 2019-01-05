@@ -12,13 +12,15 @@ namespace JasonCable.SampleConsoleApp3and8
         public const int DB_TIMEOUT = 60;
 
         private string _myName;
+        private SqlConnection _conn;
 
         public ProgrammingStyle()
         {
             _myName = "C#";
+            _conn = new SqlConnection(DB_TIMEOUT);
         }
 
-        public ProgrammingStyle(string formalName)
+        public ProgrammingStyle(string formalName) : this()
         {
             _myName = formalName;
         }
