@@ -14,6 +14,8 @@ Friedl, J.E.F. \(2009\) _Mastering regular expressions \(3rd ed.\)._ Sebastopol,
 
 Gamma, E., Helm, R., Johnson, R., & Vlissides, J. \(1994\) _Design patterns: Elements of reusable object-oriented code._ Boston, MA: Addison-Wesley.
 
+Hafner, K. & Lyon M. \(1996\) Where wizards stay up late: The origins of the internet. New York: Simon & Schuster.
+
 Hunt, A. & Thomas, D. \(1999\). _The pragmatic programmer: From journeyman to master._ Boston, MA: Addison-Wesley.
 
 McConnell, S. \(2004\) _Code complete: A practical handbook of software construction \(2nd ed.\)._ Redmond, WA: Microsoft Press.

@@ -326,12 +326,84 @@ We can also move backwards through an array.
         Console.WriteLine(sa[i]);
     }
 
-## Variable Scoping
+## Variable Scoping: The Basics
 
-Remember how we learned that loops can be nested?  Well, 
+Remember how we learned that loops can be nested?  Well, there is something special about that variable that you declare inside the `for` statement: it can only be used in the `for` statement and its accompanying code block.
+
+    for( int i = 0; i < sa.Length; i++ )
+    {
+        if( i % 2 == 0)
+            continue;
+    }
+    i++; // ERROR, i is no longer accessible
+
+Variables in C# are scoped to their current block or any enclosing code blocks.  In this example, we declare our array and boolean variables outside of the `for` block and use them within the `for` loop.  You will also see that we can set the value of `foundAMatch` within the `for` loop.  Its new value is available outside of the `for` loop because it was declared outside of the loop.
+
+    string[] sa = { "a", "b", "c", "d" };
+    bool foundAMatch = false;
+    for( int i = 0; i < sa.Length; i++ )
+    {
+        if( sa[i] == "c" )
+        {
+            foundAMatch = true;
+            break;
+        }
+    }
+    if( foundAMatch )
+    {
+        Console.WriteLine("Match found!");
+    }
+
+Working off of this example, if we try to redeclare a variable that we have used, we will get a compiler error.
+
+    if( foundAMatch )
+    {
+        bool foundAMatch = false; // ERROR
+        Console.WriteLine("Match found!");
+    }
+
+If you want to change the value of the variable, just set it without the data type.
+
+    if( foundAMatch )
+    {
+        foundAMatch = false; // GOOD
+        Console.WriteLine("Match found!");
+    }
 
 ## foreach
 
-### yield return
+Another way to loop through an array or most collections of data is to use the `foreach` loop as such:
 
-### var
+    string[] sa = { "a", "b", "c", "d" };
+    foreach( string s in sa )
+    {
+        Console.WriteLine( s );
+    }
+
+The variable `s` is assigned the value in the current array index, which loops from index `0` to the end.  The `foreach` statement takes out the possible errors of tracking looping variables such as in the `for` statement.  There is no array index to track.  `foreach` automatically pulls out each value in the array, in this case.
+
+`foreach` statements, like `for` statements are associated with a block of code or single statement listed after the `foreach` statement.  This is exactly as we have seen before.
+
+## The `var` Keyword
+
+Oftentimes we want the compiler to do some of the work for us.  Why can't it figure out that each array element of a `string[]` is a string?  Well, it can.  C# gives us the `var` keyword for this very purpose.  It is used in places where there the compiler can implicitly figure out what the data type should be.
+
+    string[] sa = { "a", "b", "c", "d" };
+    foreach( var s in sa )
+    {
+        Console.WriteLine( s );
+    }
+
+This example works exactly as it did when using the explicitly stated `string` variable.  Here are a few other examples of the `var` keyword.  The first one fails because the compiler does not know that we intend to declare the variable as a `string[]`.  The next line fixes that.
+
+    var sa2 = { "a", "b", "c", "d" }; // ERROR
+    var sa2 = new string[] { "a", "b", "c", "d" }; // GOOD
+
+In these two following examples, C# infers the first as being of type `int`, while the second is `string`.
+
+    var myInt = 123;
+    var myString = "my string";
+
+## Conclusion
+
+Loops provide a powerful way of processing both small and large amounts of data.  We also learned some basics of variable scoping and the use of the `var` keyword.  In the next chapter, we will shift gears to object-oriented programming concepts.  It is there that we will see C#'s true power.

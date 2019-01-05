@@ -24,6 +24,38 @@ namespace SampleConsoleApp.Chapter04
             {
                 Console.WriteLine(sa[i]);
             }
+
+            Console.WriteLine();
+
+            string[] sa1 = { "a", "b", "c", "d" };
+            bool foundAMatch = false;
+            for (int i = 0; i < sa1.Length; i++)
+            {
+                if (sa1[i] == "c")
+                {
+                    foundAMatch = true;
+                    break;
+                }
+            }
+            if (foundAMatch)
+            {
+                Console.WriteLine("Match found!");
+            }
+
+            Console.WriteLine();
+
+
+            var sa3 = new string[] { "a", "b", "c", "d" };
+            //var sa2 = { "a", "b", "c", "d" };
+            foreach (string s1 in sa3)
+            {
+                Console.WriteLine(s1);
+            }
+
+            var int2 = 4;
+            var s5 = "my string";
+
+            Console.WriteLine($"{int2} {s5}");
         }
     }
 }

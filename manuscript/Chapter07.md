@@ -14,6 +14,8 @@
 
 ### array.IndexOf
 
+### yield return
+
 ### String Interpolation
 
 ### Convert.ToString()
