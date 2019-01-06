@@ -89,6 +89,8 @@ Instances of classes contain data and operate on the data that they contain.  St
 A> You are probably confused at this point.  This is complicated stuff, steeped in abstract concepts.  It will make more sense once we see some examples.  Some of the information provided here is a simplification of truth in order to not confuse you more with trivialities that only confuse the situation more.
 A>
 A> For the upcoming discussion, you will only see two types of _access modifiers_, private and public.  The others will be discussed later.  `public` means that a member of accessible within the class and from outside of the class.  `private` members are only available internally to the class.
+A>
+A> In general, think of static vs. instance as this: static members live on the type and are used from the type itself.  Instance members live with the instance of type type and are only available from instance.
 
 ## Fields \(Static and Instance\)
 
@@ -125,19 +127,30 @@ Constants may only be built-in C# such as `int`, `decimal`, `string`, etc.  For 
 
 ## Methods \(Static and Instance\)
 
-## Properties
+overloading
+overriding
+void
+extension methods
 
-## Events
 
-## Operators
+## Properties \(Static and Instance\)
 
-## Indexers
+## Events \(Instance\)
 
-## Constructors
+## Operators \(Instance\)
 
-## Finalizers
+## Indexers \(Instance\)
 
-## Nested Types
+## Constructors \(Static and Instance\)
+
+## Finalizers \(Instance\)
+
+## Nested Types \(Static and Instance\)
+
+
+
+### static classes
+
 
 
 
