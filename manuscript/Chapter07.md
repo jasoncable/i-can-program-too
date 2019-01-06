@@ -127,10 +127,105 @@ Constants may only be built-in C# such as `int`, `decimal`, `string`, etc.  For 
 
 ## Methods \(Static and Instance\)
 
+A> This section introduces the basic features of methods.  Features such as generics and lambdas will be covered in subsequent chapters.  This section only focuses on deterministic methods.  
+A>
+A> One final note, the terms "method", "function", "subroutine", and "procedure" are often used interchangeably.  We will leave the non-stop arguments over the distinctions between these up to computer scientists.  This book uses the term "method", exclusively.
+
+If classes are _nouns_, then methods are _verbs_.  In language, a noun is a word that describes "an entity, quality, state, action, or concept."  A verb is a word that "expresses an act, occurrence, or mode of being."  In simpler words, objects are things and methods are actions performed on those things.  In its most basic form, a method executes code that performs some sort of action. 
+
+While methods are not the only way to execute code, they are perhaps the most frequently used.  Let's look at some framework methods.  In this case, we are looking at static methods on objects, not just classes.  They generally work the same way.
+
+    String.IsNullOrEmpty( s );
+    Console.WriteLine( "my line" );
+    Int32.TryParse( s, out i );
+    DateTime.IsLeapYear( 2019 );
+    Convert.ToString( 2019 );
+    DateTime.Now.ToString();
+    Convert.ToInt32( "2019" );
+
+There are tens of thousands of additional methods in each of the framework editions.  Let us now look at the anatomy of a basic method.  In this case, an static method.
+
+    public static bool IsOdd( int integer )
+    {
+        return integer % 2 == 0;
+    }
+
+* `public` - The access type declaration.  This allows the method to be called from anywhere.
+* `static` - Specifies that the method is called from the type, not the instance of the object.
+* `bool` - Specifies that this method returns a value of the type `bool`. 
+* `int integer` - The area between the parentheses declares the _parameters_ of the method.  Parameters are data passed to the method.  Each parameter must specify a data type and a name.  In this example, the data type is `int` and the parameter name is `integer`.  Multiple parameters may be specified, separated by commas.
+* `return` - The return statement immediately ends code execution and returns the value associated with it, if any.
+
+### The `return` Statement
+
+If a method returns data, the `return` statement must be used to return the data.  If the method does not return data, the `return` statement immediately ends code execution and exits the method.  The `return` statement may also be used within `if`, `for`, `foreach`, `case`, `while`, and `do` blocks.  In each and every case, if the `return` statement is encountered in a line of code that is being executed, it immediately exits the method, optionally returning data.
+
+### Back to Our Example
+
+    using System;
+    namespace JasonCable.Book 
+    {
+        public class NumberUtilities
+        {
+            public static bool IsOdd( int integer )
+            {
+                return integer % 2 == 0;
+            }
+        }
+    }
+
+To call our method, we can call it with the fully-qualified version.  Executing a method is usually done by providing the method name followed by parentheses.  The input arguments are placed inside of the parentheses.  For arguments, you only specify the data type when declaring the method, not when executing it.
+
+    int i = 3;
+    bool isOdd = JasonCable.Book.NumberUtilities.IsOdd(i);
+
+If we added `using JasonCable.Book` to the top of our code file:
+
+    int i = 3;
+    bool isOdd = NumberUtilities.IsOdd(i);
+
+In this case, we assign the results of the method to a variable called `isOdd`.  If a method returns a value, you do not have to use it.  In the following, the result of the method is discarded.
+
+    NumberUtilities.IsOdd(i);
+
+Methods do not have to return values.  These types of methods are called void methods.  Void methods often perform operations on the data contained within the instance of an object.  The following example omits the namespace declaration, but remember that it is always required.  This method also does not have any parameters.
+
+    public class Name
+    {
+        private string _lastName = "Cable";
+        private string _firstName = "Jason";
+        private string _fullName;
+
+        public void CreateFullName()
+        {
+            _fullName = _lastName + ", " + _firstName;
+        }
+    }
+
+`return` is not required in a void method, as it does not return data.  `return` may be used in a void method to immediately stop execution of the method and return the code execution to the next line of the code that executed the method.  
+
+To use the method above, you must first create an instance to the object with the `new` keyword.
+
+    Name myNameInstance = new Name();
+    myNameInstance.CreateFullName();
+
+
+
+out + out with declaration
+ref
+
 overloading
-overriding
 void
 extension methods
+optional parameters
+named parameters
+return
+expression body definitions
+tuples
+lambda expressions
+Actions
+Func
+fluent
 
 
 ## Properties \(Static and Instance\)
@@ -217,6 +312,10 @@ extension methods
 ### references on array objects
 
 ### variable scopes
+
+### overriding members
+
+### async/await
 
 %% ---------------------------
 
