@@ -13,6 +13,8 @@ Strings are reference types.  The variable that you create to made a new string 
 
 So now, we have two strings in memory: `"C# String 1"` and `"Another String"`.  Only one of these has a reference to it.  `s` references `"Another String"`.  You can no longer access the string, `"C# String 1"`.  The .NET runtime tracks the references to each object \(at least objects that are reference types\).  Remember that everything in C# can be _treated_ as an object, but we are only referring to reference types here.
 
+A> One minor point.  Strings are _technically_ able to be changed with things like `unsafe` code and the new `Span<T>`.  This is a very advanced topic that should not be used without years of experience and a very good reason to do so.  For 99.90% of use cases, strings _are_ immutable.
+
 ## Garbage Collection
 
 When the .NET runtime determines that an object is no longer being used, such as when no references point to it, it is marked as eligible for garbage collection.  C#, like Java and unlike C and C++, employs a system to take unused objects from the heap and place them into the garbage collection heap.  There are three garbage collection heaps called generation 0, 1, and 2.  The first stop for our string `"C# String 1"` will be generation 0 \(gen0\).  
