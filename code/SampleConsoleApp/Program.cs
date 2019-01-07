@@ -14,8 +14,11 @@ namespace SampleConsoleApp
             //arrayReferences.RunIt();
 
             //Chapter04.DoWhileWhileDo.RunMe();
-            Chapter04.ForAndForeach.LoopMe();
+            //Chapter04.ForAndForeach.LoopMe();
 
+            Chapter07.ByRefByVal.RunTests();
+
+            Console.WriteLine("DONE!");
             Console.ReadLine();
         }
     }

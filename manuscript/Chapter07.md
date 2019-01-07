@@ -269,6 +269,43 @@ We have now satisfied the compiler condition that all possible paths through the
 
 ### Pass by Value vs. Pass by Reference
 
+When we provide a method with a parameter, we say that we are passing it to the method.  This is where variable scoping gets a little sticky.  Passing a variable _by reference_ allows us to make changes to the variable that are available to the calling scope.  That is, new assignments to the variable being passed into the method are kept once the method is done executing its code.  Otherwise, for variables passed _by value_ are not changed outside of the method.  These definitions only tell part of the story.
+
+#### Value Types
+
+When you call a method with a parameter that is a reference, a copy of the reference type is made.  Any operations on that reference type are only seen within the method.
+
+    public static void RunTests()
+    {
+        int i = 0;
+        IncrementByPlusEquals(i);
+        // i is 0
+    }
+
+    public static void IncrementByPlusEquals(int i)
+    {
+        i += 1;
+        // i is 1
+    }
+
+Don't get confused by the reuse of the variable name, `i`.  The method creates a new scope that has nothing to do with the scope of the `RunTests` method.  If these were instance level methods and we had an instance level property named `i`, the method masks the variable name `i` and scopes the new version of it to the method itself.  The method then has access to all class level properties, except `i`.  This can get very confusing.  It is the reason I prefix private property names with an underscore.  Some people pascal case all properties.  In any case, the most common casing for method parameters is camel case.
+
+To pass a value type type reference, we use the `ref` keyword in both the method definition and in the place where we call the method.
+
+    public static void RunTests()
+    {
+        int i = 0;
+        IncrementByPlusEquals(ref i);
+        // i is 1
+    }
+
+    public static void IncrementByPlusEquals(ref int i)
+    {
+        i += 1;
+        // i is 1
+    }
+
+#### Reference Types
 
 
 out + out with declaration
