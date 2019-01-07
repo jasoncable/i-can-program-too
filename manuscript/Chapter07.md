@@ -209,13 +209,70 @@ To use the method above, you must first create an instance to the object with th
     Name myNameInstance = new Name();
     myNameInstance.CreateFullName();
 
+In this case, `myNameInstance` is the variable of type `Name` \(our newly created object\).  `new` does a couple of things as we will see in the Constructor section below.  For now, it is enough to know that it creates a new instance of the object, allowing us access to perform operations on instance-level members.
+
+### Not All Paths...
+
+We have seen various examples of flow-control statements and logic in C#.  In order for a non-void method to return data, it is required that every _path_ through the code returns a result.  A path is the flow code execution through a method.  Each path ends in a `return` statement.
+
+    public bool IsTrue( bool myValue )
+    {
+        if( myValue )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+There are two possible paths through this simple code.  If `myValue` is `true` and if `myValue` is `false`.  This covers each conceivable way that __all__ of the code in the method is executed.  The following code won't compile because there are circumstances where the `return` statement does not get called.
+
+    public string GetAValue( string[] sa )
+    {
+        foreach( string s in sa )
+        {
+            if( s == "A" )
+            {
+                return s;
+            }
+        }
+    }
+
+If this code _could_ compile, the following things can happen if this code is run:
+
+* If `sa` is null, we will get an error.
+* If `sa` is empty or does not contain an element containing the string `"A"`, `return` is never called.
+* If `sa` in fact does have an element with the string `"A"`, the method returns `"A"`.
+
+To make this better, we can do the following.  In this case, we are going to return `null` if we can't find the value `"A"`.
+
+    public string GetAValue( string[] sa )
+    {
+        if( sa == null )
+            return null;
+
+        foreach( string s in sa )
+        {
+            if( s == "A" )
+            {
+                return s;
+            }
+        }
+        return null;
+    }
+
+We have fixed our potential null problem by checking `sa` for `null`.  We have also placed a `return` statement at the end which says, "If we have not already returned a value, return `null`."
+
+We have now satisfied the compiler condition that all possible paths through the code must return a value, if a value is to be returned.
+
+### Pass by Value vs. Pass by Reference
+
 
 
 out + out with declaration
-ref
-
 overloading
-void
 extension methods
 optional parameters
 named parameters
@@ -227,6 +284,7 @@ Actions
 Func
 fluent
 
+## references to objects and updating data on different references.
 
 ## Properties \(Static and Instance\)
 
