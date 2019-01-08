@@ -267,15 +267,15 @@ We have fixed our potential null problem by checking `sa` for `null`.  We have a
 
 We have now satisfied the compiler condition that all possible paths through the code must return a value, if a value is to be returned.
 
-### Pass by Value vs. Pass by Reference
+## Pass by Value vs. Pass by Reference
 
 When we provide a method with a parameter, we say that we are passing it to the method.  This is where variable scoping gets a little sticky.  Passing a variable _by reference_ allows us to make changes to the variable that are available to the calling scope.  That is, new assignments to the variable being passed into the method are kept once the method is done executing its code.  Otherwise, for variables passed _by value_ are not changed outside of the method.  These definitions only tell part of the story.
 
-#### Value Types
+### Value Types
 
 When you call a method with a parameter that is a reference, a copy of the reference type is made.  Any operations on that reference type are only seen within the method.
 
-    public static void RunTests()
+    public static void RunTest()
     {
         int i = 0;
         IncrementByPlusEquals(i);
@@ -292,7 +292,7 @@ Don't get confused by the reuse of the variable name, `i`.  The method creates a
 
 To pass a value type type reference, we use the `ref` keyword in both the method definition and in the place where we call the method.
 
-    public static void RunTests()
+    public static void RunTest()
     {
         int i = 0;
         IncrementByPlusEquals(ref i);
@@ -305,8 +305,76 @@ To pass a value type type reference, we use the `ref` keyword in both the method
         // i is 1
     }
 
-#### Reference Types
+### Reference Types
 
+Reference types follow the same rules, but are a little more confusing as we will see.  For all of the following examples, we will be using the following simple class.  Each time we reassign a new instance of the class to a variable using the `new` keyword, our `FullName` property should reset to `Jason L. Cable`.
+
+    public class Name
+    {
+        public string FullName = "Jason L. Cable";
+    }
+
+First, let's try passing in an instance of the class into a method.  The method could be an instance or static method.  It doesn't matter.  First by value.
+
+<<[Setting Properties on Objects](cs/ch07-01.cs)
+
+You should be scratching your head by now.  Why did both pass by value and pass by reference update the property?  Shouldn't one update it and one not.  In a word: no.
+
+Pass by reference and value in objects types both refer to the way the code handles the _variable_.  In the samples above, we did not reassign the reference to the object _within_ the method.  Passing by reference actually passes a new reference to the _instance_ of the object, but the object itself is not re-created.  The reference from the calling code and the new reference created by the `ref` keyword both point to the same area in memory where the instance of the object was created.
+
+## The Difference Between Reference and Value Types
+
+Let's see what happens when we try the same thing without passing it to a method.  I will be using a class library called [FluentAssertions](https://fluentassertions.com/) to demonstrate what is happening.  It adds the methods `Should` and `Be` to test the current value of our properties.  FluentAssertions can be found on [NuGet](https://www.nuget.org/).  It throws an error when a check fails.  See the appendix called, ["Reusable .NET Components"](#ReusableComponents) for more information on NuGet.
+
+{linenos=on}
+<<[Object References](cs/ch07-02.cs)
+{linenos=off}
+
+Let's take this line-by-line.
+
+1. Create a new variable `a` and assign it to a new instance of `Name`.
+2. Create a new variable `b` and set it to point to the instance of the object that `a` points to.
+3. Create a new variable `c` and set it to point to the instance of the object that `b` points to.
+4. `a` points to the same instance of an object that `b` points to.
+5. `b` points to the same instance of an object that `c` points to.  At this point, `a == b == c`, as they all point to the same memory location that contains the instance of our object.
+6. Check to see that the `FullName` property was properly set.  It is the same on all three references, as they all are pointing to the same object instance.
+7. Set the `FullName` property to a new value _on the instance of the object, a location in memory_.
+8. Check to see that `b.FullName` still points to the one and only instance of the type `Name` that we created on line #1.
+9. ...also check `a`.
+10. ...also check `c`.
+11. Set `b` to be a _new_ instance of the object `Name`.  This variable now points to a new location in memory.
+12. Check to see that `b` is indeed a new instance of the object.
+13. Ensure that `a` still points to the original instance.
+14. Ensure that `b` still points to the original instance.
+15. \(Switching over to value types.  Do they work the same way?\)
+16. Create a new variable `x` and set it to `1`.  Remember that `x` is a value type and its value is stored _with_ the variable.
+17. Create a new variable `y` and set it to the _value_ of `x`.  This does _not_ mean that `x` and `y` represent the same location in memory.  In fact, they are both their own distinct values.  They both just _happen_ to contain the same value.
+18. Create a new variable `z` and set it to the value of `y`.
+19. `x` is equal to `1`
+20. `y` is equal to `1`
+21. `z` is equal to `1`
+22. Set `x` to `10`
+23. Set `y` to `20`
+24. Set `z` to `30`
+25. Prove that `x`, `y`, and `z` point to different locations in memory.  On this line, `x` is `10`.
+26. `y` is `20`
+27. `z` is `30`
+
+We have now seen one of the most important differences between reference and value types.  Let's continue with value types and methods.
+
+## Passing Reference Types By Reference
+
+As we have seen, the difference between reference and value types is how they are stored in different ways in memory.  Let's use the same method as above to check to see what C# does when we pass a reference type to a method first by value then by reference.
+
+<<[Pass Reference Type by Value](cs/ch07-03.cs)
+
+As we saw above with changing a _property_ when passed by value, that value is retained _outside_ of the method.  Since we did not pass the variable by reference, when we assign a new instance to the object, the new value is not maintained outside of the method.
+
+<<[Pass Reference Type by Reference](cs/ch07-04.cs)
+
+As we can see in this example, the new instance of the `Name` object is assigned to the variable and is available _outside_ of the method.  This is due to passing it by reference.
+
+* * *
 
 out + out with declaration
 overloading
