@@ -316,7 +316,7 @@ Reference types follow the same rules, but are a little more confusing as we wil
 
 First, let's try passing in an instance of the class into a method.  The method could be an instance or static method.  It doesn't matter.  First by value.
 
-<<[Setting Properties on Objects](cs/cs07-01.cs)
+<<[Setting Properties on Objects](cs/ch07-01.cs)
 
 You should be scratching your head by now.  Why did both pass by value and pass by reference update the property?  Shouldn't one update it and one not.  In a word: no.
 
@@ -326,11 +326,9 @@ Pass by reference and value in objects types both refer to the way the code hand
 
 Let's see what happens when we try the same thing without passing it to a method.  I will be using a class library called [FluentAssertions](https://fluentassertions.com/) to demonstrate what is happening.  It adds the methods `Should` and `Be` to test the current value of our properties.  FluentAssertions can be found on [NuGet](https://www.nuget.org/).  It throws an error when a check fails.  See the appendix called, ["Reusable .NET Components"](#ReusableComponents) for more information on NuGet.
 
-{linenos=on}
-
-<<[Object References](cs/cs07-02.cs)
-
-{linenos=off}
+{line-numbers=on}
+<<[Object References](cs/ch07-02.cs)
+{line-numbers=off}
 
 Let's take this line-by-line.
 
@@ -368,11 +366,11 @@ We have now seen one of the most important differences between reference and val
 
 As we have seen, the difference between reference and value types is how they are stored in different ways in memory.  Let's use the same method as above to check to see what C# does when we pass a reference type to a method first by value then by reference.
 
-<<[Pass Reference Type by Value](cs/cs07-03.cs)
+<<[Pass Reference Type by Value](cs/ch07-03.cs)
 
 As we saw above with changing a _property_ when passed by value, that value is retained _outside_ of the method.  Since we did not pass the variable by reference, when we assign a new instance to the object, the new value is not maintained outside of the method.
 
-<<[Pass Reference Type by Reference](cs/cs07-04.cs)
+<<[Pass Reference Type by Reference](cs/ch07-04.cs)
 
 As we can see in this example, the new instance of the `Name` object is assigned to the variable and is available _outside_ of the method.  This is due to passing it by reference.
 
@@ -390,8 +388,6 @@ lambda expressions
 Actions
 Func
 fluent
-
-## references to objects and updating data on different references.
 
 ## Properties \(Static and Instance\)
 

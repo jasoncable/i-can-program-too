@@ -5,7 +5,7 @@ ChangeFullName(myName);
 myName = new Name();
 // myName is now reset, therefore
 // myName.Name is "Jason L. Cable"
-ChangeFullNameByRef(ref Name name);
+ChangeFullNameByRef(ref Name myName);
 // myName is "New Name #2"
 
 public void ChangeFullName(Name name)
