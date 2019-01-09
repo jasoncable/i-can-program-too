@@ -24,7 +24,7 @@ An object represents one "thing", one "idea", or one "concern".  We create objec
 
 ### Inheritance
 
-Classes may be related to each other and share properties and ways of doing things through inheritance.  You can create an object called `Vehicle`.  It can contain data and operations that may be used by other objects that are related to it.  For instance, you can create classes called `Car`, `Truck`, and `Tractor` that inherit from `Vehicle`, which defines the basic definition of what a vehicle is and common things it can do.  This allows us to keep from repeating code to perform basic common operations on related objects.  For example, `Vehicle` might define the operation `Drive` or the string property `Manufacturer`.
+Classes may be related to each other and share properties and ways of doing things through inheritance.  You can create an object called `Vehicle`.  It can contain data and operations that may be used by other objects that are related to it.  For instance, you can create classes called `Car`, `Truck`, and `Tractor` that inherit from `Vehicle`, which defines the basic definition of what a vehicle is and common things it can do.  This allows us to keep from repeating code to perform basic common operations on related objects.  For example, `Vehicle` might define the operation `Drive` or the string field `Manufacturer`.
 
 ### Polymorphism
 
@@ -288,7 +288,7 @@ When you call a method with a parameter that is a reference, a copy of the refer
         // i is 1
     }
 
-Don't get confused by the reuse of the variable name, `i`.  The method creates a new scope that has nothing to do with the scope of the `RunTests` method.  If these were instance level methods and we had an instance level property named `i`, the method masks the variable name `i` and scopes the new version of it to the method itself.  The method then has access to all class level properties, except `i`.  This can get very confusing.  It is the reason I prefix private property names with an underscore.  Some people pascal case all properties.  In any case, the most common casing for method parameters is camel case.
+Don't get confused by the reuse of the variable name, `i`.  The method creates a new scope that has nothing to do with the scope of the `RunTests` method.  If these were instance level methods and we had an instance level field named `i`, the method masks the variable name `i` and scopes the new version of it to the method itself.  The method then has access to all class level fields, except `i`.  This can get very confusing.  It is the reason I prefix private field names with an underscore.  Some people pascal case all fields.  In any case, the most common casing for method parameters is camel case.
 
 To pass a value type type reference, we use the `ref` keyword in both the method definition and in the place where we call the method.
 
@@ -307,7 +307,7 @@ To pass a value type type reference, we use the `ref` keyword in both the method
 
 ### Reference Types
 
-Reference types follow the same rules, but are a little more confusing as we will see.  For all of the following examples, we will be using the following simple class.  Each time we reassign a new instance of the class to a variable using the `new` keyword, our `FullName` property should reset to `Jason L. Cable`.
+Reference types follow the same rules, but are a little more confusing as we will see.  For all of the following examples, we will be using the following simple class.  Each time we reassign a new instance of the class to a variable using the `new` keyword, our `FullName` field should reset to `Jason L. Cable`.
 
     public class Name
     {
@@ -316,15 +316,15 @@ Reference types follow the same rules, but are a little more confusing as we wil
 
 First, let's try passing in an instance of the class into a method.  The method could be an instance or static method.  It doesn't matter.  First by value.
 
-<<[Setting Properties on Objects](cs/ch07-01.cs)
+<<[Setting Fields on Objects](cs/ch07-01.cs)
 
-You should be scratching your head by now.  Why did both pass by value and pass by reference update the property?  Shouldn't one update it and one not.  In a word: no.
+You should be scratching your head by now.  Why did both pass by value and pass by reference update the field?  Shouldn't one update it and one not.  In a word: no.
 
 Pass by reference and value in objects types both refer to the way the code handles the _variable_.  In the samples above, we did not reassign the reference to the object _within_ the method.  Passing by reference actually passes a new reference to the _instance_ of the object, but the object itself is not re-created.  The reference from the calling code and the new reference created by the `ref` keyword both point to the same area in memory where the instance of the object was created.
 
 ## The Difference Between Reference and Value Types
 
-Let's see what happens when we try the same thing without passing it to a method.  I will be using a class library called [FluentAssertions](https://fluentassertions.com/) to demonstrate what is happening.  It adds the methods `Should` and `Be` to test the current value of our properties.  FluentAssertions can be found on [NuGet](https://www.nuget.org/).  It throws an error when a check fails.  See the appendix called, ["Reusable .NET Components"](#ReusableComponents) for more information on NuGet.
+Let's see what happens when we try the same thing without passing it to a method.  I will be using a class library called [FluentAssertions](https://fluentassertions.com/) to demonstrate what is happening.  It adds the methods `Should` and `Be` to test the current value of our fields.  FluentAssertions can be found on [NuGet](https://www.nuget.org/).  It throws an error when a check fails.  See the appendix called, ["Reusable .NET Components"](#ReusableComponents) for more information on NuGet.
 
 {line-numbers=on}
 <<[Object References](cs/ch07-02.cs)
@@ -337,8 +337,8 @@ Let's take this line-by-line.
 3. Create a new variable `c` and set it to point to the instance of the object that `b` points to.
 4. `a` points to the same instance of an object that `b` points to.
 5. `b` points to the same instance of an object that `c` points to.  At this point, `a == b == c`, as they all point to the same memory location that contains the instance of our object.
-6. Check to see that the `FullName` property was properly set.  It is the same on all three references, as they all are pointing to the same object instance.
-7. Set the `FullName` property to a new value _on the instance of the object, a location in memory_.
+6. Check to see that the `FullName` field was properly set.  It is the same on all three references, as they all are pointing to the same object instance.
+7. Set the `FullName` field to a new value _on the instance of the object, a location in memory_.
 8. Check to see that `b.FullName` still points to the one and only instance of the type `Name` that we created on line #1.
 9. ...also check `a`.
 10. ...also check `c`.
@@ -368,7 +368,7 @@ As we have seen, the difference between reference and value types is how they ar
 
 <<[Pass Reference Type by Value](cs/ch07-03.cs)
 
-As we saw above with changing a _property_ when passed by value, that value is retained _outside_ of the method.  Since we did not pass the variable by reference, when we assign a new instance to the object, the new value is not maintained outside of the method.
+As we saw above with changing a _field_ when passed by value, that value is retained _outside_ of the method.  Since we did not pass the variable by reference, when we assign a new instance to the object, the new value is not maintained outside of the method.
 
 <<[Pass Reference Type by Reference](cs/ch07-04.cs)
 
@@ -384,7 +384,7 @@ The `out` parameter keyword allow an additional way to return a value from a met
     convertedInt.Should().Be(123);
     itWorked.Should().BeTrue();
 
-Here we are again using the `Should` and `Be` methods from FluentAssertions to test our work.  In this case, we see that `Int32.TryParse()` returns a `bool` using the `return` statement.  Here it indicates that the string we passed in is an integer and it is between the two static properties that exist on the Int32 object, `Int32.MinValue` and `Int32.MaxValue`.  The tests worked, showing that we may use the out variable later on in our code.
+Here we are again using the `Should` and `Be` methods from FluentAssertions to test our work.  In this case, we see that `Int32.TryParse()` returns a `bool` using the `return` statement.  Here it indicates that the string we passed in is an integer and it is between the two static fields that exist on the Int32 object, `Int32.MinValue` and `Int32.MaxValue`.  The tests worked, showing that we may use the out variable later on in our code.
 
 This might be considered the "old" way of doing things.  C# now provides a short-cut way of initializing out variables.  Remember that our integer, `convertedInt` would be `0` if the string failed to convert.  One other note, methods such as `Int32.TryParse()` are often combined with an `if` statement such as in the following.  This also provides the newer way of declaring an `out` variable.
 
