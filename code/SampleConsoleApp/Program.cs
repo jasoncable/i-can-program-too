@@ -16,7 +16,9 @@ namespace SampleConsoleApp
             //Chapter04.DoWhileWhileDo.RunMe();
             //Chapter04.ForAndForeach.LoopMe();
 
-            Chapter07.ByRefByVal.RunTests();
+            //Chapter07.ByRefByVal.RunTests();
+
+            Chapter07.OutKeyword.RunIt();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

@@ -36,10 +36,10 @@ To run this antiquated code, it must be run in an emulation mode.  This means th
 
 Assembly's use today is on the decline.  With few exceptions, it is not prevalent programs written for business.  If anything, small pieces of assembly are used in larger programs to take advantage of certain features of the target processor platforms.  Assembly remains in the programming of operating systems and hardware device drivers.
 
-{lang="nasm"}
+{lang="asm"}
 <<[Hello, Word in IBM s/370 Assembly](cs/ch01-helloWorld-370.asm)
 
-{lang="asm"}
+{lang="nasm"}
 <<[Hello, World in Intel's i386 assembly](cs/ch01-helloWorld-i386.asm)
 
 ## Higher Level Languages

@@ -19,6 +19,16 @@ Code:
 
     Another way to do a title: {title="Example 1 - My Title", lang=csharp}
 
+    Strikethrough:
+        // leanpub-start-delete
+        System.Make.ThisCrossedOut();
+        //leanpub-end-delete
+
+    Bold:
+        // leanpub-start-insert
+        System.Mak.ThisReallyBold();
+        // leanpub-end-insert
+
     Line Wrap (characters):     11pt    12pt
         letter  (8.5x11)        90      81    
         a4paper (8.27x11.69) 	87 	78
@@ -57,6 +67,9 @@ Emphasis:
 
 Tabs:
     Stay away from \t
+
+Superscripts:
+    2^32^  (aka. two to the 32nd power)
 
 Links:
     [My Book](https://mybook.com/)

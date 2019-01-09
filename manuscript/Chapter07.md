@@ -209,7 +209,7 @@ To use the method above, you must first create an instance to the object with th
     Name myNameInstance = new Name();
     myNameInstance.CreateFullName();
 
-In this case, `myNameInstance` is the variable of type `Name` \(our newly created object\).  `new` does a couple of things as we will see in the Constructor section below.  For now, it is enough to know that it creates a new instance of the object, allowing us access to perform operations on instance-level members.
+In this case, `myNameInstance` is the variable of type `Name` \(our newly created object\).  `new` does a couple of things as we will see in the Constructor section below.  For now, it is enough to know that it creates a new instance of the object, allowing us access to perform operations on instance-level members.  
 
 ### Not All Paths...
 
@@ -374,10 +374,68 @@ As we saw above with changing a _property_ when passed by value, that value is r
 
 As we can see in this example, the new instance of the `Name` object is assigned to the variable and is available _outside_ of the method.  This is due to passing it by reference.
 
+## Out Parameters
+
+The `out` parameter keyword allow an additional way to return a value from a method that does not require the `return` statement.  Out parameters are variables that uninitialized prior to calling the method.  There are two different ways to do this.  For our first two examples, we will be using a framework method that converts a `string` into an `int`.  The order in which you pass the parameters must match the order in which they are specified in the method declaration.  This is called a method's _signature_.
+
+    int convertedInt;
+    bool itWorked = Int32.TryParse("123", out convertedInt);
+
+    convertedInt.Should().Be(123);
+    itWorked.Should().BeTrue();
+
+Here we are again using the `Should` and `Be` methods from FluentAssertions to test our work.  In this case, we see that `Int32.TryParse()` returns a `bool` using the `return` statement.  Here it indicates that the string we passed in is an integer and it is between the two static properties that exist on the Int32 object, `Int32.MinValue` and `Int32.MaxValue`.  The tests worked, showing that we may use the out variable later on in our code.
+
+This might be considered the "old" way of doing things.  C# now provides a short-cut way of initializing out variables.  Remember that our integer, `convertedInt` would be `0` if the string failed to convert.  One other note, methods such as `Int32.TryParse()` are often combined with an `if` statement such as in the following.  This also provides the newer way of declaring an `out` variable.
+
+    if( Int32.TryParse("456", out int convertedInt1) )
+    {
+        convertedInt1.Should().Be(456);
+    }
+    convertedInt1.Should().Be(456);
+
+We can see that `convertedInt1` is available both _within_ the `if` block and outside of it.  The C# designers seem to be playing a trick on us!  Remember the `for` loop?  Remember that the `int` that we declare within the parentheses is only available _within_ the code block that follows it?
+
+    string[] sa = { "a", "b", "c", "d" };
+    for( int i = 0; i < sa.Length; i++ )
+        Console.WriteLine( sa[i] );
+    // leanpub-start-insert
+    // i is NOT available here!
+    // leanpub-end-insert
+
+Even though `convertedInt1` is declared _within_ the parentheses in the method invocation, it _is_ available after the method is run.  Here is an example of how create a method with `out` variable.  You may have several `out` variables in one method.  You will also notice that you can use the `var` keyword to declare your `out` variable.
+
+    TimesFive(5, out var theAnswer);
+
+    theAnswer.Should().BeOfType(typeof(int));
+    theAnswer.Should().Be(25);
+
+    public static void TimesFive(int howMany, out int theAnswer)
+    {
+        theAnswer = 5 * howMany;
+    }
+
+An `out` variable _must_ be set in the method before it ends.  You must set it before a return statement and like the return statement, the variable must be set in all _paths_ through the code.
+
+There is an additional test here that is checking to see if our variable, `theAnswer` is set to the data type `int`.  It uses C#'s built-in operator `typeof` which we will learn about later.
+
+When creating a method, the order in which you specify the parameters doesn't matter, unless using a `params` array which must be the last parameter.  The best practice for ordering your parameters:
+
+* Place the most important parameters, especially those that won't generally be null, first, from left to right.
+* Next, specify `out` and `ref` parameters.
+* Finally, a `params` array must come last.
+
+Note: C# also provides an `in` parameter modifier that passes an object by reference.  It is not used in any of the scenarios that we have so far covered.
+
+## The `params` Array
+
+
+
 * * *
 
-out + out with declaration
+params array
 overloading
+
 extension methods
 optional parameters
 named parameters

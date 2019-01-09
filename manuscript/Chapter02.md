@@ -64,6 +64,32 @@ Variable names in C# can start with a letter or an underscore \(`_`\).  They can
 
 In a variable name, it is customary to start each new word with a capital letter.  For example: `myNewCar` or `MyNewCar`.  If you are using an abbreviation longer than 2 characters, change it to use only an initial capital letter.  HTML is an abbreviation and would be treated as such: `HtmlToOutput`.
 
+## A Bit about Bits
+
+We hear all the time about 32-bit and 64-bit computers and cell phones.  What is a bit?  Well, computers talk in `1`s and `0`s.  This is because in a digital machine, hardware recognizes two states.  It can detect if power is flowing through a circuit or if it is not.  This creates the states `1` and `0`.  If you type a `1` or a `0` on your screen, the computer doesn't actually receive a `1` or a `0`.  One bit can only hold two values.  Two bits can handle 4 values, as follows.
+
+    00
+    01
+    10
+    11
+
+Each digit shown here can only have the values `1` or `0`.  Modern computers typically do things in groups of 8 bits, called `1` byte.  The computer industry in the 1950s seemed to center computers around this multiplier.  It might have been for the purposes of interacting with humans through written text.  Someone at some point thought that 8 bits could represent all of the keys on the keyboard plus a few more.  An 8-bit number looks like this.
+
+    10011001
+
+This representation contains 8 bits for a maximum number of 256 allowable values.  A very easy way to calculate the maximum number of values that a number of bits represents is to apply the bit number as a power of 2.  So, 2^32^ is equal to 4,294,967,296 or 32 bits.
+
+What does this mean for processors?  First, it is the maximum _width_ of the data they can handle.  It also reflects how much memory a computer can use.  A computer's memory is located, written to, updated, and deleted via an address.  The address is simply a location, like your home address.  A 32-bit computer can only address 4,294,967,295 bytes \(yes, we subtract 1\).  Why bytes and not bits?  Modern computers define memory in bytes.  We can change manually manipulate bits, but let's leave that to the C and C++ programmers.
+
+To wrap this up, to convert from bits to bytes, multiply by 8 and vice-versa.  Bits are represented by a lowercase `b` and bytes with an uppercase `B`.  Due to using powers of 2, we end up representing things like memory size groups by multiples of 1,024.  The first letter after the number represents our number grouping.  For example, `16GB` is 16 gigabytes.  If we multiply that by 1,024 we get the number of megabytes, or `16384MB`.
+
+| bytes \(B\) | kilobytes \(KB\) | megabytes \(BB\) | gigabytes \(GB\) | terabytes \(TB\) |
+|-------|-----------|-----------|-----------|-----------|
+| 1024  | 1         | 1/1024    | 1/1048576 | 1/1073741824 |
+| 1048576 | 1024 | 1 | 1/1024 | 1/1048576 |
+| 1073741824 | 1048576 | 1024 | 1 | 1/1024 |
+| 1099511627776 | 1073741824 | 1048576 | 1024 | 1 |
+
 ## Scalars
 
 There are several types of variables.  Let's first look at the most basic type, the scalar.  For our purposes, a scalar is a variable that either holds or points to one piece of data.  C# is a *strongly typed* language.  This means that variables represent a certain type of information.  For now we will focus on numeric data types and strings.  A number in C# is generally represented as `123`, `12.3`, or `-1.23`.  A string is text.  Strings in C# are surrounded by double quotes, as in `"My name is Jason."`.  The following is a list of C#'s built-in data types.

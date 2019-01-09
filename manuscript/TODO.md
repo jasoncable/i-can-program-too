@@ -31,3 +31,7 @@ enumerations
 fluent operations
 
 ## The One Year Problem
+
+method "in" modifier: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/in
+
+typeof
