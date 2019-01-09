@@ -429,23 +429,44 @@ Note: C# also provides an `in` parameter modifier that passes an object by refer
 
 ## The `params` Array
 
+C# provides a way to pass in a variable number of arguments \(of the same type\) to an array.  A _params_ array is a special type of method parameter.  It uses the `params` keyword and takes `0` or more arguments.  Because it is of a variable length, it must come as the last in the parameter on a method.
+
+    public void DoThings( params string[] myArray )
+    {
+        foreach( string s in myArray )
+            Console.WriteLine(s);
+    }
+
+This is our method definition which includes the keyword `params` followed by a `string[]` array variable declaration.  In this example, `myArray` is only available within the following code block.  Here we are writing the strings we passed in via the params array to the console.  You will generally send in 0 or more comma-separated values that will be _mapped_ to a new `Array` of the type you have chosen.  The following are all valid.
+
+    DoThings();
+    DoThings( "abc" );
+    DoThings( "abc", "def", "ghi" );
+
+The first invocation does not send in any values.  In the method, the `myArray` variable is _not_ null, but is an `Array` instance with a length of 0.  We do not need to check it for null before using a `foreach` on it.  `foreach` effectively does nothing with a `0` length array, but will throw an error if that array is `null`.
+
+The second line shows us passing in one string; the third passes in three strings.  Let's see an example with more than one parameter.  For brevity, we are not showing code in the method, but due to the `out` parameter, there must be at least some code.
+
+    DoStuff( 5, out var i );
+    DoStuff( 10, out var j, 42);
+    DoStuff( 25, out var k, 42, 24, 7, 11);
+
+    public void DoStuff( int times, out int output, params int[] integers )
+    {
+        // ... ///
+    }
+
+## Optional Parameters
+
+## Named Parameters
+
+## Extension Methods
+
+## Method Overloading
 
 
-* * *
-
-params array
-overloading
-
-extension methods
-optional parameters
-named parameters
-return
 expression body definitions
-tuples
-lambda expressions
-Actions
-Func
-fluent
+
 
 ## Properties \(Static and Instance\)
 
@@ -461,38 +482,9 @@ fluent
 
 ## Nested Types \(Static and Instance\)
 
-
+%% ---------------------------
 
 ### static classes
-
-
-
-
-
-## Enumerations
-
-
-
-
-### separation of concerns
-
-### Splitting Strings
-
-### Joining Strings
-
-### array.IndexOf
-
-### yield return
-
-### String Interpolation
-
-### Convert.ToString()
-
-### .ToString()
-
-### Exceptions
-
-### access modifiers
 
 ### extension methods
 
@@ -500,41 +492,13 @@ fluent
 >
 > -Standard ECMA-334: C# Language Specification, 1st Edition
 
-### static
-
 ### abstract, interfaces
 
 ### multiple-inheritance
 
-### ArrayList and Hashtable
-
-### attributes
-
-### nameof()
-
-### Scoping of variables
-
-### 3 types of using
-
 ### Operator Overloading
 
-### is and as
-
-### type checks
-
-### Pattern Matching \(including advanced switch statements, incl. return statement\)
-
-### return
-
-## conditional access operator
-
-### references on array objects
-
-### variable scopes
-
 ### overriding members
-
-### async/await
 
 %% ---------------------------
 

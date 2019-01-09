@@ -90,10 +90,6 @@ Xamarin.Mac provides much of the same functional of Xamarin.iOS, except for macO
 
 This NuGet package enables Windows .NET Core developers to use APIs that are specific to Windows only.  It allows developers to easily port software that relies on things like WMI, the Windows Registry, the `System.Drawing` namespace \(based on GDI+\), etc.  Applications that use this package will only run on Windows.  This package, `Microsoft.Windows.Compatibility` is available on NuGet.
 
-## The Reporting Gap
-
-While we have seen many examples of technologies that do not translate from Windows to other operating systems, most of them can now be run under .NET Core.  The exception, as of this writing, continues to be in the area of reporting components.  All reporting libraries from Microsoft and the third-party .NET developers only support the .NET Framework.  This is because most use the `System.Drawing` namespace's classes two draw charts and graphs.  These rendering libraries all rely on a library called GDI+, which is only available on Windows.  Microsoft does have plans to develop a reporting library written in .NET Core, but it is not certain exactly when that will happen.  Until then, code written to create reports will have to run under the .NET Framework's runtime.
-
 ## NuGet
 
 NuGet \(<https://www.nuget.org/>\) is a package repository for mostly free, mostly open source .NET reusable server and UI components.  NuGet is free to use and is built-in to Visual Studio and Visual Studio for Mac.  Many NuGet packages now support .NET Core and .NET Framework, especially since the introduction of .NET Standard.  While created an maintained by Microsoft, NuGet features APIs from mostly non-Microsoft developers.  NuGet is Microsoft's response to create a repository of reusable .NET software in the tradition of the first two package managers, CTAN and CPAN.  NPM is the JavaScript equivalent. Many other languages and environments have their own package repositories.
