@@ -70,6 +70,26 @@ The full name of this class is `JasonCable.Book.Chapter`.  As we have seen, in o
 
 Right now, our class doesn't do anything.  To solve this problem, we need to declare some _members_.  A member is simply something that helps define what the class is and what it does.
 
+As we will see, members may be _declared_ in any order you wish.  In C#, due to it being a completely object-oriented programming language, you may specify code that you wish to execute _after_ your code that executes it.  In the following sample, which you will better understand in a little while, we are _declaring_ the code called `B` in the file _after_ the code that references it.
+
+    namespace JaonCable.Book
+    {
+        public class Chapter
+        {
+            public string CallSomeCode()
+            {
+                // this calls the code
+                GetName();
+            }
+
+            // the declaration that contains the code to be run
+            public string GetName()
+            {
+                return "Jason L. Cable";
+            }
+        }
+    }
+
 ## Static vs. Instance Members
 
 There are two types of members.  You can look at these as being two types of scopes.  _Instance_ members can only be accessed when we create an instance of a class.  _Static_ members may be used without creating an instance of a class.  Instance members are able to access static members, but not the other way around.
@@ -458,7 +478,98 @@ The second line shows us passing in one string; the third passes in three string
 
 ## Optional Parameters
 
+Parameters in a `params` array are optional.  There is another way to create optional parameters, this time it is done by specifying a a default value for a parameter.  These are called _optional arguments/parameters_.  When creating your methods with optional parameters, you must place all non-optional parameters first, as optional arguments are, well, optional.  To define an optional parameter, you simply set a default value.  As a reminder, some of these features are only available in the latest versions of C#.
+
+    public void DoStuff( int x, int y, int z = 0 ) 
+    {
+    }
+
+    public string MakeName( string firstName = "John", 
+        string lastName = "Doe" ) { }
+    
+    public string TestStrings( 
+        string one = "",
+        string two = null,
+        string three = default(string),
+        string four = default
+    ) { }
+
+    public int TestValueTypes(
+        int one = 0,
+        int three = new Int32(),
+        int four = 12345,
+        int five = default(int),
+        int six = default,
+        int seven = Int32.MaxValue,
+        DateTime eight = new DateTime()
+    ) { }
+
+    public int? TestNullableTypes(
+        int? a = null,
+        int? b = 0,
+        int? c = default(int?),
+        int? d = default,
+        int? e = 12345,
+        int? f = new Int32?()
+    ) { }
+
+There are nearly as many ways to specify a default value as there are to declare a new variable... _nearly_.  According to the error messages from Visual Studio, each default value "must be a compile-time constant."  What does this mean?  First, it shows us the the compiler does a lot of stuff to make our programming lives easier.  When it looks like something works a certain way, the compiler may do things to it for efficiency.  Basically, default method values are written in a raw form into the assembly in CIL.  These pieces of data are therefore static and cannot be changed.  You can of course pass a different value in the place of the parameter.  This only affects what happens when the code is run.
+
+What doesn't work.  All of the following will fail to compile.  Note that `Name` is a class.  Also remember that in C# whitespace \(new lines, tabs, and spaces\) is ignored, unless you try to put it between double-quotes.
+
+    // leanpub-start-delete
+    public string Failure(
+        string a = String.Empty,
+        string b = new String("my string"),
+        Name n = new Name(),
+        DateTime dt = DateTime.MaxValue,
+        Guid g = Guid.Empty,
+        Guid g1 = Guid.NewGuid()
+    ) { }
+    // leanpub-end-delete
+
+Let's focus on why certain of these fail.  First, `String.Empty`, `DateTime.MaxValue`, and `Guid.Empty` are implemented as `public static readonly` _fields_.  `Int32.MaxValue` _can_ be used as a default value because it is declared as a `public const`.  Even though constants and readonly fields both _look_ the same to the person calling them and are both _static_, they are handled differently by the compiler.  Just remember that your default value can point to a `const`, not a `static readonly` field.
+
+You _may_ create a new instance of a _value_ type, such as `new Int32()`, `new Guid()` or `new DateTime()`, but not of a _reference_ type.  In our example, `Name` is a class, a reference type.  `Int32`, `Guid`, and `DateTime` all special types of objects called _structs_.  They are not _classes_.  All three are value types and do not support parameterless _constructors_, which are special methods that are called when creating an instance of an object.  `Guid` is a special class that represents a __g__lobally __u__nique __id__entifier.  Structs, guids, and constructors will be introduced later.  
+
+Calling a method with optional parameters lets us not have to specify all values.  In the following example we will create a method with three parameters, two being optional.  We are calling the method with only two of the three parameters.  The code inside the method uses the parameters as it would with non-optional parameters.
+
+    DoWork( 32, 64 );
+
+    public static void DoWork( int x, int y = 0, int z = 128 )
+    { 
+        // x is 32
+        // y is 64
+        // z is 128
+    }
+
 ## Named Parameters
+
+Parameters may be named.  Also called, _named arguments_, they allow us to not have to remember the order of the arguments in a method.  It also allows us to, for example, specify only the middle parameter when calling a method that contains three parameters when used with optional parameters.
+
+    string myName = GetName("Jason", last: "Cable", middle: "L.");
+
+    public static string GetName(
+        string first,
+        string middle,
+        string last)
+    {
+        return $"{first} {middle} {last}";
+    }
+
+We see above that named parameters may be used with positional parameters.  The following shows using named parameters with optional parameters.
+
+    string myOtherName = GetNameAgain(last: "Public");
+
+    public static string GetNameAgain(
+        string first = "John",
+        string middle = "Q.",
+        string last = "Doe")
+    {
+        return $"{first} {middle} {last}";
+    }
+
+Why so many choices?  When to use what...
 
 ## Extension Methods
 

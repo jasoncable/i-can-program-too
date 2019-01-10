@@ -16,8 +16,6 @@ int x / decimal y
 
 exceptions
 
-control structures
-
 ternary operator
 ??
 ?.
@@ -77,4 +75,7 @@ typeof
 ### nameof()
 
 ### 3 types of using
+
+### structs
+    and they don't have parameterless .ctors
 

@@ -41,7 +41,7 @@ Headings:
     # My Heading 1 
     ###### My Heading 6
 
-Parenthesis:
+Parentheses:
     You must backslash escape (), as...
     \(my parenthetical\)
 

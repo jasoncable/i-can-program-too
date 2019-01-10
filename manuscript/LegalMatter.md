@@ -34,6 +34,8 @@ Star Trek is a registered trademark of CBS Studios, Inc.
 
 Leanpub and the Leanpub logo are registered trademarks of Ruboss Technology Corporation.
 
+Unicode is a registered trademark of Unicode, Inc. in the U.S. and other countries.
+
 ### Other
 
 The assembly "Hello, World" programs were taken from <http://helloworldcollection.de/>

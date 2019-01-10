@@ -18,7 +18,9 @@ namespace SampleConsoleApp
 
             //Chapter07.ByRefByVal.RunTests();
 
-            Chapter07.OutKeyword.RunIt();
+            //Chapter07.OutKeyword.RunIt();
+
+            Chapter07.MethodTests.RunTests();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

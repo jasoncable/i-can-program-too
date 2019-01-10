@@ -38,7 +38,5 @@ namespace SampleConsoleApp.Chapter07
             theAnswer = 10 * howMany;
         }
 
-
-
     }
 }
