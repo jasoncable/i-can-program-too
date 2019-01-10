@@ -25,6 +25,9 @@ namespace SampleConsoleApp.Chapter07
 
             string myOtherName = GetNameAgain(last: "Public");
             Console.WriteLine(myOtherName);
+
+            var yetAnotherName = GetName(first: "Jason", "L.", last: "Cable");
+            Console.WriteLine(yetAnotherName);
         }
 
         public static string GetName(

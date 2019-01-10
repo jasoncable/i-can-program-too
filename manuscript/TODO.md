@@ -79,3 +79,7 @@ typeof
 ### structs
     and they don't have parameterless .ctors
 
+### dynamic objects
+    Expando Object
+
+### task parallel library?

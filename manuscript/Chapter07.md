@@ -150,6 +150,8 @@ Constants may only be built-in C# such as `int`, `decimal`, `string`, etc.  For 
 A> This section introduces the basic features of methods.  Features such as generics and lambdas will be covered in subsequent chapters.  This section only focuses on deterministic methods.  
 A>
 A> One final note, the terms "method", "function", "subroutine", and "procedure" are often used interchangeably.  We will leave the non-stop arguments over the distinctions between these up to computer scientists.  This book uses the term "method", exclusively.
+A>
+A> This book, perhaps incorrectly, uses the terms argument and parameter to mean the same thing.  According to the official Microsoft documentation, you _send_ arguments to methods that _define_ parameters.  Take that as you will.
 
 If classes are _nouns_, then methods are _verbs_.  In language, a noun is a word that describes "an entity, quality, state, action, or concept."  A verb is a word that "expresses an act, occurrence, or mode of being."  In simpler words, objects are things and methods are actions performed on those things.  In its most basic form, a method executes code that performs some sort of action. 
 
@@ -557,7 +559,11 @@ Parameters may be named.  Also called, _named arguments_, they allow us to not h
         return $"{first} {middle} {last}";
     }
 
-We see above that named parameters may be used with positional parameters.  The following shows using named parameters with optional parameters.
+You can even now use a positional parameter in between named parameters _if_ the are in the correct order.  Using our previous example, the following is correct, but only in this order.
+
+    string myName = GetName( first: "Jason", "L.", last: "Cable");
+
+The following shows using named parameters with optional parameters.
 
     string myOtherName = GetNameAgain(last: "Public");
 
@@ -569,7 +575,9 @@ We see above that named parameters may be used with positional parameters.  The 
         return $"{first} {middle} {last}";
     }
 
-Why so many choices?  When to use what...
+A> ### So Many Choices...
+A> 
+A> If you are creating code for others to use and your operation has parameters that may be set to default values, the use optional parameters.  There is such a thing has having too many parameters.  If you need to pass five or more parameters, consider creating a class to store and pass the parameters.  This is especially useful now that C# has object initializers, which we will cover when we talk about constructors.
 
 ## Extension Methods
 
@@ -588,6 +596,8 @@ expression body definitions
 ## Indexers \(Instance\)
 
 ## Constructors \(Static and Instance\)
+
+Object initializers: new XYZ { x = y, y = z }
 
 ## Finalizers \(Instance\)
 
