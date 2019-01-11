@@ -581,6 +581,12 @@ A> If you are creating code for others to use and your operation has parameters 
 
 ## Extension Methods
 
+C# provides a way to place an extra instance method on a class without having to have access to its code.  These are called extension methods.  For the following examples, we will be using the following class.  People don't write code like this; it is for demonstration purposes only!
+
+<<[Sample `Company` Class](cs/ch07-05.cs)
+
+So...
+
 ## Method Overloading
 
 

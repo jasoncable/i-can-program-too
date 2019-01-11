@@ -20,7 +20,7 @@ namespace SampleConsoleApp
 
             //Chapter07.OutKeyword.RunIt();
 
-            Chapter07.MethodTests.RunTests();
+            //Chapter07.MethodTests.RunTests();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();
