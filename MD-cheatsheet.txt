@@ -82,6 +82,7 @@ Links:
 
 Images:
     ![My Caption](images/myimage.png)
+    ![](images/caution.png)      !!!brackets required!!!
 
 Page breaks:
     {PageBreak} with empty line before and after

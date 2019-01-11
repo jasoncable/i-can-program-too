@@ -85,12 +85,12 @@ What does this mean for processors?  First, it is the maximum _width_ of the dat
 
 To wrap this up, to convert from bits to bytes, multiply by 8 and vice-versa.  Bits are represented by a lowercase `b` and bytes with an uppercase `B`.  Due to using powers of 2, we end up representing things like memory size groups by multiples of 1,024.  The first letter after the number represents our number grouping.  For example, `16GB` is 16 gigabytes.  If we multiply that by 1,024 we get the number of megabytes, or `16384MB`.
 
-| bytes \(B\) | kilobytes \(KB\) | megabytes \(BB\) | gigabytes \(GB\) | terabytes \(TB\) |
-|-------|-----------|-----------|-----------|-----------|
-| 1024  | 1         | 1/1024    | 1/1048576 | 1/1073741824 |
-| 1048576 | 1024 | 1 | 1/1024 | 1/1048576 |
-| 1073741824 | 1048576 | 1024 | 1 | 1/1024 |
-| 1099511627776 | 1073741824 | 1048576 | 1024 | 1 |
+| bytes \(B\) | kilobytes \(KB\) | megabytes \(BB\) | gigabytes \(GB\) |
+|-------|-----------|-----------|-----------|
+| 1024  | 1         | 1/1024    | 1/1048576 |
+| 1048576 | 1024 | 1 | 1/1024 |
+| 1073741824 | 1048576 | 1024 | 1 |
+| 1099511627776 | 1073741824 | 1048576 | 1024 |
 
 ## Scalars
 

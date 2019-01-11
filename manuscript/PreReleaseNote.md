@@ -1,6 +1,6 @@
 # Pre-release Notes
 
-!(images/caution.png)
+![](images/caution.png)
 
 This book is being published in stages.  The writing is not exactly linear.  I am trying to go through the key functionality that I want to cover, then backfill with expanded examples and exercises.  The following is a partial todo list.
 
@@ -23,6 +23,7 @@ A> The code in this book is being developed using .NET Core 3.0 __PREVIEW__ and 
 * Description of `System.Object` methods.
 * Optionally, illustrations and diagrams, as time and finances permit.
 * Basic Visual Studio usage and screenshots.
+* Test the epub, mobi, and web versions of the book.
 * __SEE ALSO__ `TODO.md` in the repo as it is more frequently updated.
 
 ### Excluded on Purpose
