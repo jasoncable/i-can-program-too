@@ -1,6 +1,6 @@
 # Pre-release Notes
 
-{width:25%}
+{width=25%}
 ![](images/caution.png)
 
 This book is being published in stages.  The writing is not exactly linear.  I am trying to go through the key functionality that I want to cover, then backfill with expanded examples and exercises.  The following is a partial todo list.
