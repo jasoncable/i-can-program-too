@@ -1,4 +1,4 @@
-important value types (DateTime/DateTimeOffset/Guid)
+important value types (DateTime/DateTimeOffset/Timespan/Guid)
 
 tuples
 lambda expressions
@@ -8,21 +8,11 @@ fluent
 
 type casting / boxing unboxing
 
-## Nullable Types
-
-var keyword
-
 int x / decimal y
 
 exceptions
 
-ternary operator
-??
-?.
-
 stringcomparer
-
-return, continue, yield return
 
 stringbuilder
 
