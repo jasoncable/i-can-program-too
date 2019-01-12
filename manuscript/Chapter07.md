@@ -581,13 +581,45 @@ A> If you are creating code for others to use and your operation has parameters 
 
 ## Extension Methods
 
-C# provides a way to place an extra instance method on a class without having to have access to its code.  These are called extension methods.  For the following examples, we will be using the following class.  People don't write code like this; it is for demonstration purposes only!
+C# provides a way to place an extra instance method on a class without having to have access to its code.  These are called extension methods.  For the following examples, we will be using the following class.
 
 <<[Sample `Company` Class](cs/ch07-05.cs)
 
-So...
+An extension method is a special type of static method that can be declared on a static class.  It can then be used on an instance of _another_ class.  Here is an example of a static method declaration that uses our sample class.
+
+<<[Sample Extension Method & Class](cs/ch07-06.cs)
+
+If you are working on a big project, I recommend that you keep all of your extension methods in the same namespace.  One major downside to extension methods is that they are difficult to find.  .NET has many extensions in both the `System` namespace and the `System.Linq` namespace.  To be able to use an extension method, you must include its namespace in your code file with the `using` statement as we have already seen.
+
+When creating an extension method, we must declare the the class to be static with the `static` keyword.  Static classes are used for convenience purposes.  You can create "helper" classes the provide static methods to provide utility functions.  `System.Math` is one of the best known and most used ones in the framework.  We covered one of its methods earlier, `Math.Pow()`, which allows us to evaluate exponents on a number.  Static classes are also used to store strings to which we often refer.  This allows us to store strings or values which we frequently use in code.  We've already seen how static values can be used, such as checking to see if an `int` might not be big enough by comparing it to `Int32.MaxValue`.
+
+When using an extension method, you never refer to the class name.  The class name actually doesn't matter, only the namespace.  The sample extension method is a static method with a special addition, the `this` keyword.  In this use, the first parameter of an extension method allows us to specify the class on which the extension method will be executable from.  The first parameter on an extension method must be the "`this`" method.  In this case, the method `FormatLabel` works on the class `Company`, created earlier.  To execute it, we create an instance of the `Company` object and execute the extension method.
+
+    using Extensions;
+    Company c = new Company();
+    Console.WriteLine( c.FormatLabel() );
+
+When calling the method, we do not have to specify the class name parameter.  That is the point of extension methods.  They add existing functionality to existing classes that we don't have access to.  Remember, static methods don't have any access to _private_ instance members.  In our sample, our extension method can't access the `_secretData` field.  There are ways to do that with reflection, introduced later.
+
+The following two extension methods work on the .NET types `System.String` \(or `string`\) and `System.DateTime`, a struct which provides a property called `Now`.  Properties will be covered after the next section on method overloading.
+
+<<[Two More Extension Methods](cs/ch07-07.cs)
+
+    string s = "4125551212";
+    var prettyPhoneNo = s.ToFormattedPhoneNumber();
+
+    var outDate = DateTime.Now.ToFormattedDate();
+
+Microsoft's official .NET documentation warns against the use of extension methods.  This author does not fully agree.  They are quite useful, but they are easily lost.  There is no good way to find an extension method unless you know where you stored it.  Also, if you own the code to which you wish to add a method, it is much more proper to just modify the code.  Extension methods are very good for extending the functionality of 3rd party objects.  
+
+Finally, you will run into problems with extension methods that are named the same thing, even though they may be in different namespaces.  For example, if there are two extension methods called `.ToPrettyString()` in the `JasonCable.Html` and `JasonCable.Json` classes, you won't be able to pick which one will be executed.
 
 ## Method Overloading
+
+A> ### Author's Note
+A>
+A> I'm not going to try to provide all of the rules regarding modern overload resolution.  Before the days of named parameters, generics, extension methods, and optional arguments \(ie. C# 1.0\), it was easy.  Today you need to now that it exists and that there are certain rules, but your mileage may vary.  Complexity has made it a trial-and-error proposition.
+
 
 
 expression body definitions

@@ -6,6 +6,8 @@ Actions
 Func
 fluent
 
+static classes deep dive?
+
 type casting / boxing unboxing
 
 int x / decimal y
@@ -73,3 +75,5 @@ typeof
     Expando Object
 
 ### task parallel library?
+
+### Partial classes

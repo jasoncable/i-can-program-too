@@ -4,6 +4,7 @@ namespace Extensions
 {
     public class Company
     {
+        private string _secretData = ".NET";
         public string Name = "Microsoft Corp.";
         public string Address1 = "One Microsoft Way";
         public string Address2 = null;
@@ -18,6 +19,14 @@ namespace Extensions
 
     public static class ExtensionMethods
     {
+        public static void RunMe()
+        {
+            string s = "4125551212";
+            var prettyPhoneNo = s.ToFormattedPhoneNumber();
+
+            var outDate = DateTime.Now.ToFormattedDate();
+        }
+
         public static string ToFormattedPhoneNumber(this string phoneNo)
         {
             if (String.IsNullOrWhiteSpace(phoneNo) || phoneNo.Length != 10)
