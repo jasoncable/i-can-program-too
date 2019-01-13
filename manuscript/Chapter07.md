@@ -702,10 +702,10 @@ In our previous example called "Instance Properties with Static Properties to Re
 
 Objects initialized in this way:
 
-    * Optionally omit the `()` after the `new ClassName` part of the statement.
-    * Do not require all instance members to be specified within the block, `{}`.
-    * May be combined with the array initialization syntax for items in an array.
-    * The last member set within the `{}` may be followed by an extra comma.
+* Optionally omit the `()` after the `new ClassName` part of the statement.
+* Do not require all instance members to be specified within the block, `{}`.
+* May be combined with the array initialization syntax for items in an array.
+* The last member set within the `{}` may be followed by an extra comma.
 
 ## Conclusion
 
