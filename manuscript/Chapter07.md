@@ -620,12 +620,62 @@ A> ### Author's Note
 A>
 A> I'm not going to try to provide all of the rules regarding modern overload resolution.  Before the days of named parameters, generics, extension methods, and optional arguments \(ie. C# 1.0\), it was easy.  Today you need to now that it exists and that there are certain rules, but your mileage may vary.  Complexity has made it a trial-and-error proposition.
 
+In C# your may have multiple static or instance methods with the same name on the same class.  This is called _method overloading_.  At compile time, the compiler performs an operation called _overload resolution_.  This process decides which one you are meaning to call.  Let's take a look at one of the framework's static methods that implements many same-named methods, `System.Convert`.
 
+    int a = Convert.ToInt32("123");
+    int b = Convert.ToInt32(true);
+    int c = Convert.ToInt32(123.92m);
+    // and 16 others
 
-expression body definitions
+So, the question is, how does it do this?  The `Convert` class simply has 19 static methods that are all named `ToInt32`.  These methods are defined by the .NET Standard and implemented in the various frameworks.  In this case, all `ToInt32` methods return a `System.Int32`, but your methods may return different types.  Method overloading is performed by looking at the method _signature_, but the return type.  The method signature consists of the list and types of a method's parameters.  In this case, because each method shown takes a different type, in our case, `string`, `bool`, and `decimal`, it knows which version of the method to call.
 
+### Method Conclusion
+
+Let's take a break from methods at this point to continue covering other types of object members.  We have only covered about 3/4 of the things that methods can do.  Those we will cover in a future chapter.
 
 ## Properties \(Static and Instance\)
+
+To this point we have been using fields for storing data on instances of classes.  Properties can be seen as something that is half way between a field and a method.  Properties can hold data like fields, but they can also include logic and provide different levels of security between setting and getting properties.
+
+A> There are some instances when we want to use fields, such as `static readonly` fields such as `String.Empty`.  You should almost exclusively use properties for providing external access to data on an object.  Use fields for `publc static readonly` data and private data.  Use properties for everything else.
+
+In the old days, you would have to implement a property as follows.  You can still do this, but it is not usually required.
+
+<<[Old Time Property](cs/ch07-08.cs)
+
+We can see that you first create a private field that is used as our _backing store_.  It is a field that is not available outside of our class that may optionally be initialized with a default value.  Access to this string is only available from our property declaration, the `get` block.  You can add `private` before `get` to make the property only settable from within the class.  The default accessibility for a property is `public`.
+
+The `set` block uses a special built-in variable called `value`.  It is of the same type as the property.  To use a property, do the following.
+
+    var prop = new OldTimePropery();
+    // set the private _myString to "C#"
+    prop.MyString = "C#";
+    // return the value stored in _myString
+    var theString = prop.MyString;
+    // theString is now "C#"
+
+As you can see, we _set_ and _get_ properties with the familiar variable assignment syntax.  This _looks_ exactly like setting and reading fields, but as will see, properties can hold additional logic.
+
+<<[Logic with get/set](cs/ch07-09.cs)
+
+Here you can see that we are setting `_myString` to a default value of `String.Empty`.  The so-called _getter_ returns `String.Empty` in case `_myString` gets set to null.  The _setter_ checks the incoming property value's length and _truncates_ it to 10 characters.  Truncation is the process of removing part of a string or number.  We truncate strings to limit their length, frequently done when saving values to a database.  Sometimes we truncate decimal points on a number instead of rounding.
+
+So far, we have seen the old-style way of specifying properties.  Today we have a much easier way using auto-properties.  These do not require a private backing field.  Our earlier examples become:
+
+    public class OldTimePropery
+    {
+        public string MyString { get;set; }
+    }
+
+To set a default value on a property:
+
+    public string MyString { get;set; } = String.Empty;
+    public int Counter { get;set; } = 0;
+
+To create a property that can only be set from within our class, you specify the auto-property this way:
+
+    public int MyString { get; private set; }
+ 
 
 ## Events \(Instance\)
 
@@ -644,8 +694,6 @@ Object initializers: new XYZ { x = y, y = z }
 %% ---------------------------
 
 ### static classes
-
-### extension methods
 
 > _"An interface defines a contract."_
 >
