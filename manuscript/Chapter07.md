@@ -1,4 +1,4 @@
-# Objects and Classes
+# Objects and Classes \(Fields through Properties\)
 
 > _"I invented the term 'Object-Oriented', and I can tell you I did not have C++ in mind."_
 >
@@ -662,7 +662,7 @@ Here you can see that we are setting `_myString` to a default value of `String.E
 
 So far, we have seen the old-style way of specifying properties.  Today we have a much easier way using auto-properties.  These do not require a private backing field.  Our earlier examples become:
 
-    public class OldTimePropery
+    public class ModernPropery
     {
         public string MyString { get;set; }
     }
@@ -676,61 +676,37 @@ To create a property that can only be set from within our class, you specify the
 
     public int MyString { get; private set; }
  
+Here is an example of a class that implements its data with properties.  It also includes two static properties that return an instance of the class.  This is similar to the way that `DateTime.Now` works.  `Now` is a static property on `DateTime` that returns the current computer's date and time as an instance of the `DateTime` object
 
-## Events \(Instance\)
+<<[Instance Properties with Static Properties to Return Instance](cs/ch07-10.cs)
 
-## Operators \(Instance\)
+You will notice that there are no `set` blocks on our static methods.  Since this is data that shouldn't change, we set our instance properties to `private set` and omit the `set` on our `static` properties.  To use this class:
 
-## Indexers \(Instance\)
+    public static class PhoneModels
+    {
+        public static void Test()
+        {
+            Phone p = Phone.iPhoneXs;
+            // p.Brand = "Apple Inc."; // compiler error
+            // Phone.iPhoneXs = new Phone(); // another compiler error
+            Console.WriteLine(p.Model);
+            // prints "iPhone"
+        }
+    }
 
-## Constructors \(Static and Instance\)
+### Object Initialization Syntax
 
-Object initializers: new XYZ { x = y, y = z }
+In our previous example called "Instance Properties with Static Properties to Return Instance", we could have simplified the initialization of our object using the _object initialization_ syntax.  The get properties in this sample are able to be private because we are setting them within our class.  If you want to use this syntax _outside_ of the class, you will need to remove the `private` part of the `set`, as seen in this example.
 
-## Finalizers \(Instance\)
+<<[Object Initialization Syntax](cs/ch07-11.cs)
 
-## Nested Types \(Static and Instance\)
+Objects initialized in this way:
 
-%% ---------------------------
+    * Optionally omit the `()` after the `new ClassName` part of the statement.
+    * Do not require all instance members to be specified within the block, `{}`.
+    * May be combined with the array initialization syntax for items in an array.
+    * The last member set within the `{}` may be followed by an extra comma.
 
-### static classes
+## Conclusion
 
-> _"An interface defines a contract."_
->
-> -Standard ECMA-334: C# Language Specification, 1st Edition
-
-### abstract, interfaces
-
-### multiple-inheritance
-
-### Operator Overloading
-
-### overriding members
-
-%% ---------------------------
-
-## Access Modifiers and Accessibility Types
-
-### Here be dragons!
-
-In general practice, you will use `public` and `private` about 99% of the time.  I am only including the full list here because they comes up in job interviews.  The idea behind access modifiers make sense, but in practice, they are nothing but annoying.  The reason to have access modifiers:
-
-* Enforce consistent use of APIs
-* Prevent use of undocumented APIs
-* Prevent certain code from being executed outside of its original context
-
-If someone wants, then can easily execute your code using one of several methods.  First, if your code is open source and is available on, say, GitHub, they can download your code, change it, and recompile.  Second, if your code is only available in binary form, it can be decompiled with tools such as Red Gate's .NET Reflector or Jet Brains' dotPeek.  Third, .NET's Reflection API provides methods for accessing data and executing code within your classes.  It can also create instances of your objects.  Fourth and finally, there is a little known API that can create an instance of an object that does not run private or default public constructors.  It is in the following object `System.Runtime.Serialization.FormatterServices`.  Specifically, the `GetUnitializedObject` method.
-
-| access modifier | accessibility |
-|-----------------|---------------|
-| public | no restrictions |
-| private | current class only |
-| protected | current class and all derived classes |
-| internal | current assembly |
-| protected internal | current assembly and derived classes |
-| private protected | current class and derived classes in the currently assembly |
-
-`internal` is the default for classes, structs, and interfaces at the namespace level.  Class and struct members and nested classes and structs default to `private`.  Enumeration members are by default,  `public`, as are interface members.
-
-### sealed
-
+This chapter has introduced the concept of object and classes.  We have seen the difference between static and instance members.  There are six more types of class members that we will look at.  We have seen fields, methods, and properties in depth.  While there is still more to cover on these types, you should now have a good understanding of how things work in C# and how to use its various features.
