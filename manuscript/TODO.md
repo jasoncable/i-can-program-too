@@ -79,3 +79,8 @@ typeof
 ### Partial classes
 
 #### expression body definitions
+
+### anonymous types
+
+# static classes
+

@@ -1,4 +1,4 @@
-# Objects and Classes \(Events through Nested Types\)
+# Objects and Classes \(Constructors through Nested Types\)
 
 ## Access Modifiers and Accessibility Types
 
@@ -22,37 +22,20 @@ If someone wants, then can easily execute your code using one of several methods
 
 `internal` is the default for classes, structs, and interfaces at the namespace level.  Class and struct members and nested classes and structs default to `private`.  Enumeration members are by default,  `public`, as are interface members.
 
+## Constructors \(Static and Instance\)
+
+A constructor is a special type of method that is executed when creating an instance of an object.  Constructors may take arguments.
+
+### Instance Constructors
+
+
+
 ## Events \(Instance\)
-
-
 
 ## Operators \(Instance\)
 
 ## Indexers \(Instance\)
 
-## Constructors \(Static and Instance\)
-
 ## Finalizers \(Instance\)
 
 ## Nested Types \(Static and Instance\)
-
-%% ---------------------------
-
-### static classes
-
-> _"An interface defines a contract."_
->
-> -Standard ECMA-334: C# Language Specification, 1st Edition
-
-### abstract, interfaces
-
-### multiple-inheritance
-
-### Operator Overloading
-
-### overriding members
-
-%% ---------------------------
-
-### sealed
-

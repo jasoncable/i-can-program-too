@@ -39,3 +39,4 @@ A> The code in this book is being developed using .NET Core 3.0 __PREVIEW__ and 
 * Anything listed in the "Reusable Components" appendix
 * `in` parameters, unless required
 * XML, JSON
+* code signing and obfuscation
