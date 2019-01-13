@@ -73,4 +73,14 @@ namespace SampleConsoleApp.Chapter08
             this.Y = y;
         }
     }
+
+    public class PrivateConstructor
+    {
+        private PrivateConstructor() { }
+
+        public PrivateConstructor CreateInstance()
+        {
+            return new PrivateConstructor();
+        }
+    }
 }

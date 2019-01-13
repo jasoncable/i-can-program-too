@@ -93,13 +93,24 @@ In the two `int` constructor, you see that we are setting the property values in
     this.X = x;
     this.Y = y;
 
-`this` is simply a way to explicitly refer to a member on the current class.  I sometimes include it to improve readability.  Consider the following two examples.  Both are perfectly valid, but you should either use `this.` or a variable name prefixed with an underscore.  The following is a common pattern that works, but is unnecessarily ugly.
+`this` is simply a way to explicitly refer to a member on the current class.  I sometimes include it to improve readability.  Consider the following two examples.  Both are perfectly valid, but you should either use `this.` or a variable name prefixed with an underscore.  The following is a common pattern that works, but is unnecessarily ugly.  The instance variables and method parameters are named the same.
 
     public Person(string firstName, string lastName)
     {
         firstName = firstName;
         lastName = lastName;
     }
+
+Aside from setting default values on properties and auto-properties, constructors are used to perform the logic required to instantiate an object.
+
+### Private Instance Constructors
+
+There are times when you don't want to allow others to create an instance of your class.  For this you can set the access on a class to something like `private` or `protected`.  We talked about these access modifiers at the beginning of this chapter.
+
+Why would you do this?  There is an expectation that when someone creates an instance of an object that it is fairly devoid of information.  Some objects are not meant to be instantiated with a constructor.  Also, if there is a possibility that a constructor could throw an error, called an exception, you should not be able to instantiate the class directly.  Constructors should also not rely on calling code that uses external resources such as network or file resources.
+
+### Static Constructors
+
 
 
 ## Events \(Instance\)
