@@ -54,7 +54,53 @@ If you, as we did in the previous example, specify a constructor with an argumen
     var myClass = new MyClass();
     //leanpub-end-delete
 
-Constructors and methods follow many of the same rules including overload resolution.  One main difference is that we don't call constructors _directly_, only through the use of the `new` operator.
+Constructors and methods follow many of the same rules including overload resolution.  One main difference is that we don't call constructors _directly_, only through the use of the `new` operator or through another constructor via `this`.  The call to the constructor also initializes any uninitialized fields and auto-properties to their default values \(for our purposes\).
+
+If you have multiple constructors on a class, you can perform _constructor chaining_, that is, one constructor can call another constructor.
+
+    public class GraphPoint
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public GraphPoint() : this(1, 1)
+        {
+        }
+
+        public GraphPoint(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+    }
+
+As you can see there, we have a class that has two properties, `X` and `Y` and two constructors.  On our default constructor, you see the additional code: `: this(0 ,0)`.  In this case, the `this` keyword refers to the instance of the class.  Based on our method overload rules, it is trying to call a constructor that takes two `int`s.  The code contained in _both_ constructors is called when we create the instance of the class.
+
+    var pt = new GraphPoint();
+
+By calling the default constructor, the following happens.
+
+* The compiler finds that we have a parameterless constructor.  
+* Next, it sees that we are chaining constructor calls.  
+* Third, it finds a constructor that takes two integers.
+* Fourth, it executes the code in the constructor with the two integers.
+* Fifth, it executes the code within the default constructor itself.
+
+Remember, the chained constructor, referred to by the `this` keyword, is called first and the constructor that matches our `new` statement is called second.
+
+In the two `int` constructor, you see that we are setting the property values in the following way.  They are prefixed with `this.`.
+
+    this.X = x;
+    this.Y = y;
+
+`this` is simply a way to explicitly refer to a member on the current class.  I sometimes include it to improve readability.  Consider the following two examples.  Both are perfectly valid, but you should either use `this.` or a variable name prefixed with an underscore.  The following is a common pattern that works, but is unnecessarily ugly.
+
+    public Person(string firstName, string lastName)
+    {
+        firstName = firstName;
+        lastName = lastName;
+    }
+
 
 ## Events \(Instance\)
 
