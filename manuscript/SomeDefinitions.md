@@ -24,18 +24,19 @@ There are many terms that the computing world uses.  These may be classified as 
 * __cross-platform__ - software that has the ability to run on multiple processor platforms and/or operating system platforms.  Software must be recompiled if it is to run on another platform, except in the case of certain types of byte code that are run by a runtime environment such as .NET Core and Java.
 
 ### Symbols Used in This Book
-* **\_** - underscore.
-* **\*** - asterisk _or_ star.
-* **\!** - exclamation mark _or_ bang.
-* **$** - dollar sign.
-* **^** - caret.
-* **\[\] - left/right bracket.
-* **{}** - left/right brace.
-* **\(\) - left/right parenthesis.  Plural form is parentheses.
-* **-** - dash.
-* **|** - pipe.
-* **"** - double-quote.
-* **'** - single-quote.
-* **#** - pound _or_ hash.
-* **;** - semicolon.
-* **.** - dot.
+
+| **\_** | underscore |
+| **\*** | asterisk _or_ star |
+| **\!** | exclamation mark _or_ bang |
+| **$** | dollar sign |
+| **^** | caret |
+| **\[\]** | left/right bracket |
+| **{}** | left/right brace |
+| **\(\)** | left/right parenthesis.  Plural form is parentheses |
+| **-** | dash |
+| **\|** | pipe |
+| **"** | double-quote |
+| **'** | single-quote |
+| **#** | pound _or_ hash |
+| **;** | semicolon |
+| **.** | dot |
