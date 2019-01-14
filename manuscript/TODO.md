@@ -68,6 +68,8 @@ typeof
 
 ### 3 types of using
 
+### using to release resources
+
 ### structs
     and they don't have parameterless .ctors
 
@@ -84,3 +86,4 @@ typeof
 
 # static classes
 
+# globalization/localization

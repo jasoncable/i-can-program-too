@@ -109,9 +109,104 @@ There are times when you don't want to allow others to create an instance of you
 
 Why would you do this?  There is an expectation that when someone creates an instance of an object that it is fairly devoid of information.  Some objects are not meant to be instantiated with a constructor.  Also, if there is a possibility that a constructor could throw an error, called an exception, you should not be able to instantiate the class directly.  Constructors should also not rely on calling code that uses external resources such as network or file resources.
 
-### Static Constructors
+    public class PrivateConstructorClass
+    {
+        private PrivateConstructorClass() { }
 
+        public PrivateConstructorClass CreateInstance()
+        {
+            // perform initialization here
+            return new PrivateConstructorClass();
+        }
+    }
 
+This call cannot be instantiated with the `new` operator.  To create an instance, you must call the `CreateInstance` method.
+
+    var pvtCtorClass = PrivateConstructorClass.CreateInstance();
+
+Normally, we would perform checks in each property and method to see if the instance data had been initialized.  We'll see examples of that in a little bit.
+
+## Exceptions
+
+Before we continue on to more class member types, we need to talk about error handling in .NET.  First let's talk a little about object, specifically, class inheritance.  This is just an basic introduction of inheritance.  It will be covered in detail in the chapter on interfaces and class design structures.
+
+### A Brief Introduction to Inheritance
+
+Inheritance is one of the four principles of object-oriented programming.  Everything in C# is a type of object.  Everything in C# inherits a parent class called `System.Object`.  Every class that you create is implicitly derived from `System.Object`, also `object` in C#.  When a class inherits from `object` it brings along some methods that provide a way to clean up unused resources, perform equality operations between instances of an object, to get the underlying type of the object, and a method that converts a representation of the object to a `string`.
+
+The framework declares a type called `System.Exception`.  This inherits the methods from `System.Object`.  It also _overrides_ certain methods, such as `.ToString()`.  A class that inherits members from an object have the ability to override those members.  If they are not overridden, they use the _base_ class's implementation.
+
+* `Exception` _inherits_ from `Object`, bring along certain members from `Object`.
+* `Object` is the _base class_ of `Exception`.
+* The `.ToString()` method is _overridden_ by `Exception`.
+* `Exception` _defines_ several _constructors_ which are used to _throw_ new exceptions.
+
+A class can inherit a class which can inherit another class.  Let's call this the inheritance chain.  Now, each successive inheritance can override methods that come from its parent class, grandparent class, etc.  A C# object, though, cannot inherit two classes at one time.  This is called multiple-inheritance and it is not allowed in .NET.  The only way to inherit members from more than one class has to be done one at a time.
+
+* `ArgumentException` inherits `SystemException` which inherits `Exception` which inherits `Object`.
+* `ArgumentException` cannot _by itself_ inherit both `SystemException` _and_ `Exception`.  It has to go through the inheritance chain.  
+* We say that `ArgumentException` is _derived_ from `Exception`.  That just means that `Exception` is somewhere in its inheritance chain.
+
+Let's see this all in action.  First, all exceptions at some point in their inheritance chain contain `Exception`.  The framework and runtime recognize this class as the class that creates errors and sends information about the error up through the application.
+
+Let's look at four keywords that have have not yet seen.
+
+* `try` - designates a block of code for which you wish to...
+* `catch` an exception.  `catch` may optionally capture the type of error that is...
+* `throw`n.  `throw` signals that an error has occurred and that we need to _handle_ it or our application will blow up \(go boom\).
+* `finally` we execute any code that has to be run after a piece of code has run successfully or not.
+
+This code will throw an `ArgumentOutOfRangeException`.
+
+    public static string BadIndex()
+    {
+        string[] sa = { "a", "b", "c", "d" };
+        return sa[5];
+    }
+
+The best way to prevent this exception is to check the array variable for `null` if we don't know where it came from.  Second, check the length of the array before trying to pull an index on it.  The next example shows another type of exception, the `FormatException`.
+
+    string s = Convert.ToInt32("123abc");
+
+In code, we don't always know what type of data is being passed in to our code.  To fix up this example we use a technique called _exception handling_.  We are _handling_ exceptions to prevent them from causing our code to crash.
+
+    int i = StringFormat("123abc");
+
+    public static int StringFormat(string input)
+    {
+        try
+        {
+            return Convert.ToInt32(input);
+        }
+        catch(FormatException exc)
+        {
+            Console.WriteLine(exc.ToString());
+            return 0;
+        }
+    }
+
+We wrap the code that we are calling in a `try` block.  Next, since we know that `Convert.ToInt32()` will throw an exception of the type `FormatException`, we look for it.  If our code throws _this_ exception, the code within the `catch` block is executed.  As you can see, we have made sure that every path through the code returns a value.
+
+This brings up a few questions.  First, what exactly happens when the exception is thrown?  Second, what if we don't know the type of exception could possibly be thrown?  Third, what is this `.ToString()` stuff?  We need to see a more in-depth example to see how all of this works.
+
+This code will be implemented in a console app.  It reads from the console line-by-line.  That means the `line` variable is set to "123" if you type: `123` followed pressing the `enter` or `return` key.  The newline is not part of the data in the variable.  To exit the loop, press enter with no value.
+
+{line-numbers=on}
+<<[Exception Catch and Print](cs/ch08-01.cs)
+{line-numbers=off}
+
+Line-by-line:
+
+1. The method declaration.
+2. -
+3. Declare the variable that will hold the data that we are reading from the console.
+4. Keep reading from the console until we press enter without entering a new value.
+5. -
+6. Begin `try` block.
+7. -
+8. 
+
+## Static Constructors
 
 ## Events \(Instance\)
 

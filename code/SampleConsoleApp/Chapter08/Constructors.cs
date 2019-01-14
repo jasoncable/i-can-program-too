@@ -6,6 +6,8 @@ namespace SampleConsoleApp.Chapter08
         public static void RunTests()
         {
             var c1 = new GraphPoint2();
+
+            //var pc = new PrivateConstructor();
         }
     }
 
@@ -74,13 +76,13 @@ namespace SampleConsoleApp.Chapter08
         }
     }
 
-    public class PrivateConstructor
+    public class PrivateConstructorClass
     {
-        private PrivateConstructor() { }
+        private PrivateConstructorClass() { }
 
-        public PrivateConstructor CreateInstance()
+        public PrivateConstructorClass CreateInstance()
         {
-            return new PrivateConstructor();
+            return new PrivateConstructorClass();
         }
     }
 }

@@ -24,7 +24,9 @@ namespace SampleConsoleApp
 
             //Chapter07.MethodOverloading.RunMe();
 
-            Chapter08.Constructors.RunTests();
+            //Chapter08.Constructors.RunTests();
+
+            Chapter08.Exceptions1.StrToNo();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

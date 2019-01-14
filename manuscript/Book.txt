@@ -11,6 +11,7 @@ Chapter05.md
 Chapter06.md
 Chapter07.md
 Chapter08.md
+Chapter09.md
 {backmatter}
 ReusableComponents.md
 RecommendedReading.md
