@@ -23,8 +23,10 @@ A> The code in this book is being developed using .NET Core 3.0 __PREVIEW__ and 
 * Type casting discussion with numeric value types.
 * Description of `System.Object` methods.
 * Optionally, illustrations and diagrams, as time and finances permit.
-* Basic Visual Studio usage and screenshots.
+* Basic Visual Studio usage and screenshots \(Windows "done", Mac to go\).
 * Test the epub, mobi, and web versions of the book.
+* Up the DPI of Visual Studio screenshots and re-take after 2019 is actually released.
+* Pagination.
 * __SEE ALSO__ `TODO.md` in the repo as it is more frequently updated.
 
 ### Excluded on Purpose
