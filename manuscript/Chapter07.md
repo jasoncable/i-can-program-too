@@ -1,4 +1,4 @@
-# Objects and Classes \(Fields through Properties\)
+# Objects and Classes, Part 1
 
 > _"I invented the term 'Object-Oriented', and I can tell you I did not have C++ in mind."_
 >

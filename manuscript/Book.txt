@@ -12,6 +12,7 @@ Chapter06.md
 Chapter07.md
 Chapter08.md
 Chapter09.md
+Chapter10.md
 {backmatter}
 VSQuickStartWin.md
 ReusableComponents.md

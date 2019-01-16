@@ -87,3 +87,5 @@ typeof
 # static classes
 
 # globalization/localization
+
+# using static (from C#6): NO effing way!
