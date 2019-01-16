@@ -5,10 +5,13 @@ Next or done?
 123abc
 input:  123abc
 System.FormatException: Input string was not in a correct format.
-   at System.Number.StringToNumber(ReadOnlySpan`1 str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   at System.Number.ParseInt32(ReadOnlySpan`1 s, NumberStyles style, NumberFormatInfo info)
+   at System.Number.StringToNumber(ReadOnlySpan`1 str, NumberStyles options, 
+         NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(ReadOnlySpan`1 s, NumberStyles style, 
+         NumberFormatInfo info)
    at System.Convert.ToInt32(String value)
-   at SampleConsoleApp.Chapter08.Exceptions1.StrToNo() in /.../SampleConsoleApp/Chapter08/Exceptions1.cs:line 14
+   at SampleConsoleApp.Chapter08.Exceptions1.StrToNo() in 
+     /.../SampleConsoleApp/Chapter08/Exceptions1.cs:line 14
 Next or done?
 
 Really, really done!

@@ -229,11 +229,16 @@ Line-by-line:
 
 That is a lot of information in such a small space.  Let's address the questions asked earlier.
 
-1. What exactly happens when the exception is thrown?
+1. _What exactly happens when the exception is thrown?_
+
     If an exception is thrown in a `try` block, the remaining code in that block will not be executed.  In the case when there is one or more `catch` blocks, the runtime checks the type of exception that was thrown and checks them against each type of exception from top to bottom.  It is important to order your catch blocks by most specific to least specific.  For example, if `No1Exception` derives from `No2Exception` which derives from `Exception`, and you are trying to catch each one, `No1Exception` goes first, followed by `No2Exception` and finally `Exception`.  `Exception` must be the last or only exception type that you catch.
-2. What if we don't know the type of exception that could possibly be thrown?
+
+2. _What if we don't know the type of exception that could possibly be thrown?_
+   
     At a minimum, you should have `catch` with the `Exception` exception type.
-3. What is this `.ToString()` stuff?
+
+3. _What is this `.ToString()` stuff?_
+   
     `Exception` overrides the default `ToString` method that is on `Object`.  At a minimum, `ToString` on any type in C# will return a `string` representation of the name of the type due to everything inheriting `Object`.  Most important types override the default `Object.ToString()`.  This includes `Exception`.  The following is the output from our program and shows the `Exception.ToString()` that is printed from our code above.
 
 <<[Code Output](cs/ch08-02.txt)
@@ -335,6 +340,8 @@ There are an entire class of exceptions that either can't be caught, can't be ha
 * where to exception catch/throw
 * logging
 * exception filtering: https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-6
+* don't use exceptions as flow-control!!!
+
 
 ## Static Constructors
 
