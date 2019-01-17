@@ -268,13 +268,13 @@ The `finally` block is optional when using `try` with `catch`.
 
 Sometimes we want the code above ours to handle lower level exceptions.  A prime example of this is that we often implement exception handlers in our web applications at the top most level to provide a mechanism for catching _all_ exceptions in the exact same way and log them to a file, Windows Event Viewer, a database, or a 3rd party systems management platform.
 
-If we want to use a `try`-`catch` block to perform some sort of operation before letting the exception bubble up the stack, we can re-throw the exception from the catch block with the `throw;` statement.
+If we want to use a `try`-`catch` block to perform some sort of operation before letting the exception bubble up the stack, we can re-throw the exception from the catch block with the `throw;` statement.  If you are not going to use the exception data within the `catch` block, omit the parentheses and type + variable declaration as follows.
 
     try
     {
         DoSomethingHere();
     }
-    catch (Exception exc)
+    catch
     {
         throw;
     }
@@ -335,8 +335,19 @@ Normally, this code would not compile, but this this specific exception, it does
 
 There are an entire class of exceptions that either can't be caught, can't be handled, or automatically re-throw when handled.  These odd exceptions include: `OutOfMemoryException`, `ThreadAbortException`, and `StackOverflowException`.  It is enough to know that some exceptions are treated differently by the runtime.
 
+### Another Example
+
+Here is an example of bubbling an exception up through to the top calling method, in this case, `Runner.Execute()`.
+
+<<[Successive Exceptions](cs/ch08-03.txt)
+
+<<[Code Output](cs/ch08-04.txt)
+
+You can see that we left out the `(Exception exc)` from the inner-most exceptions because we are re-throwing the original exception.  Also note that `Console.WriteLine()` has an overload that accepts an `Exception` object.  Finally note that `ExceptionsA.DoSomething()` has a null return at the end.  Because we are logging the exception and _not_ re-throwing it, all paths must return a value.  If our `try` block throws an exception it next goes into the `catch` block and from there code execution continues within the `DoSomething()` method which _must_ return a value.
+
+## Exception Miscellany
+
 * __TODO__
-* handling successive exceptions
 * where to exception catch/throw
 * logging
 * exception filtering: https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-6

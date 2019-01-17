@@ -26,7 +26,9 @@ namespace SampleConsoleApp
 
             //Chapter08.Constructors.RunTests();
 
-            Chapter08.Exceptions1.StrToNo();
+            //Chapter08.Exceptions1.StrToNo();
+
+            Chapter08.Runner.Execute();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

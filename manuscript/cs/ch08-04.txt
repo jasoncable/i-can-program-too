@@ -1,0 +1,10 @@
+System.ArgumentOutOfRangeException: Index and length must refer to a location within the string.
+Parameter name: length
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at SampleConsoleApp.Chapter08.ExceptionsC.DoSomething(String s) in 
+        /SampleConsoleApp/Chapter08/Exceptions2.cs:line 49
+   at SampleConsoleApp.Chapter08.ExceptionsB.DoSomething(String s) in 
+        /SampleConsoleApp/Chapter08/Exceptions2.cs:line 34
+   at SampleConsoleApp.Chapter08.ExceptionsA.DoSomething(String s) in 
+        /SampleConsoleApp/Chapter08/Exceptions2.cs:line 18
+DONE!
