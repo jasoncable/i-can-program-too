@@ -13,7 +13,3 @@ Visual Studio Code freely is available at: <https://code.visualstudio.com/>
 Some editions of Visual Studio is available freely at: <https://visualstudio.com/>
 
 macOS, while not completely open source, is comprised of many open source components such as the Darwin kernel and Quartz UI.  <https://opensource.apple.com/>
-
-### Image Credits
-
-Cover image adapted from <https://pixabay.com/en/board-chip-circuit-electric-158973/> under the Pixabay License.
