@@ -1,0 +1,24 @@
+"I Can Program Too"
+    Delve Hand Bold
+    75.83pt
+
+"C#"
+    HWT Republic Gothic Outline
+    272.54pt
+
+".NET Core 3 & C#8"
+    Upgrade Thin
+    55.1pt
+
+"A Beginner's Guide to"
+    Upgrade Regular
+    56.22pt
+
+"Jason L. Cable"
+    Delve Hand Regular
+    49.16pt
+
+Purple: #512bd4
+//Cream: #fff5e6
+//Lt. Blue: #e6f5ff
+Lightest Blue: #ecf7ff

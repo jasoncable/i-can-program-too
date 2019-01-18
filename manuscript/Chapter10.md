@@ -1,16 +1,11 @@
-# Object Inheritance and Interfaces
+# Objects and Classes, Part 3
 
+## Events \(Instance\)
 
+## Operators \(Instance\)
 
-> _"An interface defines a contract."_
->
-> -Standard ECMA-334: C# Language Specification, 1st Edition
+## Indexers \(Instance\)
 
-### abstract, interfaces
+## Finalizers \(Instance\)
 
-### multiple-inheritance
-
-### overriding members
-
-### sealed
-
+## Nested Types \(Static and Instance\)
