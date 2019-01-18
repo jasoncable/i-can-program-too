@@ -211,7 +211,7 @@ There are an entire class of exceptions that either can't be caught, can't be ha
 
 Here is an example of bubbling an exception up through to the top calling method, in this case, `Runner.Execute()`.
 
-<<[Successive Exceptions](cs/ch09-03.txt)
+<<[Successive Exceptions](cs/ch09-03.cs)
 
 <<[Code Output](cs/ch09-04.txt)
 
