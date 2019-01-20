@@ -30,12 +30,14 @@ namespace SampleConsoleApp
 
             //Chapter08.Runner.Execute();
 
-            Chapter08.ExpressionBodiedMembers ebm = 
-                new Chapter08.ExpressionBodiedMembers("Jason");
-            Console.WriteLine(ebm.ReturnUpperCase());
-            ebm.SetToUpperCase();
-            Console.WriteLine(ebm.Name);
-            ebm.Name = "Jason... again";
+            //Chapter08.ExpressionBodiedMembers ebm = 
+            //    new Chapter08.ExpressionBodiedMembers("Jason");
+            //Console.WriteLine(ebm.ReturnUpperCase());
+            //ebm.SetToUpperCase();
+            //Console.WriteLine(ebm.Name);
+            //ebm.Name = "Jason... again";
+
+            Chapter10.MoneyRunner.Run();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

@@ -40,3 +40,7 @@ There are many terms that the computing world uses.  These may be classified as 
 | **#** | pound _or_ hash |
 | **;** | semicolon |
 | **.** | dot |
+
+### System Requirements
+
+An IDE is not required, but greatly helps and cuts down on development time substantially.  This author recommends Microsoft Visual Studio 2019 or Visual Studio for Mac 2019.  You should have at least 8GB of RAM and about 10GB of available disk space.
