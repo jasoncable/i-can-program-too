@@ -32,6 +32,55 @@ To use the overload, simply add two instances of our `PreDecimalAmount` class as
 
 You can only overload operators on instance of a class or a struct.  Don't forget to do the proper checking of values that will throw an exception or return certain special values when one is not set.  We looked at this when adding nullable ints.  When one of the `int`s is `null`, `null` is returned.  We might choose do that if one of the parameters is null, throw an exception, or treat the null instance as `0`.
 
+You may also overload the `==` and `!=` operators.  _Both_ must be overloaded or your code won't build.  They return the type `bool`.  We will look at equality issues with complex objects when we get past inheritance.  There are specific rules that must be followed when dealing with the equality of complex objects.
+
+We should also overload the `-` operator along with a few others to create a useful API.
+
+## Type Casting and Boxing/Unboxing
+
+To simplify our discussion of numeric types, we have skipped over type casting.  Another topic close to operator overloading is the ability to _implicitly_ or _explicitly_ convert between two different types.  We also need to briefly talk about boxing and unboxing.
+
+A> Before _generics_ were introduced into the C# language and .NET ecosystem, we used to have to treat objects like `System.Object` in order to use classes which were written to provide functionality that worked on any type of object.  The `System.Collections.ArrayList` object, for example, was created to provide an object that acts like an array that can be automatically expanded.  It only _appears_ to auto-expand, but that is a separate story.  It takes things of type `object`, stores them, and allows you to perform operations on them.
+A>
+A> The process of making an object _appear_ to be of type `object` is called _boxing_.  In its simplest form, it would look like: `object o = (object)"My String";`  _Unboxing_ is the process of taking the object we created and turning it back into our original type: `string s = (string)o`.  This process is very error-prone and a cause of many problems.  The solution is _generics_, which will be discussed in a few chapters.
+
+There are two types of type casting, explicit and implicit.  The following is an example of implicit type casting.
+
+    int a = 1234;
+    decimal b = a;
+
+C# considers this a _safe_ type conversion.  We are creating a bigger, more precise data type, `decimal`, from a less precise \(no decimals\), smaller \(32-bit vs. 128-bit\) data type, `int`.  This means that `decimal` can hold the entire value of _any_ `int`.  That is why .NET does not force us to explicitly specify the type we are converting to.
+
+    decimal c = 12.34m;
+    int d = (int)c;
+
+This is an example of an explicit type cast.  We have to add `(int)` to tell the compiler that we wish to accept the potential side effects of such a conversion.  This type of cast could result in an overflow exception if the decimal is too large and any data past the decimal point will be truncated, not rounded.
+
+What was just described is the method to the madness.  These are the rules that the C# designers created to enforce certain coding patterns.  With our classes, we can make everything easy and simply perform all operations as implicit conversions.  It is important to use explicit conversions in places that make sense, especially when considering the rules that have been outlined.
+
+There are times when you will use type casting for other purposes such as performing mathematical operations with binary operators of differing data types.  Division is one such case.  Consider the following:
+
+    decimal d = 4 / 3;
+
+What is the answer?  Why `1` of course!  C# treats bare numbers that look like integers as integers.  The division result has its decimal places truncated.  There are two ways around this:
+
+    decimal f = (decimal)4 / (decimal)3;
+    decimal g = 4m / 3m;
+
+Both results are `1.33...`.  The `m` tells C# to treat the raw number as a decimal type.  If you are using variables for the numerator and/ denominator, you will have to use the `(decimal)` form.
+
+    int h = 4;
+    int i = 3;
+    decimal j = (decimal)h / (decimal)i;
+
+This gives us the correct result.
+
+## Implementing Type Conversions
+
+We saw in our earlier example of old English money that there are 3 classes, `OldPennyAmount`, `OldShillngAmount`, and `OldPoundAmount`.  They each do not support fractional values, only `int`s of the number of each type.  This is because fractional amounts specified in decimal form don't make much sense.  So, `OldPennyAmount` holds an `int` that specifies the number of pence that the object refers to.
+
+
+
 ## Indexers \(Instance\)
 
 ## Events \(Instance\)

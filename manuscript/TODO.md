@@ -89,3 +89,6 @@ typeof
 # globalization/localization
 
 # using static (from C#6): NO effing way!
+
+### overload == and != WITH .Equals()
+    https://docs.microsoft.com/en-us/visualstudio/code-quality/ca2224-override-equals-on-overloading-operator-equals?view=vs-2017

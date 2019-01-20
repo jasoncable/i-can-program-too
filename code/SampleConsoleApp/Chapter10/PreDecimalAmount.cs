@@ -39,6 +39,16 @@ namespace SampleConsoleApp.Chapter10
             return new PreDecimalAmount(a.ToPence() + b.ToPence());
         }
 
+        public static bool operator ==(PreDecimalAmount a, PreDecimalAmount b)
+        {
+            return a.ToPence() == b.ToPence();
+        }
+
+        public static bool operator !=(PreDecimalAmount a, PreDecimalAmount b)
+        {
+            return a.ToPence() != b.ToPence();
+        }
+
         public int ToPence()
         {
             return Pounds.ToPence() +

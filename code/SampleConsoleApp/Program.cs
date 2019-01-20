@@ -37,7 +37,9 @@ namespace SampleConsoleApp
             //Console.WriteLine(ebm.Name);
             //ebm.Name = "Jason... again";
 
-            Chapter10.MoneyRunner.Run();
+            //Chapter10.MoneyRunner.Run();
+
+            Chapter10.TypeCasting.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();
