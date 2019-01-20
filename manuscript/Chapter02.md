@@ -328,7 +328,7 @@ This creates the variable `i` and assigns the value `1` to it.  We then create a
 
 This example sets the value of `j` to `2`.  With the pre-increment/decrement operators, the variable they are applied to is first increased or decreased, then its value is returned.
 
-## Conclusion
+### Conclusion
 
 We have discovered that there are several different implementations of the C# compiler and accompanying framework.  These constitute the .NET ecosystem.  .NET is a cross-platform, widely used programming environment that allows us to create all types of applications from those that run on the desktop, server, cloud, and web.
 

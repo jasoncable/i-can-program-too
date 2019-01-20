@@ -128,4 +128,51 @@ Normally, we would perform checks in each property and method to see if the inst
 
 ## Static Constructors
 
+Static constructors don't take any parameters and are not invoked by the use of the `new` operator.  They set values on static data and are run when an instance of the object is created or when a static member is used, returning the static value after the static constructor is finished running.  
 
+Static constructors can be used for several things such as setting a `DateTime` for when the object was initially used or to read a configuration file and set, let's say, the path to a log file in your applications.  If an exception is thrown from a static constructor, it will not run again during the life of your program.
+
+Static constructors can also be used to create and hold an instance of an object that you only want to instantiate once.  This is called the _singleton pattern_.  We will explore it more when talking about concurrent programming, because there are many issues to consider when implementing it.
+
+<<[Simple Static Constructor Example](cs/ch08-01.cs)
+
+## Expression-bodied Members
+
+_Expression-bodied members_ are a relatively new introduction to C#.  The provide a terse, short-cut way to specify a _single_ expression that is used to define a constructor, method, property getter/setter, indexer, or finalizer.  We'll learn about indexers and finalizers in a couple of chapters.
+
+The following shows an example of a normal method and its expression-bodied version.
+
+    public string MakeUpperCase(string s)
+    {
+        return s.ToUpper();
+    }
+    // ----- //
+    public string MakeUpperCase(string s) => s.ToUpper();
+
+Non-void returns do not require the use of the keyword `return`.  You call the members the exactly same way.  The `=>` simply points to our expression.  The example below shows a constructor, a method, and getters/setters that use expression-bodied members.
+
+    public class ExpressionBodiedMembers
+    {
+        private string _name;
+        public ExpressionBodiedMembers(string s) => _name = s;
+        public string ReturnUpperCase() => _name.ToUpper();
+        public void SetToUpperCase() => _name = _name.ToUpper();
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
+    }
+
+Use this class like any others.
+
+    ExpressionBodiedMembers ebm = 
+        new ExpressionBodiedMembers("Jason");
+    Console.WriteLine(ebm.ReturnUpperCase());
+    ebm.SetToUpperCase();
+    Console.WriteLine(ebm.Name);
+    ebm.Name = "Jason... again";
+
+### Conclusion
+
+This chapter has introduced the special type of method called a constructor.  We have also seen a little about access modifiers and expression-bodied members.  These are all important to help us understand more about the code of others and how to better construct our own code.  We have seen lots of options so far, and will see more in two chapters.  Next, we will take a timeout from class members to talk about how we handle errors in C#.

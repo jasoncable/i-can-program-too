@@ -21,4 +21,4 @@
 Purple: #512bd4
 //Cream: #fff5e6
 //Lt. Blue: #e6f5ff
-Lightest Blue: #ecf7ff
+Lightest Blue: #ecf7ff + 35% opacity over white

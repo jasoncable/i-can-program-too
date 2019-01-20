@@ -324,6 +324,6 @@ This is functionally equivalent to:
         result = 1;
     }
 
-## Conclusion
+### Conclusion
 
 We have seen in this chapter the usefulness of evaluating expressions for `true` or `false`.  In the next chapter, you will see two additional operators relating to truth and several code constructs that allow us to loop through data.

@@ -142,6 +142,6 @@ One last thing of note, the base array of a jagged array may contain multidimens
     jmArray[0] = new int[3,4];
     jmArray[0][0,0] = 42;
 
-### Summary
+### Conclusion
 
 Arrays in C# form the basis of more advanced data structures.  Today we often use easier to use objects to handle our data needs.  Arrays were much more important in C# 1.0, but are still incredibly useful today.

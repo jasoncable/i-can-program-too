@@ -707,6 +707,6 @@ Objects initialized in this way:
 * May be combined with the array initialization syntax for items in an array.
 * The last member set within the `{}` may be followed by an extra comma.
 
-## Conclusion
+### Conclusion
 
 This chapter has introduced the concept of object and classes.  We have seen the difference between static and instance members.  There are six more types of class members that we will look at.  We have seen fields, methods, and properties in depth.  While there is still more to cover on these types, you should now have a good understanding of how things work in C# and how to use its various features.

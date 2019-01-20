@@ -118,6 +118,6 @@ Other notable C-like languages include Perl, JavaScript, Java, Python, Go, and R
 
 For our purposes there are three types of languages.  There are those that compile to machine code.  Those that are partially compiled and run in engines called virtual machines.  The third type are the interpreted languages.  These languages are not compiled until they are run.  Advantages to virtual machine type languages include portability of compiled programs, security concerns, and automatic memory management.
 
-## Conclusion
+### Conclusion
 
 In a little over 80 years, we have gone from hard-wired electromechanical devices that could only perform basic mathematical calculations to computers that will soon be able to program themselves.  Compared to a computer of relative performance, the phone in my pocket would have cost $125,000 and would have weighted 150 pounds in the year 2000.  This rate progress is unparalleled in any other field.  It continues to be a fascinating time in the evolution of programming.

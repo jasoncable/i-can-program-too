@@ -404,6 +404,6 @@ In these two following examples, C# infers the first as being of type `int`, whi
     var myInt = 123;
     var myString = "my string";
 
-## Conclusion
+### Conclusion
 
 Loops provide a powerful way of processing both small and large amounts of data.  We also learned some basics of variable scoping and the use of the `var` keyword.  In the next chapter, we will shift gears to object-oriented programming concepts.  It is there that we will see C#'s true power.

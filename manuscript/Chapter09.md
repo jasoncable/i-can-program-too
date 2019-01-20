@@ -228,6 +228,10 @@ C# also allows us to conditionally catch an exception of a certain type if a tru
         Console.WriteLine(exc);
     }
 
-## Conclusion
+### Conclusion
 
-There are many times when you will want to catch and handle an exception.  This will be based on your own experience with the level of granularity that you require in the programs that you write.  One note though, do __not__ use exceptions to control the flow of your code.  It is as bad as using `goto` statements, if not worse.  Throw an exception when something occurs that prevents your method from continuing to run in a proper way.  Let's say that you have a method that performs an operation on a string and returns a new string.  Do you: return `String.Empty`, return `null`, or `throw` a new exception as a form of determining if an error occurred?  It is up to you, but you should be consistent.  It will save you time in the long run and will help others that might use your code.
+There are many times when you will want to catch and handle an exception.  This will be based on your own experience with the level of granularity that you require in the programs that you write.  One note though, do __not__ use exceptions to control the flow of your code.  It is as bad as using `goto` statements, if not worse.  Throw an exception when something occurs that prevents your method from continuing to run in a proper way.  Let's say that you have a method that performs an operation on a string and returns a new string.  Do you: `return String.Empty`, `return null`, or `throw` a new exception as a form of determining if an error occurred?  It is up to you, but you should be consistent.  It will save you time in the long run and will help others that might use your code.
+
+#### A Final Note
+
+One last thing to note, exceptions have reputation for being slow.  They most certainly do add overhead to your code.  One example I came across recently was where someone was importing a lot of data and throwing exceptions for malformed dates.  There are many other ways to handle bad data when importing it.  You could default a bad `DateTime` to something.  That isn't always the required result.  Another way, though not as automated, would be to loop through your data and, say, create database records with the good values and writing bad values to a file in order to manually handle the bad data.  Either way, it is probably ok to throw hundreds of exceptions, but tens of thousands will considerably slow down code.
