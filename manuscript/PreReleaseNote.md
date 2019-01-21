@@ -17,10 +17,8 @@ A> The code in this book is being developed using .NET Core 3.0 __PREVIEW__ and 
 * Decide whether the difference between the words "parameter" and "argument" are significant.
 * Revisit nullable reference types and their usage.
 * More use of the `var` keyword.
-* Exceptions \(don't know where to discuss them\).
 * Backfill with more quotes from important computer scientists.
 * A full edit and review.
-* Type casting discussion with numeric value types.
 * Description of `System.Object` methods.
 * Optionally, illustrations and diagrams, as time and finances permit.
 * Basic Visual Studio usage and screenshots \(Windows "done", Mac to go\).

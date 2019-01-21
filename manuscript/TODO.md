@@ -8,19 +8,12 @@ fluent
 
 static classes deep dive?
 
-type casting / boxing unboxing
-
-int x / decimal y
-
-exceptions
-
 stringcomparer
 
 stringbuilder
 
-is/as
-
-culture with numbers (, vs .) and dates
+# globalization/localization
+    culture with numbers (, vs .) and dates
 
 enumerations
 
@@ -54,11 +47,7 @@ typeof
 
 ### String Interpolation
 
-### Convert.ToString()
-
 ### .ToString()
-
-### Exceptions
 
 ## Enumerations
 
@@ -80,15 +69,23 @@ typeof
 
 ### Partial classes
 
-#### expression body definitions
-
 ### anonymous types
-
-# static classes
-
-# globalization/localization
 
 # using static (from C#6): NO effing way!
 
 ### overload == and != WITH .Equals()
     https://docs.microsoft.com/en-us/visualstudio/code-quality/ca2224-override-equals-on-overloading-operator-equals?view=vs-2017
+
+## executables need to be recompiled for each platform due to things like Windows PE Headers, etc.
+
+Recursive methods (unbounded)
+Managed vs. unmanaged code
+File.openread
+Regexes
+Path.Combine
+Write buffers
+No file rename
+
+Serialization?
+
+deep/shallow (clones)

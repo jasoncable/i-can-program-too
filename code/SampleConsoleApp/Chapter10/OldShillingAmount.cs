@@ -9,6 +9,11 @@ namespace SampleConsoleApp.Chapter10
 
         public OldShillingAmount(int shillings) => Count = shillings;
 
+        public static explicit operator OldPoundAmount(OldShillingAmount amt)
+        {
+            return new OldPoundAmount(amt.Count / 20);
+        }
+
         public int ToPence()
         {
             return Count * NumberOfPence;

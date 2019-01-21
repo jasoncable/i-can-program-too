@@ -79,7 +79,31 @@ This gives us the correct result.
 
 We saw in our earlier example of old English money that there are 3 classes, `OldPennyAmount`, `OldShillngAmount`, and `OldPoundAmount`.  They each do not support fractional values, only `int`s of the number of each type.  This is because fractional amounts specified in decimal form don't make much sense.  So, `OldPennyAmount` holds an `int` that specifies the number of pence that the object refers to.
 
+We are going to create an implicit conversion from `OldPoundAmount` to `OldShillingAmount`.  To do that, add the following to the `OldPoundAmount` class.  One note, the `OldShillingAmount` has a constructor that takes, as an `int`, the number of shillings.
 
+    public static implicit operator OldShillingAmount(OldPoundAmount pounds)
+    {
+        return new OldShillingAmount(pounds.Count * 20);
+    }
+
+To use the new implicit conversion:
+
+    OldPoundAmount pounds = new OldPoundAmount(6);
+    OldShillingAmount amt = pounds;
+
+We will implement an explicit conversion from `OldShillingAmount` to `OldPoundAmount` due to the fact that you are possibly losing data in the conversion.  We add the following to the `OldShillingAmount` class.
+
+    public static explicit operator OldPoundAmount(OldShillingAmount amt)
+    {
+        return new OldPoundAmount(amt.Count / 20);
+    }
+
+To use the new explicit conversion:
+
+    OldShillingAmount shillings = new OldShillingAmount(132);
+    OldPoundAmount oldPounds = (OldPoundAmount)shillings;
+
+As you can see, we have the explicit conversion using integer division which truncates the excess decimal points.  These types of conversions should probably be avoided, as they result in a loss of data.  One final word, type casting need to exclusively be used for numeric values, as we have seen here, they also apply to classes that hold multiple types of data.
 
 ## Indexers \(Instance\)
 
@@ -88,3 +112,5 @@ We saw in our earlier example of old English money that there are 3 classes, `Ol
 ## Finalizers \(Instance\)
 
 ## Nested Types \(Static and Instance\)
+
+### Conclusion

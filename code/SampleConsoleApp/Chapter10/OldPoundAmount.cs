@@ -10,6 +10,11 @@ namespace SampleConsoleApp.Chapter10
 
         public OldPoundAmount(int pounds) => Count = pounds;
 
+        public static implicit operator OldShillingAmount(OldPoundAmount pounds)
+        {
+            return new OldShillingAmount(pounds.Count * 20);
+        }
+
         public int ToPence()
         {
             return Count * NumberOfPence;

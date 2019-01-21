@@ -26,6 +26,15 @@ namespace SampleConsoleApp.Chapter10
             int i = 3;
             decimal j = (decimal)h / (decimal)i;
             Console.WriteLine(j);
+
+            OldPoundAmount pounds = new OldPoundAmount(6);
+            OldShillingAmount amt = pounds;
+            Console.WriteLine(amt.Count);
+
+            OldShillingAmount shillings = new OldShillingAmount(132);
+            OldPoundAmount oldPounds = (OldPoundAmount)shillings;
+            Console.WriteLine(oldPounds.Count);
+
         }
     }
 }
