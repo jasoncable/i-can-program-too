@@ -103,9 +103,32 @@ To use the new explicit conversion:
     OldShillingAmount shillings = new OldShillingAmount(132);
     OldPoundAmount oldPounds = (OldPoundAmount)shillings;
 
-As you can see, we have the explicit conversion using integer division which truncates the excess decimal points.  These types of conversions should probably be avoided, as they result in a loss of data.  One final word, type casting need to exclusively be used for numeric values, as we have seen here, they also apply to classes that hold multiple types of data.
+As you can see, we have the explicit conversion using integer division which truncates the excess decimal points.  These types of conversions should probably be avoided, as they result in a loss of data.
+
+Either type of conversion can be specified in _either_ the source class or the target class.  This means that the implicit conversion _from_ `OldPoundAmount` _to_ `OldShillingAmount` can be in either one of those classes.  That means that you can create converts one of the framework types to a class that you created.
+
+    public static implicit operator OldPoundAmount(int pounds)
+    {
+        return new OldPoundAmount(pounds);
+    }
+
+To use it:
+
+    OldPoundAmount oldPoundAmount = 123;
+
+ One final word: type casting needs not to exclusively be used for numeric values, as we have seen here.  They also apply to classes that hold multiple different types of data.
 
 ## Indexers \(Instance\)
+
+You can implement indexers on a class just like we saw when using arrays.
+
+    string[] sa = { "a", "b", "c", "d" };
+    Console.WriteLine( sa[0] );
+    // prints "a"
+
+As you can see, the implementation looks a lot like properties, but there are differences.  You do not have to actually have an array as to store the data you are accessing, but in this case, we will.
+
+
 
 ## Events \(Instance\)
 

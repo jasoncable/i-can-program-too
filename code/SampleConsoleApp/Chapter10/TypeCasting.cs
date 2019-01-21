@@ -35,6 +35,9 @@ namespace SampleConsoleApp.Chapter10
             OldPoundAmount oldPounds = (OldPoundAmount)shillings;
             Console.WriteLine(oldPounds.Count);
 
+            OldPoundAmount oldPoundAmount = 123;
+            Console.WriteLine(oldPoundAmount.Count);
+
         }
     }
 }
