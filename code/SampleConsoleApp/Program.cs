@@ -39,7 +39,11 @@ namespace SampleConsoleApp
 
             //Chapter10.MoneyRunner.Run();
 
-            Chapter10.TypeCasting.RunMe();
+            //Chapter10.TypeCasting.RunMe();
+
+            Chapter10.Letter letter = new Chapter10.Letter();
+            char c = letter[2]; // get
+            letter[0] = 'a'; // set
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

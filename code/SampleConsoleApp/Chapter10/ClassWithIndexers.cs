@@ -4,8 +4,8 @@ namespace SampleConsoleApp.Chapter10
     public class Letter
     {
         private char[] _sa = { 'a', 'b', 'c', 'd' };
-        public Letter(char c) => Current = c;
-        public char Current { get; set; }
+        //public Letter(char c) => Current = c;
+        //public char Current { get; set; }
 
         public char this[int i]
         {

@@ -120,17 +120,62 @@ To use it:
 
 ## Indexers \(Instance\)
 
-You can implement indexers on a class just like we saw when using arrays.
+You can implement indexers on a class just like we saw when using arrays.  This can be helpful if you want extra logic around getting and setting array elements.
 
     string[] sa = { "a", "b", "c", "d" };
     Console.WriteLine( sa[0] );
     // prints "a"
 
-As you can see, the implementation looks a lot like properties, but there are differences.  You do not have to actually have an array as to store the data you are accessing, but in this case, we will.
+As you can see, the implementation looks a lot like properties, but there are subtle differences.  Note: you do not have to actually have to have an array to store the data you are accessing, but in this case, we will.
 
+    public class Letter
+    {
+        private char[] _sa = { 'a', 'b', 'c', 'd' };
+        public Letter(char c) => Current = c;
+        public char Current { get; set; }
 
+        public char this[int i]
+        {
+            get
+            {
+                return _sa[i];
+            }
+            set
+            {
+                _sa[i] = value;
+            }
+        }
+    }
+
+This class stores its data in a `char[]`.  The indexer is declared with the return data type, which can be anything including a new instance of the current class.  It uses the `this` keyword followed by brackets in which you specify the data type that the person using the code will pass in to retrieve or set the data.  Here's how to call the indexer we just created.  A get and a set are shown.
+
+    Letter letter = new Letter();
+    char c = letter[2]; // get
+    letter[0] = 'a'; // set
+
+If you are only implementing a set, you can use an expression-bodied declaration.
+
+    public char this[int i] => _sa[i];
+
+For implementing both a get and set with expression-bodied members:
+
+    public char this[int i]
+    {
+        get => _sa[i];
+        set => _sa[i] = value;
+    }
+
+A final note, you can have multiple indexers on a class as long as they take different data types \(in the area between the brackets `[]`\).
 
 ## Events \(Instance\)
+
+There are times when you will want one class to tell another class that something happened.  An example is that if you have a class that represents a button on a screen, another class may want to know if that button was clicked and perform an operation when it was clicked.
+
+First, you will need to create a class that has _events_ that others will want to listen to.  This class is called the _publisher_, as it publishes events that may be important.  It _raises_ events to notify others that an event took place.
+
+The second class is called the _subscriber_.  It listens for events to be raised on the first class and _handles_ them, meaning it does something with them.  Multiple classes can subscribe to one event on a publisher. 
+
+
 
 ## Finalizers \(Instance\)
 
