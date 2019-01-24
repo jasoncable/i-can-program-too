@@ -579,6 +579,18 @@ A> ### So Many Choices...
 A> 
 A> If you are creating code for others to use and your operation has parameters that may be set to default values, the use optional parameters.  There is such a thing has having too many parameters.  If you need to pass five or more parameters, consider creating a class to store and pass the parameters.  This is especially useful now that C# has object initializers, which we will cover when we talk about constructors.
 
+## Chaining Methods
+
+You can call more than one method at a time.  To understand this example remember that whitespace in C# only matters between a set of double quotes.  You may also call a string instance method on anything defined as a string.
+
+<<[Chaining Method Calls](cs/ch07-12.cs)
+
+In the first example, you will see that we start with `"My String"` and call the `ToLower()` method on it.  The return value from the `ToLower()` method is an instance of a string.  We next call the `ToUpper()` method on the _instance_ of `string` that is returned from `ToLower()`.  It continues on from there.  One thing to note is that `IndexOf()` returns a non-`string` datatype, an `int`.  We next call `ToString()` on the instance of the `int` returned by `IndexOf()`.
+
+You can keep calling instance or extension methods on the result of a previous method call for quite some time.  If you are stringing more than a few together, split them up on multiple lines for better readability.  It was split up here due to the available width of the printed page.
+
+The second example does the exact same thing as the first example except for the fact that each method return value is assigned to a variable.  In the end, method chaining is a convenient shortcut.  `s` in both methods ends up being set to `2`. 
+
 ## Extension Methods
 
 C# provides a way to place an extra instance method on a class without having to have access to its code.  These are called extension methods.  For the following examples, we will be using the following class.

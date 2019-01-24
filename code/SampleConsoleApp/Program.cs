@@ -41,9 +41,14 @@ namespace SampleConsoleApp
 
             //Chapter10.TypeCasting.RunMe();
 
-            Chapter10.Letter letter = new Chapter10.Letter();
-            char c = letter[2]; // get
-            letter[0] = 'a'; // set
+            //Chapter10.Letter letter = new Chapter10.Letter();
+            //char c = letter[2]; // get
+            //letter[0] = 'a'; // set
+
+            Chapter10.Events.RunMe();
+
+            //Chapter07.BigMethodCall.RunTheShortWay();
+            //Chapter07.BigMethodCall.RunTheShortWay();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

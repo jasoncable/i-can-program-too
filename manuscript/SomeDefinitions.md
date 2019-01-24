@@ -22,6 +22,7 @@ There are many terms that the computing world uses.  These may be classified as 
 * __.NET__ - \(pronounced in the US as "dot net"\).  An ecosystem that compromises multiple languages \(C#, VB.NET, F#, etc.\), multiple compilers \(such as Roslyn for C#\), an intermediate language specification \(CIL\), a common type system, a runtime \(such as RyuJIT\), base class libraries, and a comprehensive API to create computer programs.
 * __C#__ - \(pronounced in the US as "see sharp"\).  A general purpose programming language for .NET.
 * __cross-platform__ - software that has the ability to run on multiple processor platforms and/or operating system platforms.  Software must be recompiled if it is to run on another platform, except in the case of certain types of byte code that are run by a runtime environment such as .NET Core and Java.
+* __whitespace__ - The following characters all all considered to be whitespace: spaces, tabs, and newlines \(what you get when you press the _ENTER_ key\).
 
 ### Symbols Used in This Book
 
