@@ -57,7 +57,7 @@ typeof
 
 ### 3 types of using
 
-### using to release resources
+### using to release resources, IDisposable
 
 ### structs
     and they don't have parameterless .ctors
@@ -89,3 +89,6 @@ No file rename
 Serialization?
 
 deep/shallow (clones)
+
+## NO...
+covariance/contravariance, but found it on XmlNodeList iterator in .NET Core 2.1

@@ -212,9 +212,32 @@ This is just a very basic example of raising and handling events.  The whole pro
 
 ## Finalizers \(Instance\)
 
-A> Finally, we come to the last new type of member that can be on a class aside from classes that contain classes.  Finalizers should generally be avoided, but it is good to understand what they are and how to use them.  
+%% https://ericlippert.com/2015/05/18/when-everything-you-know-is-wrong-part-one/
 
+A> Finally, we come to the last new type of member that can be on a class aside from objects that contain other objects.  Finalizers should generally be avoided, but it is good to understand what they are and how to use them. 
 
+The purpose of a finalizer is to clean up any used resources that have not been cleaned up.  This means, closing open files, etc.  The tilde ~ signifies that this method is a finalizer.
+
+    public class FinalizeThis
+    {
+        ~FinalizeThis()
+        {
+        }
+    }
+
+A few facts about finalizers:
+
+* Finalizer methods take no arguments.
+* Don't create empty finalizer methods.
+* Never throw an exception from a finalizer.
+* Finalizers _may_ not always be called.
+* Finalizers _may_ be called more than once.
+* You cannot directly execute a finalizer method.
+* The garbage collector decides when to call a finalizer method.
+* You cannot predict when a finalizer will be called.
+* They can be very difficult to debug.
+
+In short, don't use finalizers.  To properly clean up used resources, you should be implementing IDisposable which is covered in a later chapter.
 
 ## Nested Types \(Static and Instance\)
 
