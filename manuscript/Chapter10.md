@@ -228,7 +228,6 @@ The purpose of a finalizer is to clean up any used resources that have not been 
 A few facts about finalizers:
 
 * Finalizer methods take no arguments.
-* Don't create empty finalizer methods.
 * Never throw an exception from a finalizer.
 * Finalizers _may_ not always be called.
 * Finalizers _may_ be called more than once.
@@ -236,9 +235,75 @@ A few facts about finalizers:
 * The garbage collector decides when to call a finalizer method.
 * You cannot predict when a finalizer will be called.
 * They can be very difficult to debug.
+* Don't create empty finalizer methods.
 
-In short, don't use finalizers.  To properly clean up used resources, you should be implementing IDisposable which is covered in a later chapter.
+In short, don't rely on finalizers.  To properly clean up used resources, you should be implementing IDisposable which is covered in a later chapter.  If created properly, a finalizer won't hurt, but might not help.
 
 ## Nested Types \(Static and Instance\)
 
+A class can contain other classes, not just as instance members, but as class definitions themselves.  There are times when you might want to only use a class from within another class.  You may also nest other types inside of classes such as enumerations and structs.  Here is an example.
+
+    public class ClassA
+    {
+        public class ClassB
+        {
+        }
+    }
+
+By default, the inner class will be private, only accessible from within the containing class.  You can only use a limited amount of access modifiers on the inner class.  Let's look at class instances for a little bit.  Just because a class is inside of another class does _not_ mean that you can access the members of the parent class.  The following will not work.
+
+    public class ClassA
+    {
+        private string _className = "Class A";
+
+        public class ClassB
+        {
+            public static void PrintClassName()
+            {
+                // leanpub-start-delete
+                Console.WriteLine(_className);
+                //leanpub-end-delete
+            }
+        }
+    }
+
+You _can_ call `private` instance members on `ClassA` from `ClassB`.  The reason the previous example does not work is because .NET treats both class definitions as _separately_ instantiable.  When you create an instance of `ClassA`, it does not automatically create an instance of `ClassB` and vice-versa.  To create an instance of `ClassB` so that it has access to `ClassA`'s instance members, you can do the following.  You are providing `ClassB` with access to an instance of `ClassA`.
+
+    public class ClassE
+    {
+        private string _className = "Class E";
+        public ClassF MyClassF { get; set; }
+
+        public ClassE()
+        {
+            MyClassF = new ClassF(this);
+        }
+
+        public class ClassF
+        {
+            private ClassE _parent;
+
+            public ClassF(ClassE instance)
+            {
+                _parent = instance;
+            }
+
+            public void PrintClassName()
+            {
+                Console.WriteLine(_parent._className);
+            }
+        }
+    }
+
+To call the `PrintClassName` method from elsewhere:
+
+    ClassE a = new ClassE();
+    a.MyClassF.PrintClassName();
+
+To create an instance of `ClassF` with a reference to the instance data on `ClassE`, you can pass an instance to `ClassE` to a constructor on `ClassF` and save the parameter so that it may be referred to in our instance of `ClassF`.  In the case of this example, we are passing the special keyword, `this`, to the `ClassF` constructor from the `ClassE` constructor.
+
+A> If you think this is a little confusing, it is because it is.  It is absolutely an awkward way of using nested classes.  My recommendation for using nested types is to only use them as `private` to hold data that you only want to use within your enclosing class.  Namespaces are for grouping sets of similar objects, classes should not be.
+
 ### Conclusion
+
+In our extended view of all of the members available within a class, we have seen the power of the C# language.  We have also seen how classes may be used in various circumstances.  To expand upon the usefulness of the C# type system, we will next endeavor to see how to compose objects by reusing other objects and crafting them to our needs. 

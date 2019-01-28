@@ -67,7 +67,7 @@ typeof
 
 ### task parallel library?
 
-### Partial classes
+### Partial classes and methods
 
 ### anonymous types
 

@@ -2,7 +2,7 @@
 
 ## Access Modifiers and Accessibility Types
 
-In general practice, you will use `public` and `private` about 99% of the time.  The full list here because the modifiers generally come up in job interviews.  The idea behind access modifiers make sense, but in practice, they are nothing but annoying.  The reason to have access modifiers:
+In general practice, you will use `public` and `private` about 90% of the time.  The idea behind access modifiers make sense, but in practice, they can be very annoying.  The reason to have access modifiers:
 
 * Enforce consistent use of APIs
 * Prevent use of undocumented APIs
