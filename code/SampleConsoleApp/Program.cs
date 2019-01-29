@@ -45,10 +45,12 @@ namespace SampleConsoleApp
             //char c = letter[2]; // get
             //letter[0] = 'a'; // set
 
-            Chapter10.Events.RunMe();
+            //Chapter10.Events.RunMe();
 
             //Chapter07.BigMethodCall.RunTheShortWay();
             //Chapter07.BigMethodCall.RunTheShortWay();
+
+            Chapter11.MultipleClassInheritance.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

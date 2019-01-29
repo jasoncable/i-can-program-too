@@ -41,8 +41,11 @@ One last note before we see a real example of basic inheritance: a class cannot 
 
 ## A Real Example
 
+Let's see how we can model some real life objects.  Here we are modeling a few musical instruments.  The base class is `Instrument`.  `StringInstrument` inherits from `Instrument` and `Violin` and `Piano` are both `StringInstrument`s.
 
+<<[Inherited Instruments](cs/ch11-01.cs)
 
+On `Instrument` we implement a property called `Name`.  It has a `protected set` which only allows us to set the value on a _derived_ object.  We set it on each object here.  It is set with the explicit `base.`, which is not required, but provides a bit of clarity as to the origin of the property.
 
 
 
