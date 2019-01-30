@@ -14,7 +14,7 @@ public class StringInstrument : Instrument
 {
     public StringInstrument()
     {
-        base.Name = "Strings Section";
+        base.Name = "String Instrument";
     }
 
     public virtual void Pluck() { }

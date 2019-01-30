@@ -1,4 +1,6 @@
 ﻿using System;
+using FluentAssertions;
+
 namespace SampleConsoleApp.Chapter11
 {
     public class MultipleClassInheritance
@@ -8,6 +10,38 @@ namespace SampleConsoleApp.Chapter11
             Piano p = new Piano();
             Console.WriteLine(p.Name);
             Console.WriteLine(p.ToString());
+
+            Instrument[] ia = new Instrument[2];
+            ia[0] = new Violin();
+            ia[1] = new Piano();
+
+            ia[0].Should().BeOfType<Violin>();
+            ia[0].Should().BeAssignableTo<StringInstrument>();
+
+            object o = new Piano();
+
+            Piano myPiano = (Piano)ia[1];
+
+            Violin myViolin = ia[1] as Violin;
+            myViolin.Should().BeNull();
+
+            bool isPiano = ia[0] is Piano;
+            isPiano.Should().BeFalse();
+
+            bool isAnotherPiano = ia[0].GetType() == typeof(Piano);
+            isAnotherPiano.Should().BeFalse();
+
+            //bool isAStringInstrument = ia[0].GetType().IsAssignableFrom(typeof(Violin));
+
+            bool isAThirdPiano = typeof(Piano).IsInstanceOfType(ia[0]);
+            isAThirdPiano.Should().BeFalse();
+
+
+        }
+
+        public static void PartyTime(Instrument instrument)
+        {
+            instrument.Play();
         }
     }
 
@@ -27,7 +61,7 @@ namespace SampleConsoleApp.Chapter11
     {
         public StringInstrument()
         {
-            base.Name = "Strings Section";
+            base.Name = "String Instrument";
         }
 
         public virtual void Pluck() { }
