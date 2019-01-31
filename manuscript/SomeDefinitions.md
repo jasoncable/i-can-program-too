@@ -32,7 +32,8 @@ There are many terms that the computing world uses.  These may be classified as 
 | **$** | dollar sign |
 | **^** | caret |
 | **\[\]** | left/right bracket |
-| **{}** | left/right brace |
+| **\<\>** | left/right angle bracket _or_ greater than/less than |
+| **{}** | left/right brace _or_ curly brackets |
 | **\(\)** | left/right parenthesis.  Plural form is parentheses |
 | **-** | dash |
 | **\|** | pipe |
@@ -41,6 +42,8 @@ There are many terms that the computing world uses.  These may be classified as 
 | **#** | pound _or_ hash |
 | **;** | semicolon |
 | **.** | dot |
+| **\\** | backslash |
+| **/** | slash _or_ forward slash |
 
 ### System Requirements
 

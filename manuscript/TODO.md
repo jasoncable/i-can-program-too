@@ -45,10 +45,6 @@ typeof
 
 ### yield return
 
-### String Interpolation
-
-### .ToString()
-
 ## Enumerations
 
 ### ArrayList and Hashtable

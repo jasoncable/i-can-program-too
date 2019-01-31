@@ -575,9 +575,15 @@ The following shows using named parameters with optional parameters.
         return $"{first} {middle} {last}";
     }
 
-A> ### So Many Choices...
-A> 
-A> If you are creating code for others to use and your operation has parameters that may be set to default values, the use optional parameters.  There is such a thing has having too many parameters.  If you need to pass five or more parameters, consider creating a class to store and pass the parameters.  This is especially useful now that C# has object initializers, which we will cover when we talk about constructors.
+A> You have just seen _string interpolation_ in use!  Prefixing a string's left-hand double quote with a dollar sign, `$`, allows us to embed variables within the string between braces.  In the last line of code above, you can see how much easier it is to simply use the `$""` instead of `return first + " " + middle + " " + last;`  String interpolation is actually a compiler trick.  It simply is transformed into a method call, a static method on `string`: `String.Format()`.  The equivalent way we _used_ to do it will show you that interpolation is a little easier and more readable.  Also note that nulls with the braces will be replaced with a `String.Empty`.
+A>
+A> `return String.Format("{0} {1} {2}", first, middle, last);`
+A>
+A>`String.Format` takes a formatting string and a params array of objects \(any .NET type\).
+
+### So Many Choices...
+
+If you are creating code for others to use and your operation has parameters that may be set to default values, the use optional parameters.  There is such a thing has having too many parameters.  If you need to pass five or more parameters, consider creating a class to store and pass the parameters.  This is especially useful now that C# has object initializers, which we will cover when we talk about constructors.
 
 ## Chaining Methods
 

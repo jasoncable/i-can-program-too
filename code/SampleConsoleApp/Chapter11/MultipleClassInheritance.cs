@@ -11,7 +11,7 @@ namespace SampleConsoleApp.Chapter11
             Console.WriteLine(p.Name);
             Console.WriteLine(p.ToString());
 
-            Instrument[] ia = new Instrument[2];
+            Instrument[] ia = new Instrument[3];
             ia[0] = new Violin();
             ia[1] = new Piano();
 
@@ -36,6 +36,14 @@ namespace SampleConsoleApp.Chapter11
             bool isAThirdPiano = typeof(Piano).IsInstanceOfType(ia[0]);
             isAThirdPiano.Should().BeFalse();
 
+
+            Piano myPianoNull = (Piano)ia[2]; // null
+            Violin myViolinNull = ia[2] as Violin; // null
+            bool isPianoNull = ia[2] is Piano; // false
+            //bool isAnotherPianoNull = ia[2].GetType() == typeof(Piano); // exception
+            bool isAThirdPianoNull = typeof(Piano).IsInstanceOfType(ia[2]); // false
+
+            Console.WriteLine();
 
         }
 
@@ -94,5 +102,17 @@ namespace SampleConsoleApp.Chapter11
         }
 
         public void Strike() { }
+    }
+
+    public class OrchestraException : Exception
+    {
+    }
+
+    public class StringsException : OrchestraException
+    {
+    }
+
+    public class ViolinsException : StringsException
+    {
     }
 }

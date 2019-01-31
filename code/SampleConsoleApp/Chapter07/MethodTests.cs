@@ -43,6 +43,7 @@ namespace SampleConsoleApp.Chapter07
             string middle = "Q.",
             string last = "Doe")
         {
+            //return String.Format("{0} {1} {2}", first, middle, last);
             return $"{first} {middle} {last}";
         }
     }

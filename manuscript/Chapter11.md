@@ -31,6 +31,12 @@ In this example we are overriding the `ToString()` method.  The default implemen
 
 If we create an instance of the `MyObject` class and class `.ToString()` on it, a `string` with the value of `"This is my class."` will be returned.  Can we still call `.GetHashCode()` on our new object?  Yes.  It is not overridden, but it doesn't _have_ to be.  A `public virtual` method still still exists on our new class because it inherits from `System.Object`.  
 
+A> We saw _string interpolation_ in a previous chapter.  Let's see how important `.ToString()` is in .NET.  In the following example three things happen.  
+A>
+A> 1. The expression is evaluated.
+A> 2. If the expression is null, replace the bracketed expression with `String.Empty`.
+A> 3. If the expression is a string or its evaluation returns a string, replace the bracketed expression with that string.  Otherwise, call `.ToString()` on the resulting object.
+
 You may have noticed that we did not put a constructor on our class.  Constructors are not inherited but you may refer to a constructor on the base class using the `base` keyword.
 
     public MyObject() : base() { }
@@ -55,7 +61,7 @@ Continuing this example... in real life an orchestra is a collection of instrume
 
 A> For absolute clarity and transparency...  a piano is in fact both a string instrument _and_ a percussion instrument.  It can also be plucked, but not usually.
 
-    Instrument[] ia = new Instrument[2];
+    Instrument[] ia = new Instrument[3];
     ia[0] = new Violin();
     ia[1] = new Piano();
 
@@ -93,7 +99,17 @@ In this case, the second element of our array is an instance of the `Piano` obje
     bool isAnotherPiano = ia[0].GetType() == typeof(Piano);
     bool isAThirdPiano = typeof(Piano).IsInstanceOfType(ia[0]);
 
-%% See how each of these methods deals with NULL
+Let's see how each of these methods works with a null value.  `ia[2]` is null as we have not set it.  Each line has a comment that describes the result.
+
+    Piano myPianoNull = (Piano)ia[2]; // null
+    Violin myViolinNull = ia[2] as Violin; // null
+    bool isPianoNull = ia[2] is Piano; // false
+    bool isAnotherPianoNull = ia[2].GetType() == typeof(Piano); // exception
+    bool isAThirdPianoNull = typeof(Piano).IsInstanceOfType(ia[2]); // false
+
+### Extending It to Exceptions
+
+We can now see how all of this inheritance stuff works to allow us to create our own exceptions.  You will remember that all exception classes must be somehow derived from `System.Exception`.
 
 
 ## Interfaces
