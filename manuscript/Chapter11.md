@@ -109,8 +109,57 @@ Let's see how each of these methods works with a null value.  `ia[2]` is null as
 
 ### Extending It to Exceptions
 
-We can now see how all of this inheritance stuff works to allow us to create our own exceptions.  You will remember that all exception classes must be somehow derived from `System.Exception`.
+We can now see how all of this inheritance stuff works to allow us to create our own exceptions.  You will remember that all exception classes must be derived from `System.Exception`.
 
+    public class MyException : Exception
+    {
+        private string _message;
+
+        public MyException(string message) => _message = message;
+
+        public override string Message => _message;
+    }
+
+This creates a simple exception with one constructor that takes a string.  It does _not_ however set the message via the `Message` property.  That cannot be overridden.  We are only allowed to override the `get` of the `Message` property.  That requires us to save the string that we are passing in to a `private string` _field_.
+
+For a full list of the overridable members go to <https://docs.microsoft.com/en-us/dotnet/api/> and select your desired framework version.  Next, search for `System.Exception`.  You will find in-depth information on .NET exceptions and how they should be used.  Visual Studio also provides auto-complete to help us find members that can be overridden.  Just start typing `override` in the proper location and it will show you the members that may be overridden.
+
+## Sealed
+
+In our example of an orchestra, we might not want to allow people to implement classes from our specific instrument classes.  For example, we might not want anyone to derive a class from the `Piano` class.  To do that we use the `sealed` keyword.
+
+    public sealed class Piano : StringInstrument
+    {
+    }
+
+Now no class can use `Piano` as its base class.  What if we want to just prevent one member from being overridden?  We can use the `sealed` keyword at the member level.  Let's say that we want to allow others to derive from the `Piano` class to specify types of brands of pianos?  They are all played the same way, but other properties and methods may be different. 
+
+    public class Piano : StringInstrument
+    {
+        public sealed override void Play() { }
+    }
+
+The `sealed` modifier is an extremely easy way to prevent others from both deriving classes from your classes or providing alternate implementations of a method or property.  `sealed` may be used on `class` or on a method or property that overrides a `virtual` method or property from a base class.  To prevent others from implementing a method or property on a class that you created that is not from a class yours derives from, you simply don't mark it with `virtual`.
+
+## Abstract Classes and Members
+
+What if we want to _require_ someone to implement a class or property that we have defined?  For that, we use `abstract` classes and members.  `abstract` can be used on classes, methods, events, properties, and indexers.
+
+Going back to our orchestral instruments example, we really only want to perform actions on things like `Piano` and `Violin`.  Alone, `Instrument` and `StringInstrument` don't really do much other than to define which members we should implement in `Piano` and `Violin`.  Marking the `Instrument` and `String Instrument` classes as `abstract` prevents those classes from being instantiated.  Upcasting and downcasting to and from these types are still allowed, but you can't directly create an instance of them.  You can only create an instance of `Piano` or `Violin`.
+
+When marking members `abstract` you do not provide an _implementation_.  This means that the classes derived from the abstract class must implement those members.  Here is an example of what the unimplemented members look like.   Here we see a property and a method that don't provide an implementation.
+
+    public abstract class AbstractTest
+    {
+        public abstract string StringProp { get; set; }
+        public abstract void RunMe();
+    }
+
+To declare a member as abstract, you must declare the class as abstract.  Not every member in an abstract class must be marked as abstract.  When you inherit an abstract class you _must_ implement every abstract member, _unless_ your class is another abstract class.  For example, if we declare `Instrument` to be an abstract class and `StringInstrument` abstract, `StringInstrument` does not have to implement any of `Instrument`'s abstract members.  `Piano` though is required to implement all of the abstract members on `Instrument` and `StringInstrument` as it is _not_ an abstract class.  Let's see an example.
+
+<<[Extending the Instrument Example](cs/ch11-02.cs)
+
+We also added the `ConcertGrandPiano` object which, as you see, does not implement any of the `abstract` members that are higher up the inheritance chain.  That is because they have already been implemented by the classes that have been derived through to `ConvertGrandPiano`.
 
 ## Interfaces
 
@@ -118,11 +167,6 @@ We can now see how all of this inheritance stuff works to allow us to create our
 >
 > -Standard ECMA-334: C# Language Specification, 1st Edition
 
-### abstract, interfaces
 
-### multiple-inheritance
 
-### overriding members
-
-### sealed
-
+### Conclusion

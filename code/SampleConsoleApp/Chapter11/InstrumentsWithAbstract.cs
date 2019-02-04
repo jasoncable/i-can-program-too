@@ -1,9 +1,9 @@
 ﻿using System;
 using FluentAssertions;
 
-namespace SampleConsoleApp.Chapter11
+namespace SampleConsoleApp.Chapter11a
 {
-    public class MultipleClassInheritance
+    public class InstrumentsWithAbstract
     {
         public static void RunMe()
         {
@@ -44,35 +44,37 @@ namespace SampleConsoleApp.Chapter11
             bool isAThirdPianoNull = typeof(Piano).IsInstanceOfType(ia[2]); // false
 
             Console.WriteLine();
-
-        }
-
-        public static void PartyTime(Instrument instrument)
-        {
-            instrument.Play();
         }
     }
 
-    public class Instrument
+    public abstract class AbstractTest
+    {
+        public abstract string StringProp { get; set; }
+        public abstract void RunMe();
+    }
+
+    // ----------- //
+
+    public abstract class Instrument
     {
         public string Name { get; protected set; }
 
-        public virtual void Play() { }
+        public abstract void Play();
 
-        public override string ToString()
+        public sealed override string ToString()
         {
             return Name;
         }
     }
 
-    public class StringInstrument : Instrument
+    public abstract class StringInstrument : Instrument
     {
-        public StringInstrument()
+        protected StringInstrument()
         {
             base.Name = "String Instrument";
         }
 
-        public virtual void Pluck() { }
+        public abstract void Pluck();
     }
 
     public class Violin : StringInstrument
@@ -82,7 +84,7 @@ namespace SampleConsoleApp.Chapter11
             base.Name = "Violin";
         }
 
-        public override void Play() { }
+        public sealed override void Play() { }
 
         public override void Pluck() { }
     }
@@ -94,9 +96,9 @@ namespace SampleConsoleApp.Chapter11
             base.Name = "Piano";
         }
 
-        public override void Play() { }
+        public sealed override void Play() { }
 
-        public override void Pluck()
+        public sealed override void Pluck()
         {
             throw new Exception("I'm not usually plucked.");
         }
@@ -104,16 +106,12 @@ namespace SampleConsoleApp.Chapter11
         public void Strike() { }
     }
 
-
-    public class OrchestraException : Exception
+    public class ConcertGrandPiano : Piano
     {
+        public ConcertGrandPiano() : base()
+        {
+            base.Name = "Concert Grand Piano";
+        }
     }
 
-    public class StringsException : OrchestraException
-    {
-    }
-
-    public class ViolinsException : StringsException
-    {
-    }
 }

@@ -50,7 +50,11 @@ namespace SampleConsoleApp
             //Chapter07.BigMethodCall.RunTheShortWay();
             //Chapter07.BigMethodCall.RunTheShortWay();
 
-            Chapter11.MultipleClassInheritance.RunMe();
+            //Chapter11.MultipleClassInheritance.RunMe();
+
+            //Chapter11.MoreExceptions.RunMe();
+
+            Chapter11a.InstrumentsWithAbstract.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();
