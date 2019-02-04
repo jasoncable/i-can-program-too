@@ -54,7 +54,9 @@ namespace SampleConsoleApp
 
             //Chapter11.MoreExceptions.RunMe();
 
-            Chapter11a.InstrumentsWithAbstract.RunMe();
+            //Chapter11a.InstrumentsWithAbstract.RunMe();
+
+            Chapter11b.InstrumentsWithInterfaces.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

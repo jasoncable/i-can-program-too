@@ -179,7 +179,75 @@ A> Not being a computer scientist, when I encountered this statement I was thoro
 
 An interface is special C# type that specifies methods, properties, indexers, or events that must be implemented on a class that _implements_ the interface.  They are used to force classes to implement named members.  Interfaces do _not_ provide implementations for their members, except with C# 8 and with it should only do so in extremely limited circumstances.
 
-A class an implement as many interfaces as you want, but only one class.  
+A class can implement as many interfaces as you want, but only one class.  Interfaces at the namespace level default to `internal` and also may be `public`.  Interface members default to `public` and you cannot specify an access modifier.  You also don't provide an implementation for interface members.  In our previous instrument example we created an abstract class, `StringInstrument`.  This class doesn't really do anything.  We will change it to an interface.  Interfaces always start with a capital `I`.  It's a globally used convention.
+
+    public interface IStringInstrument
+    {
+        void Pluck();
+    }
+
+    public interface IPercussionInstrument
+    {
+        void Strike();
+    }
+
+The addition of `IPercussionInstrument` will let us view `Piano` as both an `IStringInstrument` and an `IPercussionInstrument`.
+
+    public class Piano : Instrument, IStringInstrument, IPercussionInstrument
+    {
+        public Piano() : base()
+        {
+            base.Name = "Piano";
+        }
+
+        public sealed override void Play() { Console.WriteLine("sealed"); }
+
+        public void Pluck()
+        {
+            throw new Exception("I'm not usually plucked.");
+        }
+
+        public void Strike() { }
+    }
+
+As you can see here, we added `IStringInstrument` and `IPercussionInstrument` _after_ the base class in our class definition.  The base class and interfaces are separated by commas.  The class now implements the members of _both_ interfaces, `Pluck()` and `Strike()`.  We can't seal these methods because they don't come from classes that our class is _derived_ from.  We can however implement an interface on an abstract class.
+
+    public interface IPlayable
+    {
+        void Play();
+    }
+
+    public abstract class Instrument : IPlayable
+    {
+        public abstract void Play();
+    }
+
+Just like abstract classes, we can't create an instance of an interface, but we _can_ use them using upcasting and downcasting which we will see in a second.  First, let's look at an interface that implements another interface and a class that implements the derived interface.
+
+    public interface IPlayable
+    {
+        void Play();
+    }
+
+    public interface IPlayableToo : IPlayable
+    {
+        void PlayAgain();
+    }
+
+    public class Instrument : IPlayableToo
+    {
+        public void Play() { throw new NotImplementedException(); }
+        public void PlayAgain() { throw new NotImplementedException(); }
+    }
+
+In this case, `Instrument` is no longer a sealed class and is required to provide an implementation for each inherited member.  In this case, the implementation would be code placed within the braces, `{}`.  Not placing code within the braces is perfectly valid.  It may be better to place a `throw new NotImplementedException();` within the braces if it is not implemented.
+
+## Overriding Sealed Members
+
+    public class ConcertGrandPiano : Piano
+    {
+        public new void Play() { Console.WriteLine("new"); }
+    }
 
 ## Providing a Default Implementation
 

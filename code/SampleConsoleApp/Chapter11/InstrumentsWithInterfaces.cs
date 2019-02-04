@@ -5,14 +5,40 @@ namespace SampleConsoleApp.Chapter11b
     {
         public static void RunMe()
         {
+            ConcertGrandPiano cgp = new ConcertGrandPiano();
+            Piano p = cgp;
+            p.Play();
+            cgp.Play();
+            IStringInstrument ist = cgp;
         }
     }
 
-    public abstract class Instrument
+    public interface IStringInstrument
+    {
+        void Pluck();
+    }
+
+    public interface IPercussionInstrument
+    {
+        void Strike();
+    }
+
+    public interface IPlayable
+    {
+        void Play();
+    }
+
+    //public interface IPlayableToo : IPlayable
+    //{
+    //    void PlayAgain();
+    //}
+
+    public abstract class Instrument : IPlayable //IPlayableToo
     {
         public string Name { get; protected set; }
 
         public abstract void Play();
+        //public abstract void PlayAgain(); 
 
         public sealed override string ToString()
         {
@@ -20,17 +46,7 @@ namespace SampleConsoleApp.Chapter11b
         }
     }
 
-    public abstract class StringInstrument : Instrument
-    {
-        protected StringInstrument()
-        {
-            base.Name = "String Instrument";
-        }
-
-        public abstract void Pluck();
-    }
-
-    public class Violin : StringInstrument
+    public class Violin : Instrument, IStringInstrument
     {
         public Violin() : base()
         {
@@ -39,19 +55,19 @@ namespace SampleConsoleApp.Chapter11b
 
         public sealed override void Play() { }
 
-        public override void Pluck() { }
+        public void Pluck() { }
     }
 
-    public class Piano : StringInstrument
+    public class Piano : Instrument, IStringInstrument, IPercussionInstrument
     {
         public Piano() : base()
         {
             base.Name = "Piano";
         }
 
-        public sealed override void Play() { }
+        public sealed override void Play() { Console.WriteLine("sealed"); }
 
-        public sealed override void Pluck()
+        public void Pluck()
         {
             throw new Exception("I'm not usually plucked.");
         }
@@ -65,6 +81,8 @@ namespace SampleConsoleApp.Chapter11b
         {
             base.Name = "Concert Grand Piano";
         }
+
+        public new void Play() { Console.WriteLine("new"); }
     }
 
 }

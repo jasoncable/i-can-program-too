@@ -88,3 +88,5 @@ covariance/contravariance
 > _Go to help._
 >
 > V.B. ca. 1994
+
+Custom sorter for generic dictionary that implements dictionary-book-type sort
