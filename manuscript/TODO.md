@@ -84,3 +84,7 @@ deep/shallow (clones)
 
 ## NO...
 covariance/contravariance
+
+> _Go to help._
+>
+> V.B. ca. 1994

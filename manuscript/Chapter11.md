@@ -179,7 +179,7 @@ A> Not being a computer scientist, when I encountered this statement I was thoro
 
 An interface is special C# type that specifies methods, properties, indexers, or events that must be implemented on a class that _implements_ the interface.  They are used to force classes to implement named members.  Interfaces do _not_ provide implementations for their members, except with C# 8 and with it should only do so in extremely limited circumstances.
 
-A class an implement as many interfaces as you want, but can only one class.  
+A class an implement as many interfaces as you want, but only one class.  
 
 ## Providing a Default Implementation
 
