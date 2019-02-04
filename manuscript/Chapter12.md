@@ -1,1 +1,1 @@
-# Enumerations
+# Enumerations and Structs

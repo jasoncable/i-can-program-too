@@ -124,6 +124,8 @@ This creates a simple exception with one constructor that takes a string.  It do
 
 For a full list of the overridable members go to <https://docs.microsoft.com/en-us/dotnet/api/> and select your desired framework version.  Next, search for `System.Exception`.  You will find in-depth information on .NET exceptions and how they should be used.  Visual Studio also provides auto-complete to help us find members that can be overridden.  Just start typing `override` in the proper location and it will show you the members that may be overridden.
 
+A> Custom exception classes should always be named with the word `Exception` at the end.
+
 ## Sealed
 
 In our example of an orchestra, we might not want to allow people to implement classes from our specific instrument classes.  For example, we might not want anyone to derive a class from the `Piano` class.  To do that we use the `sealed` keyword.
@@ -161,12 +163,26 @@ To declare a member as abstract, you must declare the class as abstract.  Not ev
 
 We also added the `ConcertGrandPiano` object which, as you see, does not implement any of the `abstract` members that are higher up the inheritance chain.  That is because they have already been implemented by the classes that have been derived through to `ConvertGrandPiano`.
 
+A> Static classes cannot be inherited.  They are implicitly sealed.  They only derive from the `System.Object` class.  Static methods may be placed on a class and called from a derived class, but they may not be overridden.  If we place a static method on `Piano` called `.Tune()`, we can call by doing `Piano.Tune()` or `ConcertGrandPiano.Tune()`.  Static methods also cannot be labeled as `abstract`, `sealed`, or `virtual`.
+
+We have seen that abstract classes are themselves in fact, classes.  We can't create instances of abstract classes directly, only through their non-abstract derived classes.  Abstract classes can also provide implementations of non-abstract members.  Declaring a member as abstract forces implementers to create an implementation for our member.  One class also can't directly inherit multiple classes.
+
+The next step to controlling the implementation of classes is to look at interfaces.
+
 ## Interfaces
 
 > _"An interface defines a contract."_
 >
 > -Standard ECMA-334: C# Language Specification, 1st Edition
 
+A> Not being a computer scientist, when I encountered this statement I was thoroughly confused.  I think most people would be confused over the least helpful piece of documentation ever written.  Let's see what an interface _really_ is.
 
+An interface is special C# type that specifies methods, properties, indexers, or events that must be implemented on a class that _implements_ the interface.  They are used to force classes to implement named members.  Interfaces do _not_ provide implementations for their members, except with C# 8 and with it should only do so in extremely limited circumstances.
+
+A class an implement as many interfaces as you want, but can only one class.  
+
+## Providing a Default Implementation
+
+C# 8.0 allows us to specify a default implementation of a member on an interface.
 
 ### Conclusion

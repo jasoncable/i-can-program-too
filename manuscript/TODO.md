@@ -14,9 +14,7 @@ stringbuilder
 
 # globalization/localization
     culture with numbers (, vs .) and dates
-
-enumerations
-
+    
 fluent operations
 
 ## The One Year Problem
@@ -26,8 +24,6 @@ method "in" modifier: https://docs.microsoft.com/en-us/dotnet/csharp/language-re
 typeof
 
 ### attributes on classes and method parameters https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/
-
-### is and as
 
 ### type checks
 
@@ -87,4 +83,4 @@ Serialization?
 deep/shallow (clones)
 
 ## NO...
-covariance/contravariance, but found it on XmlNodeList iterator in .NET Core 2.1
+covariance/contravariance
