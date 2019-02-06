@@ -1,15 +1,32 @@
 ﻿using System;
+
 namespace SampleConsoleApp.Chapter11b
 {
     public class InstrumentsWithInterfaces
     {
         public static void RunMe()
         {
-            ConcertGrandPiano cgp = new ConcertGrandPiano();
-            Piano p = cgp;
-            p.Play();
-            cgp.Play();
-            IStringInstrument ist = cgp;
+            Instrument[] tinyOrchestra =
+            {
+                new Violin(),
+                new Violin(),
+                new ConcertGrandPiano()
+            };
+
+            foreach (IPlayable playIt in tinyOrchestra)
+            {
+                if (playIt is IStringInstrument)
+                    playIt.Play();
+            }
+
+            foreach(Instrument instrument in tinyOrchestra)
+            {
+                Piano p = instrument as Piano;
+                if(p != null)
+                {
+                    Console.WriteLine($"{p.Name}");
+                }
+            }
         }
     }
 
@@ -65,7 +82,8 @@ namespace SampleConsoleApp.Chapter11b
             base.Name = "Piano";
         }
 
-        public sealed override void Play() { Console.WriteLine("sealed"); }
+
+        public sealed override void Play() { }  //Console.WriteLine("sealed"); }
 
         public void Pluck()
         {
@@ -82,7 +100,7 @@ namespace SampleConsoleApp.Chapter11b
             base.Name = "Concert Grand Piano";
         }
 
-        public new void Play() { Console.WriteLine("new"); }
+        //public new void Play() { Console.WriteLine("new"); }
     }
 
 }

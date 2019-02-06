@@ -244,13 +244,69 @@ In this case, `Instrument` is no longer a sealed class and is required to provid
 
 ## Overriding Sealed Members
 
+What happens if you want to override a sealed member in a derived class?  It turns out that it is possible using the `new` keyword as below.  There is one caveat, however.  The member on the class that implements it with `new` is no longer `virtual` and has that member has no direct ties to the base's implementation.
+
+    public class Piano
+    {
+        public sealed override void Play() 
+        { 
+            Console.WriteLine("sealed"); 
+        }
+    }
+
     public class ConcertGrandPiano : Piano
     {
-        public new void Play() { Console.WriteLine("new"); }
+        public new void Play() 
+        { 
+            Console.WriteLine("new"); 
+        }
+    }
+
+You only need to add the `new` keyword into the method declaration to _hide_ the sealed implementation.  The only thing you are doing is hiding the base's implementation.  If you upcast and try to call the method, it will __not__ call the implementation of that member on the class that you instantiated, as seen below.  The output is in the comments.
+
+    ConcertGrandPiano cgp = new ConcertGrandPiano();
+    Piano p = cgp;
+    p.Play(); // "sealed"
+    cgp.Play(); // "new"
+
+There may be times when you need to use the `new` keyword to hide a base implementation of a member, but be careful because it _will_ most likely cause a software bug at some point in time.
+
+## Coming Full Circle
+
+Let's look at our full example with what we have learned so far.  As you will see we have a mix of interfaces, an abstract class, and sealed and abstract members.
+
+<<[Full Example](cs/ch11-03.cs)
+
+The following uses our code.  It is a simple example, but it does show the power of inheritance, interfaces, and C#'s OO capabilities.
+
+    Instrument[] tinyOrchestra =
+    {
+        new Violin(),
+        new Violin(),
+        new ConcertGrandPiano()
+    };
+
+    foreach (IPlayable playIt in tinyOrchestra)
+    {
+        if (playIt is IStringInstrument)
+            playIt.Play();
+    }
+
+    foreach(Instrument instrument in tinyOrchestra)
+    {
+        Piano p = instrument as Piano;
+        if(p != null)
+        {
+            Console.WriteLine($"{p.Name}");
+        }
     }
 
 ## Providing a Default Implementation
 
-C# 8.0 allows us to specify a default implementation of a member on an interface.
+C# 8.0 allows us to specify a default implementation of a member on an interface.  There is one and only one time when you should use this construct.  If you have a public API that you are maintaining and need to add a member to an interface you _may_ use it.  Throughout C#'s history, adding an interface member has meant that the person implementing that interface would have to change their existing code to implement the new members.  Traditionally, people have simply refused to upgrade the third-party libraries that they were using if such a breaking change occurred.  .NET software development is accelerating at a quick pace, the number of shared libraries are increasing, and people are doing better at keeping software up-to-date.  Let's see how this works...
+
+%% JLC - Provide an example.
 
 ### Conclusion
+
+We have seen a thorough overview of the capabilities of class inheritance and interfaces.  Books have been written about constructing software and programs through object-oriented principles and practices.  C# _is_ a modern, full-featured OO language, yet we need to be mindful of its power.  The more complex that you make your object models, the more difficult they may be to maintain and difficult for others to use.  The more you use restrictive access modifiers the less useful your code becomes.  Especially in today's open programming world, people _will_ want to use your code for reasons other than what you expected.  You must promote ease of use and comprehensive documentation along with readable code.  Don't do complex things because they look intricate and sophisticated.  In the end you will end up with a pile of convoluted, unusable, unstable code.  Simple code is sexy code.  Complex code is aggravating and often egregious.
