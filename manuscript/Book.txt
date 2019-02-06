@@ -1,6 +1,7 @@
 {frontmatter}
 PreReleaseNote.md
 Introduction.md
+WordToTheReader.md
 SomeDefinitions.md
 {mainmatter}
 Chapter01.md
