@@ -19,6 +19,7 @@
     <Folder Include="Chapter08\" />
     <Folder Include="Chapter10\" />
     <Folder Include="Chapter11\" />
+    <Folder Include="Chapter12\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.5.3" />
