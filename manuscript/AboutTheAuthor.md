@@ -14,7 +14,7 @@ Jason has a Bachelor of Arts degree in Psychology from Ashford University.
 
 <https://github.com/jasoncable/i-can-program-too/>
 
-<https://leanpub.com/icanprogramtoo/>
+<https://leanpub.com/discover-programming-csharp/>
 
 %% <jason@jasoncable.com>
 

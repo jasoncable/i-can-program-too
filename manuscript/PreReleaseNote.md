@@ -31,7 +31,6 @@ A> The code in this book is being developed using .NET Core 3.0 __PREVIEW__ and 
 
 * `unsafe` code.
 * How to mutate strings.
-* Boxing and unboxing, except in passing.
 * `ArrayList` and `Hashtable` objects, prefer generic types.
 * Floating point numbers
 * Old school threading, prefer async/await, etc.
