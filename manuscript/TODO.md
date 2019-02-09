@@ -82,7 +82,11 @@ Serialization?
 
 deep/shallow (clones)
 
+Custom sorter for generic dictionary that implements dictionary-book-type sort
+
+generic method: Enum.TryParse<T>
+
 ## NO...
 covariance/contravariance
 
-Custom sorter for generic dictionary that implements dictionary-book-type sort
+
