@@ -93,7 +93,43 @@ Enumerations, being value types, can also be declared as being nullable.  A null
 
 ## Flags
 
-Multiple values in lieu of `InstrumentType`.
+There are times when you will need to assign multiple values from one enumeration to a variable.  You can do this with an array, but it is equally as easy to use the `FlagsAttribute` attribute.
+
+In C#, attributes are used to provide extra information about an object, member, or parameter.  Attribute names always end in the word `Attribute`.  When using an attribute you do not need to include the word `Attribute`.  We will look at attributes in length later, but for now, we will do the following to add the `FlagsAttribute` to an enumeration like this:
+
+    [Flags]
+    public enum InstrumentFamily
+    {
+        None = 0,
+        String = 1,
+        Percussion = 2,
+        Woodwind = 4,
+        Brass = 8
+    }
+
+The flags attribute tells C# to treat each enumeration member _bitwise_.  That is, each value is represented by a binary position.  Each value is a power of `2`, starting with `1` or `2^0^`.  In binary, each enumeration member is represented by having one bit _on_.  The following binary values would represent the values `1`, `2`, `4`, and `8`, respectively.
+
+    00000001
+    00000010
+    00000100
+    00001000
+
+With a flags enum, we can combine these values to allow us to have multiple values pointed to from one enum instance.  A piano is both a string instrument and a percussion instrument, therefore it would be the combination of those binary representations.
+
+    00000011
+
+The good news is that we don't have to manually do this binary math.  C# provides features to do this.  Let's use a more useful example that you might encounter in real life programming.  We are creating an enumeration that specifies different access levels for a website.  The final enum member will be explained in a minute.
+
+    [Flags]
+    public enum AccessLevel
+    {
+        None = 0,
+        Admin = 1,
+        Reader = 2,
+        Writer = 4,
+        Commenter = 8,
+        All = Admin | Reader | Writer | Commenter
+    }
 
 #### String Library
 

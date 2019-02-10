@@ -42,4 +42,25 @@ namespace SampleConsoleApp.Chapter12
         BabyGrand,
         FullConcertGrand
     }
+
+    [Flags]
+    public enum InstrumentFamily
+    {
+        None = 0,
+        String = 1,
+        Percussion = 2,
+        Woodwind = 4,
+        Brass = 8
+    }
+
+    [Flags]
+    public enum AccessLevel
+    {
+        None = 0,
+        Admin = 1,
+        Reader = 2,
+        Writer = 4,
+        Commenter = 8,
+        All = Admin | Reader | Writer | Commenter
+    }
 }
