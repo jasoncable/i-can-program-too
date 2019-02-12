@@ -31,7 +31,23 @@ namespace SampleConsoleApp.Chapter12
 
             PianoType? pt6 = null;
 
+            AccessLevel al = AccessLevel.Reader | AccessLevel.Writer;
 
+            if((al & AccessLevel.Reader) == AccessLevel.Reader)
+            { 
+                Console.WriteLine("Got it!"); 
+            }
+
+            AccessLevel al1 = AccessLevel.None;
+            al1 |= AccessLevel.Reader;
+            al1 |= AccessLevel.Writer;
+
+            AccessLevel al2 = AccessLevel.Reader | AccessLevel.Writer;
+            al2 &= ~AccessLevel.Writer;
+
+            Console.WriteLine(al.HasFlag(AccessLevel.Admin));
+
+            Console.WriteLine(StringLib.Language);
         }
     }
 
@@ -62,5 +78,11 @@ namespace SampleConsoleApp.Chapter12
         Writer = 4,
         Commenter = 8,
         All = Admin | Reader | Writer | Commenter
+    }
+
+    public static class StringLib
+    {
+        public static readonly string VersionNo = "8.0.0";
+        public static readonly string Language = "C#";
     }
 }

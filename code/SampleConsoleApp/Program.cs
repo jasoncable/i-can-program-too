@@ -58,7 +58,9 @@ namespace SampleConsoleApp
 
             //Chapter11b.InstrumentsWithInterfaces.RunMe();
 
-            Chapter12.Enumerations.RunMe();
+            //Chapter12.Enumerations.RunMe();
+
+            Chapter12.Structs.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

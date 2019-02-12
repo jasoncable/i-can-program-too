@@ -107,7 +107,7 @@ In C#, attributes are used to provide extra information about an object, member,
         Brass = 8
     }
 
-The flags attribute tells C# to treat each enumeration member _bitwise_.  That is, each value is represented by a binary position.  Each value is a power of `2`, starting with `1` or `2^0^`.  In binary, each enumeration member is represented by having one bit _on_.  The following binary values would represent the values `1`, `2`, `4`, and `8`, respectively.
+The flags attribute tells C# to treat each enumeration member _bitwise_.  That is, each value is represented by a binary position.  Each value is a power of `2`, starting with `1` or 2^0^.  In binary, each enumeration member is represented by having one bit _on_.  The following binary values would represent the values `1`, `2`, `4`, and `8`, respectively.
 
     00000001
     00000010
@@ -131,8 +131,72 @@ The good news is that we don't have to manually do this binary math.  C# provide
         All = Admin | Reader | Writer | Commenter
     }
 
-#### String Library
+With C# 8, we can actually write the numbers _in_ binary.
 
-`public static readonly string` class
+    [Flags]
+    public enum AccessLevel
+    {
+        None = 0,
+        Admin =     0b00000001,
+        Reader =    0b00000010,
+        Writer =    0b00000100,
+        Commenter = 0b00001000,
+        All = Admin | Reader | Writer | Commenter
+    }
+
+If you want an enumeration instance to represent both `Reader` and `Writer` we write it like this.
+
+    AccessLevel al = AccessLevel.Reader | AccessLevel.Writer;
+
+`|` is called the _logical OR_ operator.  We can also build up the flag values in multiple statements.  You might do this in a loop or over multiple `if` statements.  We can set the initial value to `0` or `None` because it is _not_ a flag.  A `0` value is the _absence_ of all the other values.
+
+    AccessLevel al = AccessLevel.None;
+    al |= AccessLevel.Reader;
+    al |= AccessLevel.Writer;
+
+To subtract a value, we use the _bitwise negation_ operator, `~`, and the `logical AND` assignment operator.  The following removes the `Writer` value from `al`.  In essence, we are flipping the bit in our `int` that represents the `Writer` value from `1` to `0`.
+
+    AccessLevel al = AccessLevel.Reader | AccessLevel.Writer;
+    al &= ~AccessLevel.Writer;
+
+To check for the presence of a set value on a flags enum instance:
+
+    if((al & AccessLevel.Reader) == AccessLevel.Reader)
+    { 
+        Console.WriteLine("Got it!"); 
+    }
+
+There is an easier way to see if a flags enumeration has a certain value set.  The following returns a `bool`.
+
+    al.HasFlag(AccessLevel.Admin);
+
+A> While I'm not a fan of manually manipulating bits, it is useful in flags enumerations.  C# does have an entire complement of C/C++-like operators for doing so.  There are limits to flags enums.  For example, you can have a limited number of flags enum members due to the size of the underlying data type that you are using.  An `int` only has 32-bits after all.
+
+## String Library
+
+This is somewhat unrelated to enumerations and comes up in questions about enums.  We often we just want a string value that we access _like_ an enum.  Remember, enum member names cannot contain spaces or many different types of special characters.  For class that contains hardcoded strings, you should create a static class with `public static readonly string` members.
+
+    public static class StringLib
+    {
+        public static readonly string VersionNo = "8.0.0";
+        public static readonly string Language = "C#";
+    }
+
+    Console.WriteLine( StringLib.Language );
+
+## Structs
+
+A struct is a reference type in C# that is akin to a class, except for the type that it inherits from `System.ValueType` which itself inherits from `System.Object`.  Also like reference types, structs are stored on the stack, not on the heap.  Let's look at some rules relating to structs.
+
+* Fields can only be initialized if they are static, defined with `const` or `static`.
+* Stucts cannot have a _parameterless_ constructor, but may have constructors containing parameters.
+* Stucts cannot have finalizers.
+* When a copy of a struct is made, as with C#'s integral value types, its values are copied.  You do not have a reference to an instance of that struct.
+* Creating an instance of a struct doesn't require the `new` keyword.
+* Structs may implement interfaces, but cannot inherit from classes or other structs.  
+* Structs can't be used like a base class.
+* A struct cannot be null unless using a nullable variable.
+
+
 
 ### Conclusion
