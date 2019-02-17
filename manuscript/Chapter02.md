@@ -154,7 +154,7 @@ The default value of most numeric types is `0`, except `char` which is `\0`.  Th
 
 ### Strings and Null
 
-A string in C# is simply a sequence of characters.  Its default value is a special "value" called `null`.  Null is the absence of any value.  A null variable does not point to any data.  We can check to see if a string is null in order to determine if its value is set or not.  Strings can also be empty or `""`.  If you need to set something to `""`, use the constant `String.Empty`.  This is more efficient.
+A string in C# is simply a sequence of characters.  Its default value is a special "value" called `null`.  Null is the absence of any value.  A null variable does not point to any data.  We can check  to see if a string is null in order to determine if its value is set or not.  Strings can also be empty or `""`.  If you need to set something to `""`, use the constant `String.Empty`.  This is more efficient.
 
 Strings are immutable.  This means that the value of a string cannot be changed in the area of memory in which it is stored.  You can change which string a variable is assigned to, but you can't change the physical spot in memory where the string is stored.   A string can hold at least one billion characters.  You will probably run out of memory before you are able to create a string of that length.  There are alternate methods of dealing with large amounts of data.
 

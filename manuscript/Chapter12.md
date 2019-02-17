@@ -190,6 +190,7 @@ A struct is a reference type in C# that is akin to a class, except for the type 
 
 * Fields can only be initialized if they are static, defined with `const` or `static`.
 * Stucts cannot have a _parameterless_ constructor, but may have constructors containing parameters.
+* Structs _always_ have a _default_ constructor \(one without parameters\).  It cannot be explicitly defined.
 * Stucts cannot have finalizers.
 * When a copy of a struct is made, as with C#'s integral value types, its values are copied.  You do not have a reference to an instance of that struct.
 * Creating an instance of a struct doesn't require the `new` keyword.
@@ -197,6 +198,16 @@ A struct is a reference type in C# that is akin to a class, except for the type 
 * Structs can't be used like a base class.
 * A struct cannot be null unless using a nullable variable.
 
+We will be seeing an example of a struct version of our old British money sample from an earlier chapter.  It is a good example of what a struct _should_ be used for.  Structs have traditionally been used to define types that hold a value where you want the implementation to remain hidden.  We often use structs when representing date/time values and Guids \(globally unique identifiers\).  In our example, we are storing our monetary values as total pence.  We are not separating out pounds, shillings, and pence.  If done properly, this should make dealing with this old money amounts fairly easy.
 
+One interesting thing to note: we are used to instance fields and auto-properties to have their default values set for us.  This is handled by the implicit default constructor in structs.  If you have a constructor in a struct it must have parameters and _each_ constructor _must_ initialize the instance fields and auto-properties to a value.  In classes, instance types such as `int` default to `0` without us having to do anything.  In a struct, the default constructor does this.  To make it happen automatically, you should call add `: this()` to your constructor's declaration which will auto-initialize all instance fields and auto-properties.
+
+You will see in this example that we have used a `ulong` for our pence value as it is the largest native C# integer data type.  A negative value is specified by a `bool`.  We could also use a `decimal` as it is also a large number.  In the end, it was a little more interesting to show how multiple data types can be used together to represent a value with a struct.
+
+<<[Old Pounds Sterling Amount as Struct](cs/ch12-01.cs)
+
+
+
+## Guid, DateTime, and DateTimeOffset
 
 ### Conclusion

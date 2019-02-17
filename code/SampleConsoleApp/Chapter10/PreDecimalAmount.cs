@@ -23,10 +23,10 @@ namespace SampleConsoleApp.Chapter10
                 pence = pence % 240;
             }
 
-            if(pence > 20)
+            if(pence > 12)
             {
-                shillings = pence / 20;
-                pence = shillings % 20;
+                shillings = pence / 12;
+                pence = shillings % 12;
             }
 
             Pounds = new OldPoundAmount(pounds);

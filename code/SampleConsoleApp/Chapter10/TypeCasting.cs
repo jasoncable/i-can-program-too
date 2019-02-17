@@ -38,6 +38,15 @@ namespace SampleConsoleApp.Chapter10
             OldPoundAmount oldPoundAmount = 123;
             Console.WriteLine(oldPoundAmount.Count);
 
+            int z1 = Int32.MaxValue;
+            long z2 = (long)z1 + 8;
+            Console.WriteLine(z2);
+            int z3 = (int)z2;
+            Console.WriteLine(z3);
+            decimal z5 = z2;
+            //int z4 = (int)z5;
+            //Console.WriteLine(z4);
+
         }
     }
 }

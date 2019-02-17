@@ -10,7 +10,7 @@ C# lets us overload many of the available operators to allow us to do special th
 
 A> I mentioned matrix math as one use case of overloading operators.  Another would be representing things that cannot be represented in decimal form.  The imperial system of measurements is one target.  You could create a `Distance` class that allows for storing and performing operations on miles, feet, inches, etc.  We will be using an example that looks at another non-decimal system, old English money, mostly because the author likes old movies and Dickens.  Before you do something like this on your own, search GitHub and NuGet to see if it has already been accomplished.  We will be implementing this from scratch and improving on it throughout this book.
 A>
-A> For reference, there are 12 pennies \(or pence\) in a shilling and 20 shillings in a pound.  For simplicity we're ignoring amounts less than a penny.
+A> For reference, there are 12 pennies \(or pence\) in a shilling and 20 shillings in a pound.  For simplicity we're ignoring amounts less than a penny.  **This solution does not handle negative amounts.**
 
     public static PreDecimalAmount operator +(PreDecimalAmount a, 
         PreDecimalAmount b)
@@ -55,6 +55,14 @@ C# considers this a _safe_ type conversion.  We are creating a bigger, more prec
     int d = (int)c;
 
 This is an example of an explicit type cast.  We have to add `(int)` to tell the compiler that we wish to accept the potential side effects of such a conversion.  This type of cast could result in an overflow exception if the decimal is too large and any data past the decimal point will be truncated, not rounded.
+
+If you are casting from a `long` to an `int`, however, if the `long` value is too big, the number conversion will end up being negative due to the way the runtime converts between data types.  In the following code, you will also notice that we have had to place `(long)` in the expression that adds `8` to the value.  This is required to force C# to treat the addition operation on `long` versions of the specified values.
+
+    int z1 = Int32.MaxValue;
+    long z2 = (long)z1 + 8;
+    Console.WriteLine(z2); // 2147483655
+    int z3 = (int)z2;
+    Console.WriteLine(z3); // -2147483641
 
 What was just described is the method to the madness.  These are the rules that the C# designers created to enforce certain coding patterns.  With our classes, we can make everything easy and simply perform all operations as implicit conversions.  It is important to use explicit conversions in places that make sense, especially when considering the rules that have been outlined.
 
