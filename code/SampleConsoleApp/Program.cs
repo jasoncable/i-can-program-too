@@ -60,7 +60,9 @@ namespace SampleConsoleApp
 
             //Chapter12.Enumerations.RunMe();
 
-            Chapter12.Structs.RunMe();
+            //Chapter12.Structs.RunMe();
+
+            Chapter12.DatesAndTimes.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

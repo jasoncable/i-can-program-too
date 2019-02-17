@@ -286,11 +286,36 @@ To get a string version of the guid, simply use the `ToString()` method.  `ToStr
 
 * `n` - no dashes, lowercase
 * `N` - no dashes, uppercase
-* `d` - dashes, lowercase \(default for `.ToString()` without parameters\)
+* `d` - dashes, lowercase \(default for `ToString()` without parameters\)
 * `D` - dashes, uppercase
 
 ### `DateTime`, `DateTimeOffset`, and `TimeSpan`
 
+In C# there is _one_ type to represent both dates and times.  `System.DateTime` is used anywhere we wish to represent a date/time value.  By default, it represents the local time of the machine that it is running on.  It is capable of giving us a value in UTC time or coordinated universal time.  UTC time is not adjusted for local daylight saving time offsets.  It is often called Greenwich mean time \(GMT\), which is the unadjusted time at Greenwich, London, UK.  We use this time to save from having to compute timezone and local time offsets every time we need a date/time value.
 
+A `DateTime` without a value is represented as the static property `DateTime.MinValue` or `1/1/0001 12:00:00 AM`.  `DateTime.MaxValue` is `12/31/9999 11:59:59 PM`.  While `DateTime` is able to perform calculations back to the year 1 CE, it does _not_ make adjustments for the Julian to Gregorian calendar switch.  Various countries adopted the more correct Gregorian calendar at different dates which can, for example, make dates prior to 1752 in Britain and its colonies at the time to be 11 days off.  This is not generally a problem that you will run into, but please be aware of it.
+
+To create an instance of `DateTime`, we generally use one of the following static properties on the `DateTime` object.
+
+    DateTime localDt = DateTime.Now;
+    DateTime utcDt = DateTime.UtcNow;
+
+The `DateTime` object stores date/time values at a resolution of 100ms.  This is in contract to UNIX systems that store date/times as seconds since the _epoch_, `1970-01-01`.  To convert between the two:
+
+    long unixTime = 320958300L;
+    DateTime fromUnixTime = new DateTime(1970,1,1).AddSeconds(unixTime);
+    long toUnixTime = (long)(DateTime.Now - new DateTime(1970,1,1)).TotalSeconds;
+
+There are a lot of little caveats to know about when working with the `DateTime` object.  
+
+* It does not store the timezone of origin.  You must keep track of whether you are using local machine time or UTC time.  To help with this, we can use the `DateTimeOffset` object.
+* `string` representations of date/time values is extraordinarily tricky due to dealing with various cultures.  For example, the following two dates are exactly the same based on the country in which you reside.  `12/1/2019` and `1/12/2019` _could_ both represent the 12th day of January.  Americans tend to be a little too arrogant in assuming that the entire world places the days before months.
+* When including a date/time value in a file name, format it as 4 digit year followed by the 2 digit month followed by the 2 digit day and optionally, the time.  This is also the standard used in most databases.
+* `ISO-8601` defines the standard date/time string time handling rules.
+* In general, in computing, we specify date/time values from left-to-right with the least specific values \(years\) being on the left to the most specific values \(milliseconds\) being on the right.
+* For the best resource for turning `DateTime` values to strings see: <https://docs.microsoft.com/en-us/dotnet/api/system.datetime.tostring> or Google up `C# DateTime.ToString`.
+* When you add/subtract two `DateTime` instances, the result is a `TimeSpan` struct.
+* There are only `Add` methods on `DateTime`.  To _subtract_ a value you use a negative number.  For example, to subtract 5 minutes: `DateTime.AddMinutes(-5);`
+* When you create a `DateTime` object without specifying a time, the default time is midnight.
 
 ### Conclusion
