@@ -198,7 +198,7 @@ A struct is a reference type in C# that is akin to a class, except for the type 
 * Structs can't be used like a base class.
 * A struct cannot be null unless using a nullable variable.
 
-We will be seeing an example of a struct version of our old British money sample from an earlier chapter.  It is a good example of what a struct _should_ be used for.  Structs have traditionally been used to define types that hold a value where you want the implementation to remain hidden.  We often use structs when representing date/time values and Guids \(globally unique identifiers\).  In our example, we are storing our monetary values as total pence.  We are not separating out pounds, shillings, and pence.  If done properly, this should make dealing with this old money amounts fairly easy.
+We will be seeing an example of a struct version of our old British money sample from an earlier chapter.  It is a good example of what a struct _should_ be used for.  Structs have traditionally been used to define types that hold a value where you want the implementation to remain hidden.  We often use structs when representing date/time values and guids \(globally unique identifiers\).  In our example, we are storing our monetary values as total pence.  We are not separating out pounds, shillings, and pence.  If done properly, this should make dealing with this old money amounts fairly easy.
 
 One interesting thing to note: we are used to instance fields and auto-properties to have their default values set for us.  This is handled by the implicit default constructor in structs.  If you have a constructor in a struct it must have parameters and _each_ constructor _must_ initialize the instance fields and auto-properties to a value.  In classes, instance types such as `int` default to `0` without us having to do anything.  In a struct, the default constructor does this.  To make it happen automatically, you should call add `: this()` to your constructor's declaration which will auto-initialize all instance fields and auto-properties.
 
@@ -206,8 +206,91 @@ You will see in this example that we have used a `ulong` for our pence value as 
 
 <<[Old Pounds Sterling Amount as Struct](cs/ch12-01.cs)
 
+There is a lot going on here.  Let's break it down.  First, we are using many of the concepts that we have learned earlier.  Specifically, we have:
+
+* `static readonly` fields.
+* Expression-bodied members.
+* Constructors with parameters.
+* Constructors that call other constructors.
+* Exception throwing.
+* Type casting.
+* Auto-properties and auto-properties with expression bodied members.
+* Static properties.
+* Methods.
+* Operator overloading.
+* Method overriding of `.ToString()`.
+
+These concepts are represented here to give you a feature-rich example of how all of these concepts may be used in real life.  There are a couple of ways this implementation could be better.  The most important one is that our backing values, `TotalPence` and `IsNegative` _should_ be stored in private instance fields in structs.  This makes it easier to specify the _layout_ of the struct.  Stucts, unlike classes, store their internal data in the order in which it is defined.  There may be memory optimizations associated with this, but that is beyond the scope of this book.  Let us now look at equality checking with structs and classes.
+
+## Equals and GetHashCode
+
+When you check to see if two classes are equal with `==`, the default behavior is to check to see if both instance variables of that object are pointing to the same instance in memory.  There are times that we will want to override that behavior.  There are several steps to implementing this.  In a struct, the `==` operator will need to be manually implemented.
+
+* Override the `Equals()` method.
+* Override the `GetHashCode()` method.
+* Implement `IEquatable<T>`.
+* In addition to the above, for structs:
+    * Implement the `==` operator.
+    * Implement the `!=` operator.
+
+All of these are implemented in our example above.  Let's take them one by one.
+
+The `Equals()` method on `object` is an instance method that takes an object as a parameter.  `this` is always guaranteed to be an instance of our type, as it represents the instance of the object that contains the override of the `Equals()` method.  Your checks in here should first check to see if the `object` parameter is of the correct type.  Next, compare the values of each piece of data that makes your class or struct instance that make it _unique_ from another instance.  In the sample, we have already implemented the `==` operator and we use it to check the equality in the `Equals()` method.  This does not work for a class.
+
+The `GetHashCode()` method provides a way to differentiate different instances of an object when you are using a data structure that uses `GetHashCode()`.  We will learn more about these data structures in the next chapter.  There are a couple of ways to perform the calculation that returns a hash code.  A hash code is a 32-bit signed integer that represents the _uniqueness_ of your object.  In our struct example we use the `HashCode.Combine()` method.  You could also do the following.
+
+    return TotalPence.GetHashCode() ^ TotalPence.GetHashCode();
+
+The `IEquatable<T>` interface is a generic interface that gives us an `Equals()` method that has a parameter of the type of our object _in addition to_ the `object` version.  Generics are introduced in the next chapter.  For now, follow the pattern presented in our example code.
+
+Structs must also implement the `==` and `!=` operators.  These were explained in a previous chapter.
+
+The result of all of this is that you will have a class or struct whose underlying values are compared in order to be able to check the equality of the aggregate _data_ contained in the instances.  You will not always be checking _all_ of the data contained within the instance, but sometimes only part of it.  The amount of data you are comparing should be thoroughly be documented to assist others that my be using your classes/structs.
+
+## Useful Framework Structs
+
+The various .NET frameworks all have the following three structs that are used in most applications.  We will use them as an example of how structs are used and their importance.
+
+### `Guid`
+
+A guid is a **g**lobally **u**nique **id**entifier, sometimes called a UUID.  It is a struct that represents one of a large number of possible values.  C# uses a _type/version 4_ guid that is implemented in the `System.Guid` struct.  A guid is a 128-bit number with a few bits reserved for the version of guid and some other things.  C# guids can have represent 2^122^ different values.  There is an extraordinarily slim chance of any two guids being the same.   Guids are generally represented in string form as hex characters that are dash separated.  The letters may be in upper or lowercase.
+
+    d5d51a13-1fe3-418f-a44f-bb3eb9e79288
+
+A guid in .NET Core is implemented as a struct with the following data types making up the guid: 1 `int`, 2 `short`s, and 8 `byte`s.  Together that is 128 bits.
+
+We use guids when we need a unique ID for any piece of data.  They are often used databases to uniquely identify a record such as a table row, document, or object.  Real-life examples of unique identifiers include:
+
+* \(US\) Social Security Number
+* Driver's License Number
+* Passport Number
+* Network Interfaces \(MAC Address\)
+* Bluetooth Chips
+* DNS Numbers \(IP Address\)
+* Cell/Mobile Phones \(IMEI\)
+
+To create a new guid, use the following.
+
+    Guid g = Guid.NewGuid();
+
+The following return a _new_ `Guid` empty instance, `00000000-0000-0000-0000-000000000000`.  It is a common mistake to use the default constructor version thinking that you are creating a new unique number.
+
+    Guid g = new Guid();
+    Guid.Empty;
+
+To create an instance of a `Guid` from an existing string, the `string` constructor usually will suffice.  If the string form of the guid is malformed, you will get an exception.  In that case, you should prefer to receive an exception.  The `string` constructor handles string guids with or without dashes and upper and lowercase guids.
+
+    Guid g = new Guid("425aafee-c7c0-459d-a82c-a62ebdf368db");
+
+To get a string version of the guid, simply use the `ToString()` method.  `ToString()` also takes a string to specify the format you wish to output.  The string consists of a single character.  The following are the most common forms of guid string representations.
+
+* `n` - no dashes, lowercase
+* `N` - no dashes, uppercase
+* `d` - dashes, lowercase \(default for `.ToString()` without parameters\)
+* `D` - dashes, uppercase
+
+### `DateTime`, `DateTimeOffset`, and `TimeSpan`
 
 
-## Guid, DateTime, and DateTimeOffset
 
 ### Conclusion

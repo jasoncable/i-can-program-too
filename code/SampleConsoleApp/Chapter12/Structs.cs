@@ -11,6 +11,11 @@ namespace SampleConsoleApp.Chapter12
 
             PreDecimalAmount pda1 = new PreDecimalAmount();
             Console.WriteLine(pda1.Pounds);
+
+            PreDecimalAmount pda2 = new PreDecimalAmount(1, 1, 1);
+            PreDecimalAmount pda3 = new PreDecimalAmount(1, 1, 1);
+            Console.WriteLine(pda2 == pda3);
+
         }
     }
 
@@ -21,12 +26,12 @@ namespace SampleConsoleApp.Chapter12
     //    public override string Message => _message;
     //}
 
-    public struct PreDecimalAmount
+    public struct PreDecimalAmount : IEquatable<PreDecimalAmount>
     {
         private static readonly byte _poundsToShillings = 20;
         private static readonly byte _shillingsToPence = 12;
         private static readonly byte _poundsToPence = 
-            (byte)(_poundsToPence * _shillingsToPence);
+            (byte)(_poundsToShillings * _shillingsToPence);
 
         public ulong Pounds => TotalPence / _poundsToPence;
         public byte Shillings => (byte)((uint)TotalPence % _poundsToShillings);
@@ -108,7 +113,7 @@ namespace SampleConsoleApp.Chapter12
 
             string returnValue = String.Empty;
 
-            if(pounds > 0)
+            if (pounds > 0)
             {
                 returnValue += $"\u00a3 {pounds.ToString("#,##0")} ";
             }
@@ -126,5 +131,30 @@ namespace SampleConsoleApp.Chapter12
             return returnValue;
         }
 
+        public static bool operator ==(PreDecimalAmount a, PreDecimalAmount b)
+        {
+            return a.TotalPence == b.TotalPence &&
+                a.IsNegative == b.IsNegative;
+        }
+
+        public static bool operator !=(PreDecimalAmount a, PreDecimalAmount b)
+        {
+            return !(a == b);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PreDecimalAmount && this == (PreDecimalAmount)obj;
+        }
+
+        public bool Equals(PreDecimalAmount other)
+        {
+            return this == other;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.TotalPence, this.IsNegative);
+        }
     }
 }
