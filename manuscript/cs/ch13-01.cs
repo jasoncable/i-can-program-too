@@ -24,6 +24,4 @@ list.AddRange(new int[]{ 1, 2, 3 }); // add 3 items to the end
 list.Clear(); // remove all values; Capacity remains the same
 
 // IndexOutOfRangeException thrown
-// leanpub-start-delete
 list[102] = 42;
-// leanpub-end-delete
