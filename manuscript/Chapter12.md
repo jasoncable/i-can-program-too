@@ -300,11 +300,7 @@ To create an instance of `DateTime`, we generally use one of the following stati
     DateTime localDt = DateTime.Now;
     DateTime utcDt = DateTime.UtcNow;
 
-The `DateTime` object stores date/time values at a resolution of 100ms.  This is in contract to UNIX systems that store date/times as seconds since the _epoch_, `1970-01-01`.  To convert between the two:
-
-    long unixTime = 320958300L;
-    DateTime fromUnixTime = new DateTime(1970,1,1).AddSeconds(unixTime);
-    long toUnixTime = (long)(DateTime.Now - new DateTime(1970,1,1)).TotalSeconds;
+The `DateTime` object stores date/time values at a resolution of 100 nanoseconds.  This is in contract to UNIX systems that store date/times as seconds since the _epoch_, `1970-01-01`.  .NET Framework 4.6 introduced methods on the `DateTime` and `DateTimeOffset` structs to deal with UNIX time.  It is frequently used in data interchange formats such as JSON.
 
 There are a lot of little caveats to know about when working with the `DateTime` object.  
 
@@ -318,4 +314,10 @@ There are a lot of little caveats to know about when working with the `DateTime`
 * There are only `Add` methods on `DateTime`.  To _subtract_ a value you use a negative number.  For example, to subtract 5 minutes: `DateTime.AddMinutes(-5);`
 * When you create a `DateTime` object without specifying a time, the default time is midnight.
 
+`DateTimeOffset` is for all practical purposes the same as `DateTime` with the addition of a timezone.  When possible it may be more useful to use over `DateTime`.
+
+A> We could spend another five pages discussing these three structs, but this has hopefully provided a good basic introduction and guidance on the usage of `DateTime`, `DateTimeOffset`, and `TimeSpan`.  Please investigate these structs for more in depth information.
+
 ### Conclusion
+
+We have seen how we can construct the value types `enum` and `struct`.  Both are incredibly useful and valuable in C#.  We also learned that C# has powerful framework provided structs to handle unique identifiers and date/time values.  Next we will begin our journey into one of C#'s most powerful feature: generics.

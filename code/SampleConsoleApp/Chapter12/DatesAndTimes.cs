@@ -11,6 +11,8 @@ namespace SampleConsoleApp.Chapter12
             Console.WriteLine(epochTime);
             DateTime birthDayFromEpoch = new DateTime(1970, 1, 1).AddSeconds(320958300l);
             Console.WriteLine(birthDayFromEpoch.ToString());
+
+            DateTimeOffset dto = DateTimeOffset.FromUnixTimeSeconds(500);
         }
     }
 }
