@@ -26,4 +26,4 @@ list.Clear(); // remove all values; Capacity remains the same
 // IndexOutOfRangeException thrown
 // leanpub-start-delete
 list[102] = 42;
-//leanpub-end-delete
+// leanpub-end-delete
