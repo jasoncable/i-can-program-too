@@ -1,5 +1,3 @@
-important value types (DateTime/DateTimeOffset/Timespan/Guid)
-
 tuples
 lambda expressions
 Actions
@@ -10,8 +8,6 @@ static classes deep dive?
 
 stringcomparer
 
-stringbuilder
-
 # globalization/localization
     culture with numbers (, vs .) and dates
     
@@ -21,11 +17,7 @@ fluent operations
 
 method "in" modifier: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/in
 
-typeof
-
 ### attributes on classes and method parameters https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/
-
-### type checks
 
 ### Pattern Matching \(including advanced switch statements, incl. return statement\)
 
@@ -41,18 +33,11 @@ typeof
 
 ### yield return
 
-## Enumerations
-
-### ArrayList and Hashtable
-
 ### nameof()
 
 ### 3 types of using
 
 ### using to release resources, IDisposable
-
-### structs
-    and they don't have parameterless .ctors
 
 ### dynamic objects
     Expando Object
@@ -63,10 +48,9 @@ typeof
 
 ### anonymous types
 
-# using static (from C#6): NO effing way!
+## `IConvertible<T>`
 
-### overload == and != WITH .Equals()
-    https://docs.microsoft.com/en-us/visualstudio/code-quality/ca2224-override-equals-on-overloading-operator-equals?view=vs-2017
+# using static (from C#6): NO effing way!
 
 ## executables need to be recompiled for each platform due to things like Windows PE Headers, etc.
 
@@ -88,5 +72,3 @@ generic method: Enum.TryParse<T>
 
 ## NO...
 covariance/contravariance
-
-

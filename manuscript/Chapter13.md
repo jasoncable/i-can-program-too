@@ -55,18 +55,65 @@ Let's see a thorough example of using a generic list.
 
 As you can see, values are stored in the order in which they are added.  Also, you **must** check the `Count` _before_ accessing an list index!
 
-## Jagged `List<T>`
+### Jagged `List<T>`
 
-## Sort
+As with arrays, you can create a `List<List<T>>`.  It's just the generic form of a jagged array or in this case a list of lists.  As with a regular `List<T>` you will have to add your new array to the list before being able to use it.
 
+    List<List<string>> listOfLists = new List<List<string>>();
+    listOfLists.Add(new List<string>());
+    listOfLists[0].Add("a string");
 
+Here we create our `List<List<string>>`, add a new element to it which is a `List<string>`, and finally use an indexer to access the first element in the list and call the `Add()` method on the `List<string>` instance contained in that element.  To access the value we just set:
 
-## Two More Flat Generic Collections
+    string s = listOfLists[0][0];
 
 ### `Stack<T>`
 
+Related to our generic `List<T>` is `Stack<T>`.  A stack is a _LIFO_ collection.  LIFO stands for **l**ast-**i**n-**f**irst-**o**ut.  It describes an order to how we access elements this type of collection.
+
+    Stack<string> ss = new Stack<string>();
+    ss.Push("string 1");
+    ss.Push("string 2");
+    Console.WriteLine(ss.Pop()); // "string 2"
+
+Imagine that you have a stack of dinner plates.  You create that stack by placing a plate on a table and you keep stacking them one on top of another.  The only way to remove a plate is to take it off the top.  This means that the last item added to the stack of plates is removed first.  Adding to a stack is done with the `Push()` method.  To remove an item from the stack you use the `Pop()` method.  This type of access forces the order in which you access the items on the array.  You can even iterate over the stack, having the values returned in the reverse order in which they were added.  Continuing our previous example:
+
+    ss.Push("string 3");
+    foreach(string s1 in ss)
+    {
+        Console.WriteLine(s1);
+    }
+
+`"string 3"` is printed first which is followed by `"string 1"`.  The iterator does _not_ remove any items from the stack.
+
+The `Pop()` method has a counterpart in .NET Core which you can use to safely \(without an exception being thrown\).  `TryPop()` returns a `bool` of `true` if there is another element to remove from the stack.  It has an `out` parameter of the type of item in the collection and removes the last item added.  The `Peek()` and `TryPeek()` methods return the _next_ item to pop off of the stack _without_ removing it.
+
 ### `Queue<T>`
 
-## `IConvertible<T>`
+Closely related to the `Stack<T>` is the `Queue<T>`.  This is a _FIFO_ collection.  FIFO stands for **f**irst-**i**n-**f**irst-**o**ut.  The first item added to the collection is the first one to be removed.  With a `Queue<T>` we use methods called `Enqueue()` to add to the collection and `Dequeue()` to remove the first item added to the collection.  The first item added with `Enqueue()` is the first to be returned and removed with `Dequeue()`.
+
+    Queue<string> qs = new Queue<string>();
+    qs.Enqueue("1");
+    qs.Enqueue("2");
+    qs.Enqueue("3");
+    if (qs.TryDequeue(out string firstValue))
+        Console.WriteLine(firstValue); // 1
+
+### Thinking Horizontally
+
+If we think about stacks and queues as simple arrays that go from `0` to `n` length from left to right, this is how the arrays are affected by the various methods.  The first element of the array is _always_ index `0`.  Javascript, perl5, and other languages use the terms push, pop, shift, and unshift.
+
+| push | add an item to the end of the array |
+| pop | remove the last item of the array |
+| shift \(enqueue\) | add an item to the beginning of the array, thereby shifting the other array indices to the right |
+| unshift \(dequeue\) | remove the first element of the array, thereby unshifting the other array elements one to the left |
+
+## Sorting
+
+We had an extensive conversation about sorting strings in the .NET frameworks in [Chapter 3](#chapter-03-sorting).  It would be good to review that now.  Let us now look at how to implement our own sorting algorithm using a generic list.
+
+
 
 ## `Dictionary<TKey, TValue>`
+
+### Conclusion

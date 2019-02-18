@@ -27,7 +27,7 @@ Objects that are larger than 85,000 bytes are placed on the large object heap.  
 
 Garbage collection is rarely a problem.  It should not be called directly, though it may be.  Your code should always respect the garbage collection process.  You don't generally need to know the internal working of the garbage collector, but knowing that it exists and some of the basics will come in handy when performing advanced debugging techniques.
 
-## Sorting and Encoding Strings
+## Sorting and Encoding Strings {#chapter-03-sorting}
 
 Since computer hardware only knows about numbers, the text that we type is converted into its numeric equivalent to be understood by the computer's processor.  We call this character encoding.  There are several character encodings.  Have you ever noticed that when things are sorted by a computer that numbers come first, followed by capital letters, then by lowercase letters?  Have you ever noticed that printed dictionaries have different sorting compared to something that was computer sorted?  Have you seen numbers sorted in this order: `1`, `11`, `2`, `3`?  This is all due to character encodings and sorting algorithms called collations.  
 

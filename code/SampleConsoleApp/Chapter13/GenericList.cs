@@ -35,6 +35,37 @@ namespace SampleConsoleApp.Chapter13
 
             //list[102] = 42;
 
+            List<List<string>> listOfLists = new List<List<string>>();
+            listOfLists.Add(new List<string>());
+            listOfLists[0].Add("a string");
+            string s = listOfLists[0][0];
+
+            Stack<string> ss = new Stack<string>();
+            ss.Push("string 1");
+            ss.Push("string 2");
+            Console.WriteLine(ss.Pop()); // "string 2"
+            ss.Push("string 3");
+            foreach(string s1 in ss)
+            {
+                Console.WriteLine(s1);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(ss.Count);
+            bool isTrue = ss.TryPop(out string s2);
+            Console.WriteLine(s2);
+            Console.WriteLine(ss.Count);
+            isTrue = ss.TryPeek(out string s3);
+            Console.WriteLine(s3);
+
+            Console.WriteLine();
+            Queue<string> qs = new Queue<string>();
+            qs.Enqueue("1");
+            qs.Enqueue("2");
+            qs.Enqueue("3");
+            if (qs.TryDequeue(out string firstValue))
+                Console.WriteLine(firstValue); // 1
+
         }
     }
 }

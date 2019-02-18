@@ -25,4 +25,7 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.5.3" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Chapter13\StackAndQueue.cs" />
+  </ItemGroup>
 </Project>
