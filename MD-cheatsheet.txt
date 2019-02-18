@@ -22,7 +22,7 @@ Code:
     Strikethrough:
         // leanpub-start-delete
         System.Make.ThisCrossedOut();
-        //leanpub-end-delete
+        // leanpub-end-delete
 
     Bold:
         // leanpub-start-insert
