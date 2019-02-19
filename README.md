@@ -12,6 +12,6 @@ __AS OF 1/3/2019, this REQUIRES .NET Core SDK 3.0.100-preview-009812 in Visual S
 
 Estimated completion date: June, 2019.
 
-<https://leanpub.com/icanprogramtoo/>
+<https://leanpub.com/discover-programming-csharp/>
 
 ![Cover Image](https://d2sofvawe08yqg.cloudfront.net/discover-programming-csharp/small2x?1549735579)
