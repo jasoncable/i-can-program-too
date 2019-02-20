@@ -64,7 +64,9 @@ namespace SampleConsoleApp
 
             //Chapter12.DatesAndTimes.RunMe();
 
-            Chapter13.GenericList.RunMe();
+            //Chapter13.GenericList.RunMe();
+
+            Chapter13.GenericDictionary.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

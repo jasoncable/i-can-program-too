@@ -66,6 +66,7 @@ namespace SampleConsoleApp.Chapter13
             if (qs.TryDequeue(out string firstValue))
                 Console.WriteLine(firstValue); // 1
 
+
         }
     }
 }

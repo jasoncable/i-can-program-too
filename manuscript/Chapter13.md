@@ -6,7 +6,7 @@ A> To this point we have been almost solely focusing on objects contained in the
 
 ## What is a generic?
 
-In the olden times, long ago, before millennials roamed the planet, reusable objects that could store and perform actions on all objects had to cast everything to and from `object`.  With the .NET Framework 2.0 release Microsoft gave us generics.  They are a language and runtime construct that allow us to treat all objects the same way without having to box and unbox constantly, which as we have seen, can be very error prone.  How do you always know that an array of objects is always of a certain type?  Enter... generics.
+In the olden times, long ago, before millennials roamed the planet, reusable objects that could store and perform actions on all objects had to cast everything to and from `object`.  With the .NET Framework 2.0 release Microsoft gave us generics.  They are a language and runtime construct that allow us to treat all objects the same way without having to box and unbox constantly, which as we have seen, can be very error prone.  It is also resource intensive.  How do you always know that an array of objects is always of a certain type?  Enter... generics.
 
 ## `List<T>`
 
@@ -54,6 +54,8 @@ Let's see a thorough example of using a generic list.
 <<[Generic List Example](cs/ch13-01.cs)
 
 As you can see, values are stored in the order in which they are added.  Also, you **must** check the `Count` _before_ accessing an list index!
+
+A> There is one error that a lot of beginners will make.  When enumerating through a generic list, or any collection, you **must not** modify the the collection.  You can't `Add()`, `AddRange()`, `Remove()`, `RemoveAt()`, etc.  You _may_ modify the current object, but don't change the collection!  You will get an exception.  Also do not change a collection when using the `for` loop.  Those errors may be more insidious and harder to find.
 
 ### Jagged `List<T>`
 
@@ -108,12 +110,80 @@ If we think about stacks and queues as simple arrays that go from `0` to `n` len
 | shift \(enqueue\) | add an item to the beginning of the array, thereby shifting the other array indices to the right |
 | unshift \(dequeue\) | remove the first element of the array, thereby unshifting the other array elements one to the left |
 
-## Sorting
+## Sorting a List
 
 We had an extensive conversation about sorting strings in the .NET frameworks in [Chapter 3](#chapter-03-sorting).  It would be good to review that now.  Let us now look at how to implement our own sorting algorithm using a generic list.
 
-
+A> JLC TODO... COME BACK TO THIS!!!
 
 ## `Dictionary<TKey, TValue>`
+
+A `Dictionary<TKey, TValue>`, or generic dictionary, is a data structure in which each piece of data stores two objects: a _key_ and a _value_.  We call this a key-value collection.  Let's say that you wanted to map postal codes to cities: the key is the postal code and the city is the value.  If we create this collection then we only have to enter a postal code to get its related city.  A generic dictionary, however, is not like a print dictionary.  A print dictionary can list a word multiple times, once for each word form \(noun, verb, etc.\).  A generic dictionary's key must be unique.  You _can_ model a print dictionary with a generic dictionary, but that is a bit more complex.  Let's consider for the moment that record in our generic dictionary contains two pieces of data.
+
+    Dictionary<string, string> cities = new Dictionary<string, string>(4);
+    cities.Add("15206", "Pittsburgh");
+    cities.Add("15108", "Moon Township");
+    cities.Add("15222", "Pittsburgh");
+    cities.Add("16365", "Warren");
+
+This creates a new generic dictionary and adds four cities to it.  Here we are modeling cities in the Commonwealth of Pennsylvania in the United States.  In the US, we always store our postal \("zip\) codes as strings, even though they are numeric, as there are many that begin with a zero.  It's much easier to store them as strings.  US postal codes are 5 digits optionally followed by a dash `-` and four digits.
+
+As you can see, we specify our data type for the key and value in between the angle brackets in our variable declaration.  The first type is the key's type and the second is the value's type.  The types used with `Dictionary<TKey, TValue>` can be any valid .NET object \(integral value types and their nullable counterpoints, strings, classes, enumerations, structs\).  
+
+Why do we use dictionaries?  You could simply create an object with two string properties, postal code and city, loop through it with a `foreach` loop and check for the desired value with an `if` statement.  The problem with that is that it is very slow when compared with retrieving a value from a dictionary.  
+
+Dictionary _entries_ are stored and looked up by their _hash code_.  A dictionary can also be called a hash.  The old .NET class for creating these types of data structs is called a `Hashset` from `System.Colections`.  We saw above in the struct section that we implemented a hash code.  The `GetHashCode()` method is on `object`, meaning that every .NET type has it.  A hash code is simply a 32-bit signed integer of type `int` that represents the unique value of our object.  It is a lot like a unique identifier.  .NET is very good at trying to make sure that these codes are unique and that they are quick to compute. 
+
+When you add an object to a generic dictionary, it calls `GetHashCode()` on the object and adds it to the dictionary the hash code of the key.  When you go to retrieve the entry by its key, the hash code for the parameter is calculated and found \(or not\) in the dictionary.  This is called a _dictionary lookup_.  It is orders of magnitude faster than looping through an array or generic list.  We speak of the comparison between the two types of lookup in abstract terms using "Big-O Notation".  For further information, you can look it up on the web.
+
+Here are some of the most important things to know about `Dictionary<TKey, TValue>`:
+
+* A dictionary does **not** store its values in the order in which you added them.
+* You **cannot** retrieve dictionary values in the order in which you added them.
+* A dictionary iterator \(using `foreach`\) is **not** guaranteed to return values in the same order each time.  It _may_, but **never** rely on it.
+* For the critics out there:  When creating a dictionary less than a certain number of items it _is_ more efficient to loop through an array and return the value.  This point is highly variable based on the framework implementation, runtime version, CPU, memory speed, etc.  Do **not** second-guess yourself and try to pre-optimize your code for this.  Use a dictionary where it make sense and a list where that makes sense.
+* Just because it's called a "dictionary" does not mean that it is sorted.  It is not sorted by your key.
+* Generic dictionaries are like generic lists as they are both not of a fixed size and have capacities and counts.  They also double once they reach their capacities.
+
+A> I learned the hard way many years ago that, at least in .NET Framework 2.0, a generic dictionary was implemented internally with arrays.  I was sending out 10 network requests simultaneously and storing the returned values in a dictionary.  With that code I would get an exception on the `Add()` method telling me that the add failed while expanding the arrays.  What happened: 1.) I thought that `Add()` method could handle being called twice at the same time and 2.) I learned that it does not, especially while performing a slow operation such as expanding the capacity of the dictionary.
+A>
+A> We'll discuss concurrency, threading, and such in a later chapter.
+
+We have already seen that a generic dictionary has an `Add()` method.  You can also add values by using the indexer, unlike the generic list.
+
+    Dictionary<string, string> cities = new Dictionary<string, string>(4);
+    cities["15232"] = "Shadyside";
+    cities["15222"] = "Pittsburgh";
+    cities["15232"] = "Pittsburgh";
+
+    string s = cities["15232"];
+    // s == "Pittsburgh"
+
+There are three functions to the indexer on a generic dictionary.
+
+* Add a key-value to the dictionary.
+* Update a key's value in the dictionary.
+* Return a value by key from the dictionary.
+
+In the example above, you can see that we are calling the `set` indexer twice with the same value, `cities["15232"]`.  If the key \(specified by the value between the brackets\) does _not_ exist in the dictionary, the key-value pair is added as a new entry to the dictionary.  If the key _does_ exist in the dictionary, it acts as an _assignment_ and simply replaces the value that the key points to.
+
+The `get` indexer isn't quite so forgiving.  If you try to retrieve a value by index and it _doesn't_ exist in the dictionary, it will throw a `System.Collections.KeyNotFoundException`.  This is the first framework exception that we have seen that does _not_ live in the `System` namespace.  If the key is found, the value is returned.  There are two ways around it.  The first way:
+
+    if (cities.ContainsKey(keyToFind))
+        Console.WriteLine(cities[keyToFind]);
+
+Instead of calling the indexer twice, you should prefer the following.
+
+    if (cities.TryGetValue("1111", out string theValue))
+        Console.WriteLine(theValue);
+
+Another try-type method we have is `TryAdd()`.  This will only add the key-value combination to the dictionary if the key does not exist in the dictionary.
+
+    if (cities.TryAdd("15221", "Not Pittsburgh"))
+        Console.WriteLine("success");
+
+A> JLC TODO... stopping for the night.
+
+    foreach
 
 ### Conclusion
