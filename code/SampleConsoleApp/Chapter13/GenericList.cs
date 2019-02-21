@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
 
 namespace SampleConsoleApp.Chapter13
 {
@@ -67,6 +67,47 @@ namespace SampleConsoleApp.Chapter13
                 Console.WriteLine(firstValue); // 1
 
 
+            List<string> words = new List<string>
+            {
+                "life",
+                "life belt",
+                "life support",
+                "life-and-death",
+                "life-support",
+                "lifeblood",
+                "LIFO"
+            };
+
+            words.Sort(new MWSort());
+
+            foreach (var word in words)
+                Console.WriteLine(word);
+        }
+    }
+
+    public class MWSort : IComparer<string>
+    {
+        private StringComparer comparer;
+
+        public MWSort()
+        {
+            CultureInfo ci = new CultureInfo("en-US", true);
+            comparer = ci.CompareInfo
+                .GetStringComparer(
+                    CompareOptions.IgnoreCase |
+                    CompareOptions.IgnoreSymbols);
+        }
+
+        public int Compare(string x, string y)
+        {
+            if (x == null && y == null)
+                return 0;
+            if (x == null)
+                return -1;
+            if (y == null)
+                return 1;
+
+            return comparer.Compare(x, y);
         }
     }
 }

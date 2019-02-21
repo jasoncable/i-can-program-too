@@ -48,6 +48,9 @@ method "in" modifier: https://docs.microsoft.com/en-us/dotnet/csharp/language-re
 
 ### anonymous types
 
+## generic delegate (WTF?)
+https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.sort?view=netcore-2.2
+
 ## `IConvertible<T>`
 
 # using static (from C#6): NO effing way!

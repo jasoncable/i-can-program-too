@@ -114,7 +114,23 @@ If we think about stacks and queues as simple arrays that go from `0` to `n` len
 
 We had an extensive conversation about sorting strings in the .NET frameworks in [Chapter 3](#chapter-03-sorting).  It would be good to review that now.  Let us now look at how to implement our own sorting algorithm using a generic list.
 
-A> JLC TODO... COME BACK TO THIS!!!
+The generic list has several `Sort()` method.  We will be looking at two of them.  The first is parameterless and performs the default .NET sort based on your selected framework, runtime, and OS.  The other that we will be looking at allows us to implement a custom sort order.  The sort method does _not_, however, allow us to choose our sort algorithm.
+
+A> This example that is abbreviated in order to save space.  It is not necessarily a deterministic sort as we are removing the weight of the special characters \(in English, dashes and spaces\).  They _may_ not always sort the same way with this sample.  Entire books have been written about the various sorting algorithms such as merge sort, bubble sort, insertion sort, quick sort, etc.  This example simply allows us to control the order in which the values will appear.
+
+<<[`List<T>.Sort()`](cs/ch13-02.cs)
+
+In our `MWSort` class we have a parameterless constructor that creates an instance of the `StringComparer` in the "en-US" culture/language.  Be forewarned that getting internationalization \(i18n\), globalization, and/or localization is _really_ difficult to get right.  These subjects are beyond the scope of this book.  Let's pretend for now that we want to leverage the framework as much as we can and just sort in plain US English.
+
+The body of the `Compare()` method has one purposes.  It has to answer the question: does `x` go before `y`?  We return an `int` based on the order we want the items to appear.  The generic lists's sort algorithm looks at two values at a time in the list and asks us to say whether they are the same or different.  Here are three possible return values and what each means.  Assume that `x` is our first parameter and that `y` is the second parameter.
+
+| `-1` | place `x` _before_ `y` |
+| `0` | `x` and `y` are equal |
+| `1` | place `x` _after_ `y` |
+
+Our `Compare()` method first performs some null checks.  If both parameters are null, they are equal.  If one is null and one is not, the null should be placed in the resulting sort order _before_ the other values.  Finally, we are using a US English string comparer with two specified options that are specified via a flags enumeration.  Be careful with this enumeration, however.  It has several values which are _not_ compatible with each other.
+
+Really, you can do anything in one of these `Compare()` methods.  For up to a few hundred items to be sorted, this method may be perfectly fine.  If you need to sort larger amounts of data you may want to consider another sorting method or algorithm.  Generally, once we get beyond a few thousand records we use some sort of database that provides powerful sorting capabilities.
 
 ## `Dictionary<TKey, TValue>`
 
