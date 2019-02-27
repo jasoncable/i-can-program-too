@@ -27,6 +27,12 @@ namespace SampleConsoleApp.Chapter13
 
             if (cities.TryAdd("15221", "Not Pittsburgh"))
                 Console.WriteLine("success");
+
+            foreach (KeyValuePair<string, string> kvp in cities)
+                Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+
+            foreach (var kvp in cities)
+                Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
         }
     }
 }

@@ -1,4 +1,4 @@
-# Generics
+# Using Generics
 
 We are going to begin our deep dive into the world of generics.  First, we had to wade through a _lot_ of important information on C# before we were able to realize the power of generics.  They are a quite complex issue to handle, so we will first start with how to _use_ generics then proceed onto how to _construct_ generic things.
 
@@ -198,8 +198,16 @@ Another try-type method we have is `TryAdd()`.  This will only add the key-value
     if (cities.TryAdd("15221", "Not Pittsburgh"))
         Console.WriteLine("success");
 
-A> JLC TODO... stopping for the night.
+You may also use the `foreach` statement to loop through the generic dictionary.  It's iterator returns a type called `KeyValuePair<TKey, TValue>`.  The `TKey` and `TValue` being the types you specified in for your generic dictionary's key and value types.
 
-    foreach
+    foreach (KeyValuePair<string, string> kvp in cities)
+        Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+
+You may also use the `var` keyword.  This makes it much easier to loop through the key value pairs in our generic dictionary.
+
+    foreach (var kvp in cities)
+        Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
 
 ### Conclusion
+
+We have seen how to _use_ generic dictionaries, lists, stacks, and queues.  We have also looked at _why_ generics are used and their importance in C#.  Next we will see _how_ to create generic types and methods and implement them.
