@@ -8,9 +8,9 @@ namespace SampleConsoleApp.Chapter14
     {
         public static void RunMe()
         {
-            TreeNode<Category> root = new TreeNode<Category>();
+
         }
-    }
+    }   
 
     // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-interfaces
     public class Category : IIdentifiable
@@ -31,8 +31,13 @@ namespace SampleConsoleApp.Chapter14
     public class TreeNode<T> : ITreeNode<T>
         where T : class, IIdentifiable, new()
     {
+        public TreeNode(T objOfT)
+        {
+            this.Value = objOfT;
+        }
+
         public ITreeNode<T> Parent { get; set; }
-        public ITreeNode<T> Current => this;
+        public T Value { get; private set; }
         public ICollection<ITreeNode<T>> Children { get; private set; } 
             = new List<ITreeNode<T>>();
         public void AddChild(ITreeNode<T> treeNode)
@@ -51,6 +56,13 @@ namespace SampleConsoleApp.Chapter14
         {
             return this.GetEnumerator();
         }
+
+        public void RecurseAndPerformAction(Action<T> action)
+        {
+            action(this.Value);
+            foreach(var child in Children)
+                child.RecurseAndPerformAction(action);
+        }
     }
 
     public interface IIdentifiable
@@ -61,14 +73,19 @@ namespace SampleConsoleApp.Chapter14
 
     public interface ITreeNode<T> : IEnumerable<ITreeNode<T>>, IEnumerable
     {
+        T Value { get; }
         ITreeNode<T> Parent { get; set; }
         ICollection<ITreeNode<T>> Children { get; }
         void AddChild(ITreeNode<T> treeNode);
+        void RecurseAndPerformAction(Action<T> action);
     }
 
-    // courtesy of: Jon Skeet - https://stackoverflow.com/questions/2012274/how-to-unroll-a-recursive-structure
     public static class TreeRecursor
     {
+        // breadth-first search...
+        // courtesy of: Stack Overflow user Jon Skeet
+        // license: CC-BY-SA
+        // https://stackoverflow.com/questions/2012274/how-to-unroll-a-recursive-structure
         public static IEnumerable<T> SelectRecursive<T>(this IEnumerable<T> subjects,
             Func<T, IEnumerable<T>> selector)
         {

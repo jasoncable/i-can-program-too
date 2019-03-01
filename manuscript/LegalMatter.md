@@ -36,6 +36,8 @@ Leanpub and the Leanpub logo are registered trademarks of Ruboss Technology Corp
 
 Unicode is a registered trademark of Unicode, Inc. in the U.S. and other countries.
 
+Stack Overflow is a registered trademark of Stack Exchange, Inc.
+
 ### Other
 
 The assembly "Hello, World" programs were taken from <http://helloworldcollection.de/>
