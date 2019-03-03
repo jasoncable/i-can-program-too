@@ -10,6 +10,7 @@ A>
 A> The code in this book is being developed using .NET Core 3.0 __PREVIEW__ and C# 8.0 __PREVIEW__.  The last time I checked, Visual Studio for Mac 2019 does not support C# 8.0 syntax.  Code is being verified in Visual Studio 2019 Preview 1 \(on Windows 10, 64-bit\).
 A>
 A> **Update as of 2019-03-03**
+A>
 A> * Visual Studio 2019 \(at least for Windows\) is to be released in the first week of April.
 A> * C# 8.0's feature set seems to still be in flux.
 
