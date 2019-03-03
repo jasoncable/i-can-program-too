@@ -10,7 +10,7 @@ Jason has a Bachelor of Arts degree in Psychology from Ashford University.
 
 ### Contact the Author
 
-<https://icanprogramtoo.com>
+%% <https://icanprogramtoo.com>
 
 <https://github.com/jasoncable/i-can-program-too/>
 
