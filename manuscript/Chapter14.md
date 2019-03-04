@@ -158,7 +158,7 @@ Generic methods show how we can create a method that takes or returns any C# typ
         return arg1.Equals(arg2);
     }
 
-The `where T` after the method signature tells the compiler that we are requiring that `T` must conform to certain parameters.  In this case we use the colon `:` operator which is used on type declarations to indicate inheritance or required interface implementations.  It does the same sort of thing here.  This is followed by an interface, `IEquatable<T>`.  Effectively, we stated that type `T` must implement the interface `IEquatable<T>`.  This applies to any parameters or a return type specified as by the arbitrary name `T`.  `IEquatable<T>` requires us to implement a type safe `Equals()` method on our type.  You do not need a generic class to implement a generic interface.
+The `where T` after the method signature tells the compiler that we are requiring that `T` must conform to certain parameters.  In this case we use the colon `:` operator which is used on type declarations to indicate inheritance or required interface implementations.  It does the same sort of thing here.  This is followed by an interface, `IEquatable<T>`.  Effectively, we stated that type `T` must implement the interface `IEquatable<T>`.  This applies to any parameters or a return type specified as by the arbitrary name `T`.  `IEquatable<T>` requires us to implement a type safe `Equals()` method on our type.  You do not need a generic class to implement a generic interface.  Also, implementing this interface helps us to get around the inability to use the `==` operator between generic parameters.
 
     public class TestClass : IEquatable<TestClass>
     {
@@ -214,6 +214,8 @@ A> We briefly talked about operator overload resolution previously.  It still re
     // TODO
 
 ## Fluent APIs
+
+    // TODO
 
 ### Conclusion
 
