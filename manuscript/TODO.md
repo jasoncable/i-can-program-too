@@ -65,6 +65,8 @@ Path.Combine
 Write buffers
 No file rename
 
+File IO
+
 Serialization?
 
 deep/shallow (clones)
