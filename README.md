@@ -2,15 +2,21 @@
 ## Featuring .NET Core 3 & C# 8
 __by Jason L. Cable__
 
-Recently upon reviewing books that teach programming to children, I discovered a few problems.  The first is that many of the basic pieces of information are just plain missing.  Everyone should know a little bit about the history of computing.  I also believe that these books start too quickly.  They explain the concept of a variable in one sentence then go straight into crafting code.  You have to know about the basics to become a _good_ programmer.
+**This book is now available for purchase on LeanPub.  It is only in the early preview stages and is far from complete.  Please consider supporting its ongoing work.  <https://leanpub.com/discover-programming-csharp/>**
 
-I did knew very little when I taught myself to program.  Knowing some of the basics would have helped.  I would like to teach people like I would have been taught.
+This book is dual licensed.  The book's contents are being released under CC-BY-SA 4.0.  The code samples in this repo and in the book are being released under the standard MIT license.
 
-__Featuring C# 8 and .NET Core 3.0__
+**If you run into any issues with the book as it currently stands, please feel free to open an issue.  Your contributions would be greatly appreciated.**
 
-__AS OF 1/3/2019, this REQUIRES .NET Core SDK 3.0.100-preview-009812 in Visual Studio 2019 Preview 1 on WINDOWS.  Visual Studio for Mac does not currently support C# 8.0 syntax.__
+## About the Book
 
-Estimated completion date: June, 2019.
+I taught myself to program back in the dark days of C# 1.0 in 2002, right after its release.  I didn't have anyone to guide me on how best to learn the language.  My only prior programming experience was with Perl 5.  This is the book I wished to have when I started programming.
+
+It's audience is brand new programmers and people who have been coding C# for a while and wish to enhance their skills by learning not just _what_ to type into a text editor, but _why_ they are typing the things they are.
+
+__AS OF 3/3/2019, this REQUIRES .NET Core SDK 3, the latest preview edition, and Visual Studio 2019's latest release candidate on WINDOWS.  Visual Studio for Mac 2019 does not seem to have a firm release date yet.__
+
+Estimated completion date: June, 2019.  This assumes that C# 8.0's new features are solidified by the end of March.
 
 <https://leanpub.com/discover-programming-csharp/>
 
