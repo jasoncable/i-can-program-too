@@ -1,29 +1,13 @@
-**Discover Programming with C#**
+# Code License
 
-_Featuring .NET Core 3 & C# 8_
+**You are allowed to freely use and adapt the C# and .NET code samples in this book and its accompanying GitHub repo by the following license.**
 
-by Jason L. Cable
+GitHub repo: <https://github.com/jasoncable/i-can-program-too>
 
-Copyright © 2019 Jason L. Cable. 
-
-* * *
-
-**The C# and .NET code samples in this book are licensed under the following license.**
+Copyright © 2019 Jason L. Cable
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-* * *
-
-The contents of this book \(minus the code\) are licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. 
-
-To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
-
-* * *
-
-Published by Jason L. Cable, Pittsburgh, Pennsylvania, USA.
-
-ISBN: TO BE ASSIGNED at COMPLETION

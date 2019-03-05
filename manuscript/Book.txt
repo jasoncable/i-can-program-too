@@ -2,6 +2,7 @@
 PreReleaseNote.md
 Introduction.md
 WordToTheReader.md
+LicenseForCode.md
 SomeDefinitions.md
 {mainmatter}
 Chapter01.md
