@@ -46,7 +46,7 @@ We can also use braces \(curly brackets\) to specify a _statement lambda_ which 
 
     x => { DateTime now = DateTime.Now; Console.WriteLine(now.ToString("d"); }
 
-One final note, statement lambdas and lambda expressions should not use variables from their parent scope.  The can and there are many rules surrounding that usage.  You may discover them on your own.
+There are a lot of caveats about using variables in lambda expressions and statements that you refer to within the lambda.  Ensure that you variable is initialized prior to defining the lambda.  It might be best to stick with simple data types when using lambdas.
 
 ## Action<T>
 
