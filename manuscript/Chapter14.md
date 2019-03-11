@@ -203,13 +203,39 @@ The following creates two instances of the `TestClass` object.  Next it uses the
 
 A> We briefly talked about operator overload resolution previously.  It still remains a complex topic and as before I warned that "your mileage may vary."  In this instance, C# prefers our generic type version of `Equals()` probably due to the fact that it doesn't have to box \(cast to type `object`\) the objects in order to compare them.  For that reason, we call the generic version from the one overridden from `object`.
 
-    // MORE TODO HERE
+There are many other things that you can use to constrain your generic types.  They are not limited to interfaces and classes.
 
-## Generic Interfaces
+| Constraint Name | Description |
+|-----------------|-------------|
+| class | Generic type must be a class. |
+| Enum | Generic type must be an enumeration. |
+| struct | Generic type must be a struct.  This is also to be used to specify that the generic type must be a ValueType.  You cannot specify System.ValueType. |
+| new() | Generic type must have a default constructor. |
+| Delegate | Generic type must be a delegate. |
+| MulticlassDelegate | Generic type must be a of type MulticastDelegate. |
 
-    // TODO
+You may also specify multiple constraints for one generic type parameter.  In this example, `Z` must be a class with a default constructor and must implement `IList<Z>`.  In this instance, `IList<>` must use the same type as `Z`.
 
-## Generic Classes
+    public bool IsTrue<Z>(Z someThing)
+        where Z : class, IList<Z>, new()
+    {
+        return true;
+    }
+
+For multiple generic types you will use multiple where clauses.  We will see some examples of this in a bit.
+
+        public bool IsFalse<T1, T2>(T1 something, T2 someOtherThing)
+            where T1 : class
+            where T2 : struct
+        {
+            return false;
+        }
+
+There are limits to what you can specify in a generic type constraint.  For example, you can't specify that you only want to allow numeric types or specific types of numeric types.  You will still have to perform type checking manually and use method overloads if creating an API that performs numeric calculations on a variety of types.
+
+## A Real Example
+
+Let's see a real example of a generic class.  We have seen enough of the theory behind generics to see how we construct one.  
 
     // TODO
 

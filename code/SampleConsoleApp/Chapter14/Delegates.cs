@@ -51,6 +51,12 @@ namespace SampleConsoleApp.Chapter14
         {
             return arg1.Equals(arg2);
         }
+
+        public bool IsTrue<T>(T someThing)
+            where T : class, IList<T>, new()
+        {
+            return true;
+        }
     }
 
     public class TestClass : IEquatable<TestClass>
