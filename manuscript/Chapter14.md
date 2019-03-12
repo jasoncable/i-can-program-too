@@ -235,13 +235,54 @@ There are limits to what you can specify in a generic type constraint.  For exam
 
 ## A Real Example
 
-Let's see a real example of a generic class.  We have seen enough of the theory behind generics to see how we construct one.  
+Let's see a real example of a generic class.  We have seen enough of the theory behind generics to see how we construct one.  We'll be going through this one piece at a time and put it all together in the end.
 
-    // TODO
+For this example we will be creating a class that will allow us to model a classic tree structure.  Our tree will be fairly simple.  We will be modeling a category tree structure.  Our tree has one trunk and branches that can each have many branches.  We can think of it as something like the following.  We will call each piece of the tree a _node_.  Each node can have multiple notes.
 
-## Fluent APIs
+* Root Category
+  * Category 1
+    * Category 1.1
+    * Category 1.2
+    * Category 1.3
+      * Category 1.3.1
+      * Category 1.3.2
+        * Category 1.3.2.1
+    * Category 1.4
+      * Category 1.4.1
+  * Category 2
+    * Category 2.1
+      * Category 2.1.1
+        * Category 2.1.1.1
+      * Category 2.1.2
+    * Category 2.2
 
-    // TODO
+Each bullet point in the sample above is represented as an `ITreeNode<T>` in our example.  Type `T` will be required to implement `IIdentifiable`, which is a simple interface that has a `Name` and an `Id`.
+
+<<[`IIdentifiable`](cs/ch14-01.cs)
+
+Next we will create a concrete implementation of `IIdentifiable` that will be used to hold the data in each `TreeNode`.
+
+<<[`Category`](cs/ch14-02.cs)
+
+So far, so good.  This is pretty basic stuff.  The next part gets a little more interesting.
+
+<<[`ITreeNode<T>`](cs/ch14-02.cs)
+
+This _generic_ interface forms the basis of what we will be using to build each node in our tree structure.  Each node has a `Parent` object which points to the next level higher, its parent.  The root node's parent will be `null`.  Each node also contains a list of its child nodes in the `Children` property.  You will notice that we aren't currently using `IIdentifiable` yet.  That will come when we create a concrete implementation of `ITreeNode<T>`.  `ITreeNode<T>` is really an abstraction to enable us to reuse our code.  Let's look at each of the members of the interface.
+
+First, using this interface requires us to implement `IEnumerable<T>`.  This will help us loop through the children in our generic collection.  Each item in the `foreach` will returns an `ITreeNode<T>`.  We also must implement the non-generic `IEnumerable`.  You should always implement both the generic and non-generic versions of `IEnumerable`.
+
+For the members, we store the value from type `T` in the `Value` member so that we may refer to it later.  You will see why this is necessary in a bit.
+
+Next, since each node is an `ITreeNode<T>` we use that as the `Parent` member.  We use a generic `ICollection<T>` to require and allow us to use one of many types of generic collections.  This provides flexibility to the implementer to use their own collection or one of many framework defined collections such as `List<T>` or even `SortedSet<T>`.
+
+We also have a method to add a child node to each node.  The final member, `RecurseAndPerformAction` will help us loop through the current node, its child nodes, their child nodes, and so forth.
+
+A> JLC TODO: Please note that at this point in our sample we don't have a good way to populate our tree structure.  We'll build that up as we go along.
+
+Next, let's see how to implement the `ITreeNode<T>` interface on a concrete class to see how doing any of this makes sense.
+
+    // MORE TODO
 
 ### Conclusion
 

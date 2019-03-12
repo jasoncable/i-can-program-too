@@ -8,7 +8,8 @@ namespace SampleConsoleApp.Chapter14
     {
         public static void RunMe()
         {
-
+            TreeNode<Category> root = new TreeNode<Category>(new Category("Root Category");
+            root.AddChild(new TreeNode<Category>(new Category("Category 1"));
         }
     }   
 

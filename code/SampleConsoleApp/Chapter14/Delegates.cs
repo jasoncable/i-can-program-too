@@ -52,10 +52,17 @@ namespace SampleConsoleApp.Chapter14
             return arg1.Equals(arg2);
         }
 
-        public bool IsTrue<T>(T someThing)
-            where T : class, IList<T>, new()
+        public bool IsTrue<Z>(Z someThing)
+            where Z : class, IList<Z>, new()
         {
             return true;
+        }
+
+        public bool IsFalse<T1, T2>(T1 something, T2 someOtherThing)
+            where T1 : class
+            where T2 : struct
+        {
+            return false;
         }
     }
 
