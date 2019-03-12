@@ -237,6 +237,8 @@ There are limits to what you can specify in a generic type constraint.  For exam
 
 Let's see a real example of a generic class.  We have seen enough of the theory behind generics to see how we construct one.  We'll be going through this one piece at a time and put it all together in the end.
 
+A> One quick note about generic classes and generic interfaces...  Generics are very powerful and enable us to write code that would otherwise be ugly and much more bug prone due to constant boxing and unboxing.  We are building two things in this example.  The first is an _abstract_ piece of software that can be used with an unlimited number and type of objects as long as they adhere to our interfaces and generic type constraints.  We will also be creating a _concrete implementation_ of those abstract pieces.  We call this a concrete implementation because it take all of the constituent parts and that don't do anything on their own, mix them up, and make a solid product that actually does something.  The parts don't mean much without the implementation.  
+
 For this example we will be creating a class that will allow us to model a classic tree structure.  Our tree will be fairly simple.  We will be modeling a category tree structure.  Our tree has one trunk and branches that can each have many branches.  We can think of it as something like the following.  We will call each piece of the tree a _node_.  Each node can have multiple notes.
 
 * Root Category
