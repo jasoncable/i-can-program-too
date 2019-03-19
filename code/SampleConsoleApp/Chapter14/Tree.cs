@@ -8,8 +8,15 @@ namespace SampleConsoleApp.Chapter14
     {
         public static void RunMe()
         {
-            TreeNode<Category> root = new TreeNode<Category>(new Category("Root Category");
-            root.AddChild(new TreeNode<Category>(new Category("Category 1"));
+            TreeNode<Category> root = new TreeNode<Category>(new Category("Root Category"));
+            root.AddChild(new TreeNode<Category>(new Category("Category 1")));
+            root.AddChild(new TreeNode<Category>(new Category("Category 2")));
+
+            foreach(var cat in root)
+                Console.WriteLine(cat.Value.Name);
+
+            root.RecurseAndPerformAction(x => Console.WriteLine(x));
+
         }
     }   
 
@@ -29,7 +36,8 @@ namespace SampleConsoleApp.Chapter14
         }
     }
 
-    public class TreeNode<T> : ITreeNode<T>
+    public class TreeNode<T> : ITreeNode<T>, 
+        IEnumerable, IEnumerable<ITreeNode<T>>
         where T : class, IIdentifiable, new()
     {
         public TreeNode(T objOfT)
@@ -46,13 +54,16 @@ namespace SampleConsoleApp.Chapter14
             treeNode.Parent = this;
             Children.Add(treeNode);
         }
+
         public IEnumerator<ITreeNode<T>> GetEnumerator()
         {
             yield return this;
-
             foreach (var node in this.SelectRecursive((arg) => arg.Children))
                 yield return node;
+
+            //return RecurseNodes(this).GetEnumerator();
         }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
@@ -63,6 +74,19 @@ namespace SampleConsoleApp.Chapter14
             action(this.Value);
             foreach(var child in Children)
                 child.RecurseAndPerformAction(action);
+        }
+
+        private IEnumerable<ITreeNode<T>> RecurseNodes(ITreeNode<T> node)
+        {
+            yield return node;
+
+            foreach(var child in node.Children)
+            {
+                foreach (var childNode in RecurseNodes(child))
+                {
+                    yield return childNode;
+                }
+            }
         }
     }
 

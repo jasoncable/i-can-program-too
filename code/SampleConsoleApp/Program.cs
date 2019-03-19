@@ -68,7 +68,9 @@ namespace SampleConsoleApp
 
             //Chapter13.GenericDictionary.RunMe();
 
-            Chapter14.Delegates.RunMe();
+            //Chapter14.Delegates.RunMe();
+
+            Chapter14.Tester.RunMe();
 
             Console.WriteLine("DONE!");
             Console.ReadLine();

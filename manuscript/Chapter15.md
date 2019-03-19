@@ -6,6 +6,10 @@
 
     // TODO
 
+## LINQ, Lamba-style
+
+    // TODO
+
 ### Conclusion
 
     // TODO

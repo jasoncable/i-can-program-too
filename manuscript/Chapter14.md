@@ -268,7 +268,7 @@ Next we will create a concrete implementation of `IIdentifiable` that will be us
 
 So far, so good.  This is pretty basic stuff.  The next part gets a little more interesting.
 
-<<[`ITreeNode<T>`](cs/ch14-02.cs)
+<<[`ITreeNode<T>`](cs/ch14-03.cs)
 
 This _generic_ interface forms the basis of what we will be using to build each node in our tree structure.  Each node has a `Parent` object which points to the next level higher, its parent.  The root node's parent will be `null`.  Each node also contains a list of its child nodes in the `Children` property.  You will notice that we aren't currently using `IIdentifiable` yet.  That will come when we create a concrete implementation of `ITreeNode<T>`.  `ITreeNode<T>` is really an abstraction to enable us to reuse our code.  Let's look at each of the members of the interface.
 
@@ -284,8 +284,61 @@ A> JLC TODO: Please note that at this point in our sample we don't have a good w
 
 Next, let's see how to implement the `ITreeNode<T>` interface on a concrete class to see how doing any of this makes sense.
 
-    // MORE TODO
+First we are going to create a class called `TreeNode<T>` that implements the `ITreeNode<T>` interface.  It also has three generic type constraints: `class`, `IIdentifiable`, and `new()`.  That means that `T` must be a class with a parameterless constructor and must implement the `IIdentifiable` interface that we created earlier.  We will also be implementing `IEnumerable` and `IEnumerable<T>` as `IEnumerable<ITreeNode<T>>`.  This will allow us to us a `foreach` on our new generic collection.  We might also consider implementing other interfaces such as `ICollection<T>` and others.
+
+<<[`TreeNode<T>` Declaration](cs/ch14-04.cs)
+
+Here is our constructor which takes the type `T`.
+
+<<[`TreeNode<T>` Constructor](cs/ch14-05.cs)
+
+Let's next look at the more innocuous members of our node implementation's class.  Please note that we are setting the `Children` property to a new list, _not_ null.  This will make things much easier later due to not having to perform `null` checks all of the time.
+
+<<[`TreeNode<T>` `ITreeNode<T>` Members](cs/ch14-06.cs)
+
+## Recursive Methods
+
+To continue our exploration of our simple tree structure, we must first learn about _recursive methods_ and how we will use them in implementing our `IEnumerable<T>` interface.  A recursive method is simply a method that calls _itself_.  We will frequently use recursive methods when, for example, moving through a file system, a type of tree, and performing an operation on each file.  A directory structure has two types of items, directories and files.  Each directory can have other directories and files and those directories can have other directories, etc.  Since an iterator only works on the items in one level of structure at a time, we need to recurse through the structure via recursive methods to both find items and perform actions on them.
+
+Here is an example of a recursive method that will become a member of our `TreeNode<T>` class.  It takes an `Action<T>` which will allow us to perform an action on each node in the tree.
+
+    public void RecurseAndPerformAction(Action<T> action)
+    {
+        action(this.Value);
+        foreach(var child in Children)
+            child.RecurseAndPerformAction(action);
+    }
+
+To use this we create our tree structure and execute the method like this:
+
+    instance.RecurseAndPerformAction(x => Console.WriteLine(x));
+
+`T` in this case is the class `Category` which has an overridden `ToString()` method.
+
+In our recursive method, we first pass the current class instance, `this`, to the `Action<T>` method.  Next, we loop through each of the children of the node and execute the method _on each child_.  Each time we execute the `RecurseAndPerformMethod()` method we are executing the method that is on the instance of each child, which means that the `this` keyword is scoped to the current child.  Also, the `Children` property belongs to the _current_ child that is being acted upon.
+
+This means that the method we are calling is called on each child of each child of each child.  This is called _unbounded recursion_ as we are not placing limits on the depth of the recursion.  This is also a _depth first_ algorithm as opposed to a _breadth first_ algorithm.  Depth first means that we are starting our recursion from one point, going to its first child, then going to the first child's first child, etc.  Breadth first starts by looping through all of the current children, then, starting with the first child, going through its children, etc.
+
+A> There are many types of recursion algorithms and situations when you would use one.  See also: B-tree, B+-tree, depth-first search, breadth-first search, graph traversal algorithms, directed graphs...
+
+## Continuing with Our Example
+
+Here you will see an example of implementing an iterator so that we may use the `foreach` operator on our object.  You will notice that this does _not_ require us to implement interfaces such as `ICollection<T>` or `IList<T>`.  It does not even require use to implement an indexer in our class.  We associate all of these with lists and collections.  The only thing we have to do is implement `IEnumerable<T>` and `IEnumerable`.  We're using the `RecurseNodes` private method to recurse through our collection.
+
+We are not going to go through all of the intricacies here, but please know that this is only one of several ways of implementing the interfaces and getting the correct result.
+
+You will notice a new C# operator here, `yield return`.  It allows us to use logic when creating an enumerator.  There is also a `yield break` to stop going through the collection.  Let's see how iterators work.
+
+First, `foreach` makes a call to `GetEnumerator()` and checks it for null.  If it is null, you will receive an exception.  If not, the code in `GetEnumerator()` continues until `yield break` or `yield return`.  If `yield break` is hit, the iterator is done.  Once `yield return` is hit, the value in the `yield return` statement is passed up into the `foreach` construct and the code execution pauses in the iterator method until the code in within the `foreach` block executes.  The code in the enumerator method goes not resume execution until the `foreach` block ends and the execution restarts with the \(usually\) variable assignment in the `foreach` statement.
+
+The most important thing to realize here is that the iterator does not return all of its items at once.  It pauses execution when the first item is returned via `yield return` and only continues if the `foreach` that is using it requests another item from the iterator method.
+
+<<[`TreeNode<T>` `IEnumerable` Implementation](cs/ch14-07.cs)
+
+Here is an alternate way to implement our iterator.  This is a breath-first version that scales better by not creating too many iterators over tree structures that have many levels.  It includes the alternate `IEnumerable<T>` method and an extension method to ease the recursion algorithm.
+
+<<[`TreeNode<T>` Alternate `IEnumerable` Implementation](cs/ch14-08.cs)
 
 ### Conclusion
 
-    // TODO
+We have seen how to create generic classes, how to create a basic tree structure, and how to use `Action<T>` and `Func<T>`.  These examples make it easier for us to understand how many things in the framework are implemented.  We can also see how we implement all things generic.  This the our entrance into the newer concepts in the C# language which make it very powerful, flexible, and performant.
