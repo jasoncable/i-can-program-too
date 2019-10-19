@@ -42,6 +42,14 @@ C# by itself can be used to create programs.  Unfortunately, it would be very di
 * UWP 10.0.16299
 * Unity 2018.1
 
+## .NET 5
+
+As of this writing, it has been announced that the disparate .NET standard libraries, \(C#/F#/VB\) compilers, and runtimes will be united under one product, __.NET 5__.  With the release of .NET Core 3.0 we have seen several large components to be made to run on .NET Core \(WinForms, WPF, EntityFramework 6.x\).  The long term vision is consolidate the .NET ecosphere.  .NET Core has brought many good changes to .NET.  It is faster; it runs on multiple platforms; it fixes legacy performance and memory issues; it adds multiple new features to ASP.NET Core and the C# language.
+
+A> If this consolidation had been announced four years ago, I would have thought that it was a very bad idea.  In the last several years, we have seen the release of the "reference source" code for the .NET Framework.  .NET Core has come and has progressed to be a more flexible ecosystem.  Microsoft has, with other companies, created the .NET Foundation as a governing body to work together to create a wonderfully open community that encourages the participation of thousands of developers to create a great series of products.
+
+.NET Core 3.x will evolve into .NET 5 by December of 2020.  It will incorporate the missing features from .NET 4.x and mono.   The .NET Core runtime will to replace mono, .NET 4.x, and possibly Unity's modified mono tools and libraries.  .NET 4.x will be supported for another 10 years.  The good part of this is that it will ____actually____  be easy to update existing code and libraries to the new ecosystem.
+
 ## Starting Out
 
 To best learn C# and .NET we will be using Visual Studio (Windows) or Visual Studio for Mac.  Both are available for no cost to individuals for use in educational settings.  Both have similar features, but are two different programs.  Visual Studio for Mac, previously known as Xamarin Studio and before that monodevelop was created by the mono project to be a competitive, free IDE to be used on multiple platforms.  We will be focusing on .NET Core and will be programming using C# version 7.3.  You can use the latest version of .NET Core and of either IDE, although you may have to specifically set the language version on the project settings.

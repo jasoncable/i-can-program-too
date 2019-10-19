@@ -343,5 +343,5 @@ healthchecksdb
 # JLC added
 .DS_Store
 *.swp
-
+.vscode
 

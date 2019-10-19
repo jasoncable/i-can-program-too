@@ -14,9 +14,9 @@ I taught myself to program back in the dark days of C# 1.0 in 2002, right after 
 
 It's audience is brand new programmers and people who have been coding C# for a while and wish to enhance their skills by learning not just _what_ to type into a text editor, but _why_ they are typing the things they are.
 
-__AS OF 3/3/2019, this REQUIRES .NET Core SDK 3, the latest preview edition, and Visual Studio 2019's latest release candidate on WINDOWS.  Visual Studio for Mac 2019 does not seem to have a firm release date yet.__
+__This book requires Visual Studio for Mac \(v. 8.3.2+, any edition\) ___or___ Visual Studio 2019 \(v. 16.3.5+, any edition\) ___and___ the latest public release of the .NET Core SDK 3.x.  The samples in this book have been tested on Windows and macOS.  Visual Studio Code with the required plugins may also be used, but Visual Studio's Community Editions are freely available for Windows and macOS free for education or non-commercial use and are recommended for ease of use.__
 
-Estimated completion date: June, 2019.  This assumes that C# 8.0's new features are solidified by the end of March.
+Estimated completion date: December, 2019.  The book __may__ be updated for C# 8.1 if its feature set is defined soon enough.
 
 <https://leanpub.com/discover-programming-csharp/>
 
