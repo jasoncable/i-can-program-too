@@ -4,7 +4,6 @@ A> There may be times when you have to deal with legacy code and need to know wh
 A>
 A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history>
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 1.0**               | * Classes                |
 | .NET Framework 1.0       | * Structs                |
@@ -23,7 +22,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * System.Xml APIs        |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 1.2**               | * `foreach` calls `.Dispose\(\)` on enumerator |
 | .NET Framework 1.1       | * some breaking Regex changes |
@@ -32,7 +30,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 | * Bug fix release and runtime update |              |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 2.0**               | * Generics               |
 | .NET Framework 2.0       | * Partial Types          |
@@ -48,7 +45,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * WCF                    |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 3.0/3.5**           | * Auto Properties        |
 | .NET Framework 3.0/3.5   | * Anonymous Types        |
@@ -64,7 +60,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * WPF                    |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 4.0**               | * Dynamic Binding \(DLR\) |
 | .NET Framework 4.0       | * Named/Optional Arguments |
@@ -74,7 +69,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * EntityFramework 4.0    |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 5.0**               | * Asynchronous Members   |
 | .NET Framework 4.5       | * `async/await` operators |
@@ -84,7 +78,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * ASP.NET MVC 4          |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 6.0**               | * Static Imports         |
 | .NET Framework 4.5.1     | * Exception Filters      |
@@ -100,7 +93,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * EntityFramework 6.0    |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 7.0**               | * Out Variables          |
 | .NET Framework 4.6 - 4.6.2 | * Tuples \(as a language feature\) |
@@ -117,7 +109,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * .NET Core 1.0 - 2.1    |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 7.1**               | * `async` `Main()` Method |
 | * .NET Framework 4.7     | * Default Literal Expressions |
@@ -125,7 +116,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 | Visual Studio 2017 v15.3+ | * Pattern Matching on Generic Type Parameters |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 7.2**               | * `in` Parameters        |
 | * .NET Framework 4.7     | * `ref` `readonly`       |
@@ -138,7 +128,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | *                        |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 7.3**               | * Improvements to `ref` Locals, `stackalloc`, Arrays, Fixed Statements, etc. |
 | * .NET Framework 4.7.2   | * Multiple Generic Constraints |
@@ -149,7 +138,6 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | *                        |
 |--------------------------|--------------------------|
 
-{width="wide"}
 |--------------------------|--------------------------|
 | **C# 8.0**               | * `readonly` Members |
 | * .NET Framework 4.8\* \(final release\)     | * Default Interface Methods |
