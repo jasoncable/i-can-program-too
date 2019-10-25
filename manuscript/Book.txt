@@ -26,6 +26,7 @@ Chapter18.md
 {backmatter}
 VSQuickStartWin.md
 ReusableComponents.md
+CSharpVersionHistory.md
 RecommendedReading.md
 MyPersonalStyle.md
 LegalMatter.md
