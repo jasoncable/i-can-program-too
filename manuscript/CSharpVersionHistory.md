@@ -4,12 +4,13 @@ A> There may be times when you have to deal with legacy code and need to know wh
 A>
 A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history>
 
+| **C# 1.0**               |                          |
 |--------------------------|--------------------------|
-| **C# 1.0**               | * Classes                |
-| .NET Framework 1.0       | * Structs                |
-| Visual Studio 2002       | * Interfaces             |
-| *NOTES:*                 | * Events                 |
-| * Initial Release        | * Properties             |
+| .NET Framework 1.0       | * Classes                |
+| Visual Studio 2002       | * Structs                |
+| *NOTES:*                 | * Interfaces             |
+| * Initial Release        | * Events                 |
+|                          | * Properties             |
 |                          | * Delegates              |
 |                          | * Expressions            |
 |                          | * Statements             |
@@ -22,20 +23,21 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * System.Xml APIs        |
 |--------------------------|--------------------------|
 
+| **C# 1.2**               |                          |
 |--------------------------|--------------------------|
-| **C# 1.2**               | * `foreach` calls `.Dispose\(\)` on enumerator |
-| .NET Framework 1.1       | * some breaking Regex changes |
-| Visual Studio 2003       |                          |
+| .NET Framework 1.1       | * `foreach` calls `.Dispose\(\)` on enumerator |
+| Visual Studio 2003       | * some breaking Regex changes |
 | *NOTES*:                 |                          |
 | * Bug fix release and runtime update |              |
 |--------------------------|--------------------------|
 
+| **C# 2.0**               |                          |
 |--------------------------|--------------------------|
-| **C# 2.0**               | * Generics               |
-| .NET Framework 2.0       | * Partial Types          |
-| Visual Studio 2005       | * Anonymous Methods      |
-| *NOTES*:                 | * Nullable Value Types |
-| * Huge release with runtime update | * Iterators              |
+| .NET Framework 2.0       | * Generics               |
+| Visual Studio 2005       | * Partial Types          |
+| *NOTES*:                 | * Anonymous Methods      |
+| * Huge release with runtime update | * Nullable Value Types |
+|                          | * Iterators              |
 |                          | * Covariance/contravariance |
 |                          | * Static Classes         |
 |                          | * `get/set` separate accessibility |
@@ -45,12 +47,13 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * WCF                    |
 |--------------------------|--------------------------|
 
+| **C# 3.0/3.5**           |                          |
 |--------------------------|--------------------------|
-| **C# 3.0/3.5**           | * Auto Properties        |
-| .NET Framework 3.0/3.5   | * Anonymous Types        |
-| Visual Studio 2008       | * Query Expressions \(LINQ\) |
-| *NOTES*:                 | * Lambdas                |
-| * Another large release with major runtime changes | * Expression Trees       |
+| .NET Framework 3.0/3.5   | * Auto Properties        |
+| Visual Studio 2008       | * Anonymous Types        |
+| *NOTES*:                 | * Query Expressions \(LINQ\) |
+| * Another large release with major runtime changes | * Lambdas                |
+|                          | * Expression Trees       |
 |                          | * Extension Methods      |
 |                          | * `var` keyword          |
 |                          | * Partial Methods        |
@@ -60,31 +63,34 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * WPF                    |
 |--------------------------|--------------------------|
 
+| **C# 4.0**               |                          |
 |--------------------------|--------------------------|
-| **C# 4.0**               | * Dynamic Binding \(DLR\) |
-| .NET Framework 4.0       | * Named/Optional Arguments |
-| Visual Studio 2010       | * Generic Co/Contra-variance |
-| *NOTES*:                 | * Embedded Interop Types |
-| * Major runtime changes hereafter frozen until .NET Core | * ASP.NET MVC 1.0        |
+| .NET Framework 4.0       | * Dynamic Binding \(DLR\) |
+| Visual Studio 2010       | * Named/Optional Arguments |
+| *NOTES*:                 | * Generic Co/Contra-variance |
+| * Major runtime and CLR changes hereafter frozen until .NET Core | * Embedded Interop Types |
+|                          | * ASP.NET MVC 1.0        |
 |                          | * EntityFramework 4.0    |
 |--------------------------|--------------------------|
 
+| **C# 5.0**               |                          |
 |--------------------------|--------------------------|
-| **C# 5.0**               | * Asynchronous Members   |
-| .NET Framework 4.5       | * `async/await` operators |
-| Visual Studio 2012       | * Threading `Task` APIs  |
-| *NOTES*:                 | * MEF                    |
-| * .NET Standard 1.0 - 1.1 | * UWP                   |
+| .NET Framework 4.5       | * Asynchronous Members   |
+| Visual Studio 2012       | * `async/await` operators |
+| *NOTES*:                 | * Threading `Task` APIs  |
+| * .NET Standard 1.0 - 1.1 | * MEF                    |
+|                          | * UWP                   |
 |                          | * ASP.NET MVC 4          |
 |--------------------------|--------------------------|
 
+| **C# 6.0**               |                          |
 |--------------------------|--------------------------|
-| **C# 6.0**               | * Static Imports         |
-| .NET Framework 4.5.1     | * Exception Filters      |
-| Visual Studio 2013       | * Auto Property Initializers |
-| *NOTES*:                 | * Expression Bodied Members |
-| * Roslyn                 | * Null Conditional Operator `?.` |
-| * .NET Standard 1.2      | * Null Coalescing Operator `??` |
+| .NET Framework 4.5.1     | * Static Imports         |
+| Visual Studio 2013       | * Exception Filters      |
+| *NOTES*:                 | * Auto Property Initializers |
+| * Roslyn compiler        | * Expression Bodied Members |
+| * .NET Standard 1.2      | * Null Conditional Operator `?.` |
+|                          | * Null Coalescing Operator `??` |
 |                          | * String Interpolation   |
 |                          | * `nameof` operator      |
 |                          | * Index Initializers     |
@@ -93,15 +99,16 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * EntityFramework 6.0    |
 |--------------------------|--------------------------|
 
+| **C# 7.0**               |                          |
 |--------------------------|--------------------------|
-| **C# 7.0**               | * Out Variables          |
-| .NET Framework 4.6 - 4.6.2 | * Tuples \(as a language feature\) |
-| Visual Studio 2015       | * `System.ValueTuple`    |
-| *NOTES*:                 | * Deconstruction         |
-| * .NET Standard 1.3 \(4.6\) | * Pattern Matching    |
-| * .NET Standard 1.4 – 2.0 \(4.6.1\) | * Local Functions |
-| * .NET Standard 1.0 – 1.6 \(Core 1.0\)  | * Expanded Expression-bodied Members |
-| * .NET Standard 2.0 (Core 2.0)  | * `ref` locals and returns        |
+| .NET Framework 4.6 - 4.6.2 | * Out Variables          |
+| Visual Studio 2015       | * Tuples \(as a language feature\) |
+| *NOTES*:                 | * `System.ValueTuple`    |
+| * .NET Standard 1.3 \(4.6\) | * Deconstruction         |
+| * .NET Standard 1.4 – 2.0 \(4.6.1\) | * Pattern Matching    |
+| * .NET Standard 1.0 – 1.6 \(Core 1.0\) | * Local Functions |
+| * .NET Standard 2.0 \(Core 2.0\) | * Expanded Expression-bodied Members |
+|                          | * `ref` locals and returns |
 |                          | * Discards               |
 |                          | * Binary Literals and Digit Separators |
 |                          | * Throw Expressions      |
@@ -109,43 +116,45 @@ A> Reference: <https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-v
 |                          | * .NET Core 1.0 - 2.1    |
 |--------------------------|--------------------------|
 
+| **C# 7.1**               |                          |
 |--------------------------|--------------------------|
-| **C# 7.1**               | * `async` `Main()` Method |
-| * .NET Framework 4.7     | * Default Literal Expressions |
-| * .NET Core 2.0          | * Inferred Tuple Element Names    |
-| Visual Studio 2017 v15.3+ | * Pattern Matching on Generic Type Parameters |
+| * .NET Framework 4.7     | * `async` `Main()` Method |
+| * .NET Core 2.0          | * Default Literal Expressions |
+| Visual Studio 2017 v15.3+ | * Inferred Tuple Element Names    |
+|                          | * Pattern Matching on Generic Type Parameters |
 |--------------------------|--------------------------|
 
+| **C# 7.2**               |                          |
 |--------------------------|--------------------------|
-| **C# 7.2**               | * `in` Parameters        |
-| * .NET Framework 4.7     | * `ref` `readonly`       |
-| * .NET Core 2.0          | * `readonly` Structs     |
-| Visual Studio 2017 v15.5+ | * `ref` Structs         |
+| * .NET Framework 4.7     | * `in` Parameters        |
+| * .NET Core 2.0          | * `ref` `readonly`       |
+| Visual Studio 2017 v15.5+ | * `readonly` Structs     |
+|                          | * `ref` Structs         |
 |                          | * Non-trailing Named Arguments |
 |                          | * Leading Underscores in Numeric Literals |
 |                          | * `private protected` Access Modifier |
 |                          | * Ternary Operator Can Use `ref` |
-|                          | *                        |
 |--------------------------|--------------------------|
 
+| **C# 7.3**               |                          |
 |--------------------------|--------------------------|
-| **C# 7.3**               | * Improvements to `ref` Locals, `stackalloc`, Arrays, Fixed Statements, etc. |
-| * .NET Framework 4.7.2   | * Multiple Generic Constraints |
-| * .NET Core 2.1          | * `==` and `!=` with Tuples |
-| Visual Studio 2017 v15.7+ | * Expanded Use of Expression Variables |
+| * .NET Framework 4.7.2   | * Improvements to `ref` Locals, `stackalloc`, Arrays, Fixed Statements, etc. |
+| * .NET Core 2.1          | * Multiple Generic Constraints |
+| Visual Studio 2017 v15.7+ | * `==` and `!=` with Tuples |
+|                          | * Expanded Use of Expression Variables |
 |                          | * Attributes on Auto-Properties |
 |                          | * Additional Uses of the `in` operator |
-|                          | *                        |
 |--------------------------|--------------------------|
 
+| **C# 8.0**               |                          |
 |--------------------------|--------------------------|
-| **C# 8.0**               | * `readonly` Members |
-| * .NET Framework 4.8\* \(final release\)     | * Default Interface Methods |
-| * .NET Core 3.0          | * Pattern Matching in Switch, Properties, and Tuples |
-| Visual Studio 2019       | * Positional Patterns |
-| * \*_Certain features of C# 8.0 not implemented in Framework 4.8 | * `using` Declarations |
-| * .NET Standard 2.0 \(4.6.1+\) \[last for Framework\] | * Static Local Functions |
-| * .NET Standard 2.1 \(Core 3.0\) | * Disposable `ref` Structs |
+| * .NET Framework 4.8\* \(final release\) | * `readonly` Members |
+| * .NET Core 3.0     | * Default Interface Methods |
+| Visual Studio 2019          | * Pattern Matching in Switch, Properties, and Tuples |
+| * *Certain features of C# 8.0 not implemented in Framework 4.8* | * Positional Patterns |
+| * .NET Standard 2.0 \(4.6.1+\) \[last for Framework\] | * `using` Declarations |
+| * .NET Standard 2.1 \(Core 3.0\) | * Static Local Functions |
+|                          | * Disposable `ref` Structs |
 |                          | * Asynchronous I/O \(streams\) |
 |                          | * Indices and Ranges |
 |                          | * Null Coalescing Assignment |
